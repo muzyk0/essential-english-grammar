@@ -26,7 +26,7 @@ Updated automatically by the `/add-unit` command.
 | 10 | was/were | was/were | done |
 | 11 | worked/got/went (past simple) | worked/got/went (прошедшее простое) | done |
 | 12 | I didn't ... / Did you ...? (past simple) | I didn't ... / Did you ...? | done |
-| 13 | I was doing (past continuous) | I was doing (прошедшее длительное) | — |
+| 13 | I was doing (past continuous) | I was doing (прошедшее длительное) | done |
 | 14 | I was doing vs I did | I was doing vs I did | — |
 | 15 | I have done (present perfect 1) | I have done (настоящее совершённое 1) | — |
 | 16 | I've just ... / I've already ... / I haven't ... yet | just / already / yet | — |
