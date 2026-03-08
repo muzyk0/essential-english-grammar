@@ -47,7 +47,7 @@ export default function UnitPage() {
 
       {/* Step content */}
       <div className="step-content">
-        <StepRenderer step={step} lang={lang} />
+        <StepRenderer key={step.id} step={step} lang={lang} />
       </div>
 
       {/* Navigation */}
