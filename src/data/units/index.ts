@@ -6,8 +6,9 @@ import type { Unit } from '../../types/unit';
 import unit1 from './unit1';
 import unit2 from './unit2';
 import unit3 from './unit3';
+import unit4 from './unit4';
 
 // Add new units to this array — order determines sidebar order
-const units: Unit[] = [unit1, unit2, unit3];
+const units: Unit[] = [unit1, unit2, unit3, unit4];
 
 export default units;
