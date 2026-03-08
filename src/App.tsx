@@ -9,7 +9,7 @@ import './index.css';
 export default function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/essential-english-grammar">
         <div className="app-shell">
           <Header />
           <div className="app-body">

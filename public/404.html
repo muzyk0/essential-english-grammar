@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script>
+      // GitHub Pages SPA redirect: rewrites the path into a query string
+      // so index.html can restore it on load.
+      var repo = '/essential-english-grammar';
+      var path = window.location.pathname;
+      if (path.startsWith(repo)) {
+        path = path.slice(repo.length);
+      }
+      var search = window.location.search;
+      window.location.replace(
+        repo + '/?p=' + encodeURIComponent(path) + (search ? '&q=' + encodeURIComponent(search) : '')
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
