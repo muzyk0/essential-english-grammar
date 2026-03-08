@@ -16,7 +16,7 @@ Updated automatically by the `/add-unit` command.
 |---|-----------|-----------|--------|
 | 1 | am / is / are | am / is / are | done |
 | 2 | am/is/are (questions) | am/is/are (вопросы) | done |
-| 3 | I am doing (present continuous) | I am doing (настоящее длительное) | stub |
+| 3 | I am doing (present continuous) | I am doing (настоящее длительное) | done |
 | 4 | are you doing? (present continuous — questions/negative) | are you doing? (вопросы и отрицание) | — |
 | 5 | I do/work/like (present simple) | I do/work/like (настоящее простое) | — |
 | 6 | I don't ... (present simple — negative) | I don't ... (отрицание) | — |
