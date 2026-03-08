@@ -18,7 +18,7 @@ Updated automatically by the `/add-unit` command.
 | 2 | am/is/are (questions) | am/is/are (вопросы) | done |
 | 3 | I am doing (present continuous) | I am doing (настоящее длительное) | done |
 | 4 | are you doing? (present continuous — questions/negative) | are you doing? (вопросы и отрицание) | done |
-| 5 | I do/work/like (present simple) | I do/work/like (настоящее простое) | — |
+| 5 | I do/work/like (present simple) | I do/work/like (настоящее простое) | done |
 | 6 | I don't ... (present simple — negative) | I don't ... (отрицание) | — |
 | 7 | Do you ...? (present simple — questions) | Do you ...? (вопросы) | — |
 | 8 | I am doing vs I do | I am doing vs I do | — |
