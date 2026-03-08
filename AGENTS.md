@@ -2,6 +2,12 @@
 
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
+## Project context
+
+This repository is an interactive grammar-learning app based on *Essential Grammar in Use* by Raymond Murphy.
+It adapts the book's material into bilingual (`en`/`ru`) theory, examples, practice, quizzes, and summaries.
+Treat the app as a learning companion to the original book, not a replacement for it.
+
 ## Commands
 
 ```bash
