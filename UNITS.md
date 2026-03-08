@@ -20,7 +20,7 @@ Updated automatically by the `/add-unit` command.
 | 4 | are you doing? (present continuous — questions/negative) | are you doing? (вопросы и отрицание) | done |
 | 5 | I do/work/like (present simple) | I do/work/like (настоящее простое) | done |
 | 6 | I don't ... (present simple — negative) | I don't ... (отрицание) | done |
-| 7 | Do you ...? (present simple — questions) | Do you ...? (вопросы) | — |
+| 7 | Do you ...? (present simple — questions) | Do you ...? (вопросы) | done |
 | 8 | I am doing vs I do | I am doing vs I do | — |
 | 9 | I have ... / I've got ... | I have ... / I've got ... | — |
 | 10 | was/were | was/were | — |
