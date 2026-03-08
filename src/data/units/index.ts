@@ -12,8 +12,9 @@ import unit6 from './unit6';
 import unit7 from './unit7';
 import unit8 from './unit8';
 import unit9 from './unit9';
+import unit10 from './unit10';
 
 // Add new units to this array — order determines sidebar order
-const units: Unit[] = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8, unit9];
+const units: Unit[] = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8, unit9, unit10];
 
 export default units;
