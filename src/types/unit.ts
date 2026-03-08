@@ -38,6 +38,7 @@ export interface PracticeQuestion {
   id: string;
   type: 'fill-blank' | 'multiple-choice';
   prompt: string;          // Use ___ for blanks, e.g. "She ___ a teacher."
+  translation?: string;    // Optional Russian translation shown on demand
   options?: string[];      // Only for multiple-choice
   correctAnswer: string;   // Exact correct answer text
   altAnswers?: string[];   // Alternative acceptable answers (e.g. full form when short form is preferred)

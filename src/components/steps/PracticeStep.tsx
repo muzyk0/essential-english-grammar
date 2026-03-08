@@ -11,6 +11,8 @@ type AnswerState = {
   value: string;
   checked: boolean;
   correct: boolean | null;
+  answerRevealed: boolean;
+  translationVisible: boolean;
 };
 
 export default function PracticeStep({ step, lang }: Props) {
@@ -19,15 +21,13 @@ export default function PracticeStep({ step, lang }: Props) {
   const right = step.right[lang];
 
   const [answers, setAnswers] = useState<Record<string, AnswerState>>(
-    Object.fromEntries(
-      right.questions.map((q) => [q.id, { value: '', checked: false, correct: null }])
-    )
+    Object.fromEntries(right.questions.map((q) => [q.id, createAnswerState()]))
   );
 
   const handleInput = (id: string, value: string) => {
     setAnswers((prev) => ({
       ...prev,
-      [id]: { value, checked: false, correct: null },
+      [id]: createAnswerState(value),
     }));
   };
 
@@ -37,14 +37,28 @@ export default function PracticeStep({ step, lang }: Props) {
     const correct = allValid.includes(userAnswer);
     setAnswers((prev) => ({
       ...prev,
-      [id]: { ...prev[id], checked: true, correct },
+      [id]: { ...prev[id], checked: true, correct, answerRevealed: false, translationVisible: false },
+    }));
+  };
+
+  const handleRevealAnswer = (id: string) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], answerRevealed: true },
+    }));
+  };
+
+  const handleRevealTranslation = (id: string) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], translationVisible: true },
     }));
   };
 
   const handleReset = (id: string) => {
     setAnswers((prev) => ({
       ...prev,
-      [id]: { value: '', checked: false, correct: null },
+      [id]: createAnswerState(),
     }));
   };
 
@@ -98,6 +112,7 @@ export default function PracticeStep({ step, lang }: Props) {
         <ol className="practice-list">
           {right.questions.map((q) => {
             const state = answers[q.id];
+            const canShowTranslation = Boolean(q.translation) && (state.correct || state.answerRevealed);
             return (
               <li key={q.id} className="practice-item">
                 <div className="practice-prompt">
@@ -113,22 +128,47 @@ export default function PracticeStep({ step, lang }: Props) {
                     {t('btn.check')}
                   </button>
                 ) : (
-                  <div className="practice-feedback">
-                    <span className={state.correct ? 'feedback--correct' : 'feedback--incorrect'}>
-                      {state.correct ? t('practice.correct') : t('practice.incorrect')}
-                    </span>
-                    {!state.correct && (
-                      <span className="feedback-answer">
-                        → {q.correctAnswer}
+                  <>
+                    <div className="practice-feedback">
+                      <span className={state.correct ? 'feedback--correct' : 'feedback--incorrect'}>
+                        {state.correct ? t('practice.correct') : t('practice.incorrect')}
                       </span>
+                      {!state.correct && state.answerRevealed && (
+                        <span className="feedback-answer">→ {q.correctAnswer}</span>
+                      )}
+                      {q.explanation && (state.correct || state.answerRevealed) && (
+                        <span className="feedback-explanation">{q.explanation}</span>
+                      )}
+                    </div>
+
+                    <div className="practice-actions">
+                      {!state.correct && !state.answerRevealed && (
+                        <button
+                          className="btn btn--secondary btn--practice-action"
+                          onClick={() => handleRevealAnswer(q.id)}
+                        >
+                          {t('btn.showAnswer')}
+                        </button>
+                      )}
+
+                      {canShowTranslation && !state.translationVisible && (
+                        <button
+                          className="btn btn--secondary btn--practice-action"
+                          onClick={() => handleRevealTranslation(q.id)}
+                        >
+                          {t('btn.showTranslation')}
+                        </button>
+                      )}
+
+                      <button className="btn btn--reset" onClick={() => handleReset(q.id)}>
+                        {t('btn.tryAgain')}
+                      </button>
+                    </div>
+
+                    {state.translationVisible && q.translation && (
+                      <div className="practice-translation">{q.translation}</div>
                     )}
-                    {q.explanation && state.checked && (
-                      <span className="feedback-explanation">{q.explanation}</span>
-                    )}
-                    <button className="btn btn--reset" onClick={() => handleReset(q.id)}>
-                      {t('btn.tryAgain')}
-                    </button>
-                  </div>
+                  </>
                 )}
               </li>
             );
@@ -137,6 +177,16 @@ export default function PracticeStep({ step, lang }: Props) {
       </div>
     </div>
   );
+}
+
+function createAnswerState(value = ''): AnswerState {
+  return {
+    value,
+    checked: false,
+    correct: null,
+    answerRevealed: false,
+    translationVisible: false,
+  };
 }
 
 function renderPromptWithBlank(

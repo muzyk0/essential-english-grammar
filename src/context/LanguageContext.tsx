@@ -18,6 +18,7 @@ const UI_STRINGS: Record<string, Record<Language, string>> = {
   'btn.check': { en: 'Check', ru: 'Проверить' },
   'btn.tryAgain': { en: 'Try Again', ru: 'Попробовать снова' },
   'btn.showAnswer': { en: 'Show Answer', ru: 'Показать ответ' },
+  'btn.showTranslation': { en: 'Show Translation', ru: 'Показать перевод' },
   'btn.startUnit': { en: 'Start Unit', ru: 'Начать юнит' },
   'btn.backToUnits': { en: '← All Units', ru: '← Все юниты' },
   'progress.step': { en: 'Step', ru: 'Шаг' },
