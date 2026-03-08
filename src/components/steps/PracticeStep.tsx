@@ -31,9 +31,10 @@ export default function PracticeStep({ step, lang }: Props) {
     }));
   };
 
-  const handleCheck = (id: string, correctAnswer: string) => {
+  const handleCheck = (id: string, correctAnswer: string, altAnswers?: string[]) => {
     const userAnswer = answers[id].value.trim().toLowerCase();
-    const correct = userAnswer === correctAnswer.toLowerCase();
+    const allValid = [correctAnswer, ...(altAnswers ?? [])].map((a) => a.toLowerCase());
+    const correct = allValid.includes(userAnswer);
     setAnswers((prev) => ({
       ...prev,
       [id]: { ...prev[id], checked: true, correct },
@@ -106,7 +107,7 @@ export default function PracticeStep({ step, lang }: Props) {
                 {!state.checked ? (
                   <button
                     className="btn btn--check"
-                    onClick={() => handleCheck(q.id, q.correctAnswer)}
+                    onClick={() => handleCheck(q.id, q.correctAnswer, q.altAnswers)}
                     disabled={!state.value.trim()}
                   >
                     {t('btn.check')}

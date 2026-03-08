@@ -284,6 +284,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "I ___ got a headache. (positive)",
               correctAnswer: "'ve",
+              altAnswers: ["have"],
               explanation: "I have got → I've got (contraction)",
             },
             {
@@ -291,6 +292,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "She ___ got a driving licence. (negative)",
               correctAnswer: "hasn't",
+              altAnswers: ["has not"],
               explanation: "She has not got → She hasn't got",
             },
             {
@@ -305,6 +307,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "They ___ have a garden. (negative with have)",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "Negative with have: don't have",
             },
             {
@@ -312,6 +315,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "He ___ got blue eyes. (positive)",
               correctAnswer: "'s",
+              altAnswers: ["has"],
               explanation: "He has got → He's got (contraction)",
             },
             {
@@ -332,6 +336,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "I ___ got a headache. (утверждение)",
               correctAnswer: "'ve",
+              altAnswers: ["have"],
               explanation: "I have got → I've got (краткая форма)",
             },
             {
@@ -339,6 +344,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "She ___ got a driving licence. (отрицание)",
               correctAnswer: "hasn't",
+              altAnswers: ["has not"],
               explanation: "She has not got → She hasn't got",
             },
             {
@@ -353,6 +359,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "They ___ have a garden. (отрицание с have)",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "Отрицание с have: don't have",
             },
             {
@@ -360,6 +367,7 @@ const unit9: Unit = {
               type: 'fill-blank',
               prompt: "He ___ got blue eyes. (утверждение)",
               correctAnswer: "'s",
+              altAnswers: ["has"],
               explanation: "He has got → He's got (краткая форма)",
             },
             {

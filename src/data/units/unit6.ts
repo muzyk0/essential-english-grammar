@@ -302,6 +302,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "I ___ like cold weather.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "I → don't",
             },
             {
@@ -309,6 +310,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "She ___ drink coffee.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "she → doesn't",
             },
             {
@@ -316,6 +318,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "They ___ live near here.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "they → don't",
             },
             {
@@ -323,6 +326,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "My brother ___ have a car.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "my brother = he → doesn't",
             },
             {
@@ -330,6 +334,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "We ___ work on Saturdays.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "we → don't",
             },
             {
@@ -337,6 +342,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "It ___ matter.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "it → doesn't",
             },
           ],
@@ -350,6 +356,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "I ___ like cold weather.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "I → don't",
             },
             {
@@ -357,6 +364,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "She ___ drink coffee.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "she → doesn't",
             },
             {
@@ -364,6 +372,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "They ___ live near here.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "they → don't",
             },
             {
@@ -371,6 +380,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "My brother ___ have a car.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "my brother = he → doesn't",
             },
             {
@@ -378,6 +388,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "We ___ work on Saturdays.",
               correctAnswer: "don't",
+              altAnswers: ["do not"],
               explanation: "we → don't",
             },
             {
@@ -385,6 +396,7 @@ const unit6: Unit = {
               type: 'fill-blank',
               prompt: "It ___ matter.",
               correctAnswer: "doesn't",
+              altAnswers: ["does not"],
               explanation: "it → doesn't",
             },
           ],

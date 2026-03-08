@@ -303,6 +303,7 @@ const unit10: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ at school yesterday — it was a holiday.',
               correctAnswer: "weren't",
+              altAnswers: ["were not"],
               explanation: 'They → were; negative → weren\'t',
             },
             {
@@ -317,6 +318,7 @@ const unit10: Unit = {
               type: 'fill-blank',
               prompt: 'The windows ___ open, so the room was cold.',
               correctAnswer: "weren't",
+              altAnswers: ["were not"],
               explanation: 'The windows = they (plural) → negative → weren\'t',
             },
             {
@@ -365,6 +367,7 @@ const unit10: Unit = {
               type: 'fill-blank',
               prompt: 'The windows ___ open, so the room was cold.',
               correctAnswer: "weren't",
+              altAnswers: ["were not"],
               explanation: 'The windows = they (мн. ч.) → отрицание → weren\'t',
             },
             {

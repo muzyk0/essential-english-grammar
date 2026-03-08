@@ -288,6 +288,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "I ___ watch TV last night. (negative)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Negative: subject + didn't + base form → I didn't watch.",
             },
             {
@@ -302,6 +303,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "She ___ like the food. (negative)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Negative: She didn't like (base form after didn't).",
             },
             {
@@ -316,6 +318,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "We ___ have any money. (negative)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Negative: We didn't have (use base form 'have', not 'had').",
             },
             {
@@ -336,6 +339,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "I ___ watch TV last night. (отрицание)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Отрицание: подлежащее + didn't + основа → I didn't watch.",
             },
             {
@@ -350,6 +354,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "She ___ like the food. (отрицание)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Отрицание: She didn't like (основа глагола после didn't).",
             },
             {
@@ -364,6 +369,7 @@ const unit12: Unit = {
               type: 'fill-blank',
               prompt: "We ___ have any money. (отрицание)",
               correctAnswer: "didn't",
+              altAnswers: ["did not"],
               explanation: "Отрицание: We didn't have (основа 'have', а не 'had').",
             },
             {

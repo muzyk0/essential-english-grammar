@@ -298,6 +298,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'I ___ a student.',
               correctAnswer: "'m",
+              altAnswers: ['am'],
               explanation: "I + am → I'm (contraction)",
             },
             {
@@ -305,6 +306,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ from Brazil.',
               correctAnswer: "'s",
+              altAnswers: ['is'],
               explanation: "She + is → She's (contraction)",
             },
             {
@@ -312,6 +314,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ at work.',
               correctAnswer: "'re",
+              altAnswers: ['are'],
               explanation: "They + are → They're (contraction)",
             },
             {
@@ -346,6 +349,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'I ___ a student.',
               correctAnswer: "'m",
+              altAnswers: ['am'],
               explanation: "I + am → I'm (краткая форма)",
             },
             {
@@ -353,6 +357,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ from Brazil.',
               correctAnswer: "'s",
+              altAnswers: ['is'],
               explanation: "She + is → She's (краткая форма)",
             },
             {
@@ -360,6 +365,7 @@ const unit1: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ at work.',
               correctAnswer: "'re",
+              altAnswers: ['are'],
               explanation: "They + are → They're (краткая форма)",
             },
             {

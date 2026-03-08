@@ -357,6 +357,7 @@ const unit2: Unit = {
               type: 'fill-blank',
               prompt: 'Is it raining? — No, ___ .',
               correctAnswer: "it isn't",
+              altAnswers: ["it's not", "it is not"],
               explanation: "Negative short answer → No, it isn't.",
             },
             {
@@ -371,6 +372,7 @@ const unit2: Unit = {
               type: 'fill-blank',
               prompt: 'Is she French? — No, ___ .',
               correctAnswer: "she isn't",
+              altAnswers: ["she's not", "she is not"],
               explanation: "Negative → No, she isn't.",
             },
             {
@@ -398,6 +400,7 @@ const unit2: Unit = {
               type: 'fill-blank',
               prompt: 'Is it raining? — No, ___ .',
               correctAnswer: "it isn't",
+              altAnswers: ["it's not", "it is not"],
               explanation: "Отрицательный краткий ответ → No, it isn't.",
             },
             {
@@ -412,6 +415,7 @@ const unit2: Unit = {
               type: 'fill-blank',
               prompt: 'Is she French? — No, ___ .',
               correctAnswer: "she isn't",
+              altAnswers: ["she's not", "she is not"],
               explanation: "Отрицательный → No, she isn't.",
             },
             {

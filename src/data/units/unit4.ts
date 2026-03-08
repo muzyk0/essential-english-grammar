@@ -301,6 +301,7 @@ const unit4: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ sleeping. She\'s reading. (negative)',
               correctAnswer: "isn't",
+              altAnswers: ['is not'],
               explanation: "she + isn't + sleeping → She isn't sleeping.",
             },
             {
@@ -315,6 +316,7 @@ const unit4: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ waiting. The bus has already left. (negative)',
               correctAnswer: "aren't",
+              altAnswers: ['are not'],
               explanation: "they + aren't + waiting → They aren't waiting.",
             },
             {
@@ -349,6 +351,7 @@ const unit4: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ sleeping. She\'s reading. (отрицание)',
               correctAnswer: "isn't",
+              altAnswers: ['is not'],
               explanation: "she + isn't + sleeping → She isn't sleeping.",
             },
             {
@@ -363,6 +366,7 @@ const unit4: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ waiting. The bus has already left. (отрицание)',
               correctAnswer: "aren't",
+              altAnswers: ['are not'],
               explanation: "they + aren't + waiting → They aren't waiting.",
             },
             {

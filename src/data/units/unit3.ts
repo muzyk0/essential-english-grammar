@@ -284,6 +284,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ (read) a magazine at the moment.',
               correctAnswer: "is reading",
+              altAnswers: ["'s reading"],
               explanation: "she + is + read-ing → she is reading (or she's reading)",
             },
             {
@@ -291,6 +292,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'I ___ (not/watch) TV right now.',
               correctAnswer: "am not watching",
+              altAnswers: ["'m not watching"],
               explanation: "I am not + watch-ing → I'm not watching",
             },
             {
@@ -305,6 +307,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'He ___ (sit) on the floor.',
               correctAnswer: 'is sitting',
+              altAnswers: ["'s sitting"],
               explanation: 'sit → sitting (double t). he + is + sitting',
             },
             {
@@ -312,6 +315,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'We ___ (have) lunch now.',
               correctAnswer: 'are having',
+              altAnswers: ["'re having"],
               explanation: 'have → having (drop e). we + are + having',
             },
             {
@@ -319,6 +323,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'It ___ (rain). Take an umbrella!',
               correctAnswer: 'is raining',
+              altAnswers: ["'s raining"],
               explanation: 'it + is + rain-ing → it is raining',
             },
           ],
@@ -332,6 +337,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'She ___ (read) a magazine at the moment.',
               correctAnswer: 'is reading',
+              altAnswers: ["'s reading"],
               explanation: "she + is + read-ing → she is reading (или she's reading)",
             },
             {
@@ -339,6 +345,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'I ___ (not/watch) TV right now.',
               correctAnswer: 'am not watching',
+              altAnswers: ["'m not watching"],
               explanation: "I am not + watch-ing → I'm not watching",
             },
             {
@@ -353,6 +360,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'He ___ (sit) on the floor.',
               correctAnswer: 'is sitting',
+              altAnswers: ["'s sitting"],
               explanation: 'sit → sitting (удвоение t). he + is + sitting',
             },
             {
@@ -360,6 +368,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'We ___ (have) lunch now.',
               correctAnswer: 'are having',
+              altAnswers: ["'re having"],
               explanation: 'have → having (убираем e). we + are + having',
             },
             {
@@ -367,6 +376,7 @@ const unit3: Unit = {
               type: 'fill-blank',
               prompt: 'It ___ (rain). Take an umbrella!',
               correctAnswer: 'is raining',
+              altAnswers: ["'s raining"],
               explanation: 'it + is + rain-ing → it is raining',
             },
           ],

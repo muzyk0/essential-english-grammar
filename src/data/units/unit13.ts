@@ -294,6 +294,7 @@ const unit13: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ (not/work) when the boss came.',
               correctAnswer: "weren't working",
+              altAnswers: ["were not working"],
               explanation: "They + weren't + working → They weren't working.",
             },
             {
@@ -342,6 +343,7 @@ const unit13: Unit = {
               type: 'fill-blank',
               prompt: 'They ___ (not/work) when the boss came.',
               correctAnswer: "weren't working",
+              altAnswers: ["were not working"],
               explanation: "They + weren't + working → They weren't working.",
             },
             {

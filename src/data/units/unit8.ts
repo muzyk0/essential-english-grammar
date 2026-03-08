@@ -297,6 +297,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Please be quiet — the baby ___ (sleep). (right now)",
               correctAnswer: 'is sleeping',
+              altAnswers: ["'s sleeping"],
               explanation: 'Happening right now → present continuous: is sleeping.',
             },
             {
@@ -311,6 +312,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Look! It ___ (snow). (happening now)",
               correctAnswer: 'is snowing',
+              altAnswers: ["'s snowing"],
               explanation: '"Look!" signals something is happening now → present continuous: is snowing.',
             },
             {
@@ -318,6 +320,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "I ___ (not / understand) this question.",
               correctAnswer: "don't understand",
+              altAnswers: ['do not understand'],
               explanation: '"Understand" is a state verb — not used in continuous → don\'t understand.',
             },
             {
@@ -325,6 +328,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Where is Tom? — He ___ (have) a shower.",
               correctAnswer: 'is having',
+              altAnswers: ["'s having"],
               explanation: 'Happening right now (in progress) → present continuous: is having.',
             },
           ],
@@ -345,6 +349,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Please be quiet — the baby ___ (sleep). (прямо сейчас)",
               correctAnswer: 'is sleeping',
+              altAnswers: ["'s sleeping"],
               explanation: 'Происходит прямо сейчас → настоящее длительное: is sleeping.',
             },
             {
@@ -359,6 +364,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Look! It ___ (snow). (происходит сейчас)",
               correctAnswer: 'is snowing',
+              altAnswers: ["'s snowing"],
               explanation: '"Look!" говорит о том, что это происходит сейчас → настоящее длительное: is snowing.',
             },
             {
@@ -366,6 +372,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "I ___ (not / understand) this question.",
               correctAnswer: "don't understand",
+              altAnswers: ['do not understand'],
               explanation: '"Understand" — глагол состояния, не используется в длительном → don\'t understand.',
             },
             {
@@ -373,6 +380,7 @@ const unit8: Unit = {
               type: 'fill-blank',
               prompt: "Where is Tom? — He ___ (have) a shower.",
               correctAnswer: 'is having',
+              altAnswers: ["'s having"],
               explanation: 'Происходит прямо сейчас → настоящее длительное: is having.',
             },
           ],
