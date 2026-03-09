@@ -1,4 +1,5 @@
 import type { TheoryStep as TheoryStepType, ExamplesStep as ExamplesStepType, Language } from '../../types/unit';
+import TheoryPanel from './TheoryPanel';
 
 type Props = {
   step: TheoryStepType | ExamplesStepType;
@@ -6,53 +7,11 @@ type Props = {
 };
 
 export default function TheoryStep({ step, lang }: Props) {
-  const left = step.left[lang];
   const right = step.right[lang];
 
   return (
     <div className="book-spread">
-      {/* Left page — theory */}
-      <div className="book-page book-page--left">
-        <div className="page-label">A</div>
-        <h2 className="page-title">{left.title}</h2>
-        <p
-          className="page-explanation"
-          dangerouslySetInnerHTML={{ __html: left.explanation }}
-        />
-
-        {left.table && (
-          <div className="grammar-table-wrapper">
-            <table className="grammar-table">
-              <thead>
-                <tr>
-                  {left.table.headers.map((h) => (
-                    <th key={h}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {left.table.rows.map((row, i) => (
-                  <tr key={i}>
-                    {row.map((cell, j) => (
-                      <td key={j}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {left.notes && left.notes.length > 0 && (
-          <div className="notes-box">
-            {left.notes.map((note, i) => (
-              <p key={i} className="note-item">
-                💡 {note}
-              </p>
-            ))}
-          </div>
-        )}
-      </div>
+      <TheoryPanel content={step.left[lang]} />
 
       {/* Right page — examples */}
       <div className="book-page book-page--right">
