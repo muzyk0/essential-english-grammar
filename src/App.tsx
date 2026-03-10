@@ -3,6 +3,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import HomePage from './components/HomePage';
+import ReviewPage from './components/ReviewPage';
 import UnitPage from './components/UnitPage';
 import './index.css';
 
@@ -17,6 +18,7 @@ export default function App() {
             <main className="app-main">
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/review/:reviewId" element={<ReviewPage />} />
                 <Route path="/unit/:unitId" element={<UnitPage />} />
               </Routes>
             </main>

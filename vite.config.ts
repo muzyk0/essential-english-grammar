@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   // GitHub Pages serves from /essential-english-grammar/ — set base accordingly
-  base: '/essential-english-grammar/',
-})
+  base: "/essential-english-grammar",
+});

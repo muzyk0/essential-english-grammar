@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import reviewPacks from '../data/review-packs';
 import units from '../data/units';
 
 export default function HomePage() {
@@ -53,6 +54,27 @@ export default function HomePage() {
           </Link>
         ))}
       </div>
+
+      {reviewPacks.length > 0 && (
+        <>
+          <h2 className="home-select-label home-select-label--spaced">{t('home.selectReview')}</h2>
+          <div className="reviews-grid">
+            {reviewPacks.map((pack) => (
+              <Link key={pack.id} to={`/review/${pack.id}`} className="review-card">
+                <div className="review-card-icon">R</div>
+                <div className="review-card-body">
+                  <span className="review-card-coverage">{pack.coverageLabel[lang]}</span>
+                  <h3 className="review-card-title">{pack.title[lang]}</h3>
+                  <p className="review-card-desc">{pack.description[lang]}</p>
+                  <span className="review-card-steps">
+                    {pack.steps.length} {t('home.steps')}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

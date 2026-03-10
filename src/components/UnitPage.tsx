@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { getReviewPacksForUnit } from '../data/review-packs';
 import units from '../data/units';
 import ProgressBar from './ProgressBar';
 import StepRenderer from './steps/StepRenderer';
@@ -24,6 +25,7 @@ export default function UnitPage() {
 
   const stepTypes = unit.steps.map((s) => s.type as StepType);
   const step = unit.steps[currentStep];
+  const relatedReviewPacks = getReviewPacksForUnit(unit.number);
   const isFirst = currentStep === 0;
   const isLast = currentStep === unit.steps.length - 1;
 
@@ -37,6 +39,22 @@ export default function UnitPage() {
           <h1 className="unit-title">{unit.title[lang]}</h1>
         </div>
       </div>
+
+      {relatedReviewPacks.length > 0 && (
+        <div className="related-review-packs">
+          <div className="related-review-label">{t('review.related')}</div>
+          <div className="related-review-list">
+            {relatedReviewPacks.map((pack) => (
+              <Link key={pack.id} to={`/review/${pack.id}`} className="related-review-card">
+                <span className="related-review-card-tag">{pack.coverageLabel[lang]}</span>
+                <div className="related-review-card-title">{pack.title[lang]}</div>
+                <p className="related-review-card-desc">{pack.description[lang]}</p>
+                <span className="related-review-card-link">{t('btn.startReview')}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Progress bar */}
       <ProgressBar

@@ -121,3 +121,12 @@ export interface Unit {
   description: Translated<string>;
   steps: Step[];
 }
+
+export interface ReviewPack {
+  id: string;
+  title: Translated<string>;
+  description: Translated<string>;
+  coverageLabel: Translated<string>;
+  coversUnits: number[];
+  steps: Step[];
+}

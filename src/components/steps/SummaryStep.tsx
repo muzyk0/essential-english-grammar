@@ -1,4 +1,5 @@
 import type { SummaryStep as SummaryStepType, Language } from '../../types/unit';
+import { useLanguage } from '../../context/LanguageContext';
 
 type Props = {
   step: SummaryStepType;
@@ -6,6 +7,7 @@ type Props = {
 };
 
 export default function SummaryStep({ step, lang }: Props) {
+  const { t } = useLanguage();
   const content = step.content[lang];
 
   return (
@@ -26,7 +28,7 @@ export default function SummaryStep({ step, lang }: Props) {
 
         {content.nextUnit && (
           <div className="summary-next">
-            <span className="summary-next-label">Next:</span> {content.nextUnit}
+            <span className="summary-next-label">{t('summary.next')}</span> {content.nextUnit}
           </div>
         )}
       </div>
