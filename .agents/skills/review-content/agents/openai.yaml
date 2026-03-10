@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review Content"
+  short_description: "Review units and extra-practice content"
+  default_prompt: "Use $review-content to review a unit or review pack in this grammar app."
+policy:
+  allow_implicit_invocation: false

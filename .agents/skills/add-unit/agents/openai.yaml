@@ -1,0 +1,6 @@
+interface:
+  display_name: "Add Unit"
+  short_description: "Create the next or requested grammar unit"
+  default_prompt: "Use $add-unit to add the next or requested unit for this grammar app."
+policy:
+  allow_implicit_invocation: false

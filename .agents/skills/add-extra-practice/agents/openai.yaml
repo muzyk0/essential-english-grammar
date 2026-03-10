@@ -1,0 +1,6 @@
+interface:
+  display_name: "Add Extra Practice"
+  short_description: "Create review packs for extra practice"
+  default_prompt: "Use $add-extra-practice to add a new review pack with original extra practice for this grammar app."
+policy:
+  allow_implicit_invocation: false
