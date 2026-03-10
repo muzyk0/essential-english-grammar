@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import reviewPacks from '../data/review-packs';
@@ -14,6 +14,10 @@ export default function ReviewPage() {
 
   const pack = reviewPacks.find((item) => item.id === reviewId);
 
+  useEffect(() => {
+    setCurrentStep(0);
+  }, [reviewId]);
+
   if (!pack) {
     return (
       <div className="error-page">
@@ -26,10 +30,13 @@ export default function ReviewPage() {
   const coveredUnits = pack.coversUnits
     .map((unitNumber) => units.find((unit) => unit.number === unitNumber))
     .filter((unit): unit is Unit => Boolean(unit));
+  const nextUnitNumber = pack.coversUnits.length > 0 ? Math.max(...pack.coversUnits) + 1 : undefined;
+  const nextUnit = nextUnitNumber ? units.find((unit) => unit.number === nextUnitNumber) : undefined;
+  const safeCurrentStep = Math.min(currentStep, pack.steps.length - 1);
   const stepTypes = pack.steps.map((step) => step.type as StepType);
-  const step = pack.steps[currentStep];
-  const isFirst = currentStep === 0;
-  const isLast = currentStep === pack.steps.length - 1;
+  const step = pack.steps[safeCurrentStep];
+  const isFirst = safeCurrentStep === 0;
+  const isLast = safeCurrentStep === pack.steps.length - 1;
 
   return (
     <div className="unit-page">
@@ -65,19 +72,19 @@ export default function ReviewPage() {
       </div>
 
       <ProgressBar
-        current={currentStep}
+        current={safeCurrentStep}
         total={pack.steps.length}
         stepTypes={stepTypes}
       />
 
       <div className="step-content">
-        <StepRenderer key={step.id} step={step} lang={lang} />
+        <StepRenderer key={`${pack.id}-${step.id}`} step={step} lang={lang} />
       </div>
 
       <div className="step-nav">
         <button
           className="btn btn--secondary"
-          onClick={() => setCurrentStep((stepIndex) => stepIndex - 1)}
+          onClick={() => setCurrentStep((stepIndex) => Math.max(0, stepIndex - 1))}
           disabled={isFirst}
         >
           {t('btn.prev')}
@@ -87,20 +94,31 @@ export default function ReviewPage() {
           {pack.steps.map((_, index) => (
             <button
               key={index}
-              className={`step-nav-dot ${index === currentStep ? 'step-nav-dot--active' : index < currentStep ? 'step-nav-dot--done' : ''}`}
+              className={`step-nav-dot ${index === safeCurrentStep ? 'step-nav-dot--active' : index < safeCurrentStep ? 'step-nav-dot--done' : ''}`}
               onClick={() => setCurrentStep(index)}
               aria-label={`Step ${index + 1}`}
             />
           ))}
         </div>
 
-        <button
-          className="btn btn--primary"
-          onClick={() => setCurrentStep((stepIndex) => stepIndex + 1)}
-          disabled={isLast}
-        >
-          {t('btn.next')}
-        </button>
+        {isLast ? (
+          nextUnit ? (
+            <Link to={`/unit/${nextUnit.id}`} className="btn btn--primary">
+              {t('btn.nextUnit')}
+            </Link>
+          ) : (
+            <button className="btn btn--primary" disabled>
+              {t('btn.next')}
+            </button>
+          )
+        ) : (
+          <button
+            className="btn btn--primary"
+            onClick={() => setCurrentStep((stepIndex) => Math.min(pack.steps.length - 1, stepIndex + 1))}
+          >
+            {t('btn.next')}
+          </button>
+        )}
       </div>
     </div>
   );

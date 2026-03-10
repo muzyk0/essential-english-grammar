@@ -17,6 +17,7 @@ const UI_STRINGS: Record<string, Record<Language, string>> = {
   'nav.pdfBook': { en: 'PDF Book', ru: 'PDF Книга' },
   'btn.prev': { en: '← Back', ru: '← Назад' },
   'btn.next': { en: 'Next →', ru: 'Вперёд →' },
+  'btn.nextUnit': { en: 'Next Unit →', ru: 'Следующий юнит →' },
   'btn.check': { en: 'Check', ru: 'Проверить' },
   'btn.tryAgain': { en: 'Try Again', ru: 'Попробовать снова' },
   'btn.showAnswer': { en: 'Show Answer', ru: 'Показать ответ' },

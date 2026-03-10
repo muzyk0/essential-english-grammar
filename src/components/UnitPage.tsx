@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { getReviewPacksForUnit } from '../data/review-packs';
@@ -12,7 +12,12 @@ export default function UnitPage() {
   const { lang, t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
 
-  const unit = units.find((u) => u.id === unitId);
+  const unitIndex = units.findIndex((u) => u.id === unitId);
+  const unit = unitIndex >= 0 ? units[unitIndex] : undefined;
+
+  useEffect(() => {
+    setCurrentStep(0);
+  }, [unitId]);
 
   if (!unit) {
     return (
@@ -23,11 +28,13 @@ export default function UnitPage() {
     );
   }
 
+  const safeCurrentStep = Math.min(currentStep, unit.steps.length - 1);
   const stepTypes = unit.steps.map((s) => s.type as StepType);
-  const step = unit.steps[currentStep];
+  const step = unit.steps[safeCurrentStep];
   const relatedReviewPacks = getReviewPacksForUnit(unit.number);
-  const isFirst = currentStep === 0;
-  const isLast = currentStep === unit.steps.length - 1;
+  const isFirst = safeCurrentStep === 0;
+  const isLast = safeCurrentStep === unit.steps.length - 1;
+  const nextUnit = units[unitIndex + 1];
 
   return (
     <div className="unit-page">
@@ -58,21 +65,21 @@ export default function UnitPage() {
 
       {/* Progress bar */}
       <ProgressBar
-        current={currentStep}
+        current={safeCurrentStep}
         total={unit.steps.length}
         stepTypes={stepTypes}
       />
 
       {/* Step content */}
       <div className="step-content">
-        <StepRenderer key={step.id} step={step} lang={lang} />
+        <StepRenderer key={`${unit.id}-${step.id}`} step={step} lang={lang} />
       </div>
 
       {/* Navigation */}
       <div className="step-nav">
         <button
           className="btn btn--secondary"
-          onClick={() => setCurrentStep((s) => s - 1)}
+          onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
           disabled={isFirst}
         >
           {t('btn.prev')}
@@ -82,20 +89,31 @@ export default function UnitPage() {
           {unit.steps.map((_, i) => (
             <button
               key={i}
-              className={`step-nav-dot ${i === currentStep ? 'step-nav-dot--active' : i < currentStep ? 'step-nav-dot--done' : ''}`}
+              className={`step-nav-dot ${i === safeCurrentStep ? 'step-nav-dot--active' : i < safeCurrentStep ? 'step-nav-dot--done' : ''}`}
               onClick={() => setCurrentStep(i)}
               aria-label={`Step ${i + 1}`}
             />
           ))}
         </div>
 
-        <button
-          className="btn btn--primary"
-          onClick={() => setCurrentStep((s) => s + 1)}
-          disabled={isLast}
-        >
-          {t('btn.next')}
-        </button>
+        {isLast ? (
+          nextUnit ? (
+            <Link to={`/unit/${nextUnit.id}`} className="btn btn--primary">
+              {t('btn.nextUnit')}
+            </Link>
+          ) : (
+            <button className="btn btn--primary" disabled>
+              {t('btn.next')}
+            </button>
+          )
+        ) : (
+          <button
+            className="btn btn--primary"
+            onClick={() => setCurrentStep((s) => Math.min(unit.steps.length - 1, s + 1))}
+          >
+            {t('btn.next')}
+          </button>
+        )}
       </div>
     </div>
   );
