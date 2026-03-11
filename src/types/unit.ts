@@ -42,6 +42,10 @@ export interface PracticeQuestion {
   options?: string[];      // Only for multiple-choice
   correctAnswer: string;   // Exact correct answer text
   altAnswers?: string[];   // Alternative acceptable answers (e.g. full form when short form is preferred)
+  blankAnswers?: Array<{
+    correctAnswer: string;
+    altAnswers?: string[];
+  }>;
   explanation?: string;    // Shown after answering
 }
 

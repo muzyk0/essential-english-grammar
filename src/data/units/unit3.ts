@@ -66,7 +66,7 @@ const unit3: Unit = {
             { english: "She's reading a book.", russian: 'Она читает книгу.', highlight: "She's reading" },
             { english: "It's raining outside.", russian: 'На улице идёт дождь.', highlight: "It's raining" },
             { english: "We're having dinner.", russian: 'Мы ужинаем.', highlight: "We're having" },
-            { english: "Look! They're running.", russian: 'Смотри! Они бегут.', highlight: "they're running" },
+            { english: "Look! They're running.", russian: 'Смотри! Они бегут.', highlight: "They're running" },
             { english: "You're making too much noise!", russian: 'Ты слишком шумишь!', highlight: "You're making" },
             { english: "The baby is sleeping.", russian: 'Ребёнок спит.', highlight: 'is sleeping' },
             { english: "I'm learning English.", russian: 'Я учу английский.', highlight: "I'm learning" },
@@ -81,7 +81,7 @@ const unit3: Unit = {
             { english: "She's reading a book.", russian: 'Она читает книгу.', highlight: "She's reading" },
             { english: "It's raining outside.", russian: 'На улице идёт дождь.', highlight: "It's raining" },
             { english: "We're having dinner.", russian: 'Мы ужинаем.', highlight: "We're having" },
-            { english: "Look! They're running.", russian: 'Смотри! Они бегут.', highlight: "they're running" },
+            { english: "Look! They're running.", russian: 'Смотри! Они бегут.', highlight: "They're running" },
             { english: "You're making too much noise!", russian: 'Ты слишком шумишь!', highlight: "You're making" },
             { english: "The baby is sleeping.", russian: 'Ребёнок спит.', highlight: 'is sleeping' },
             { english: "I'm learning English.", russian: 'Я учу английский.', highlight: "I'm learning" },
@@ -162,75 +162,75 @@ const unit3: Unit = {
       },
     },
 
-    // ─── Step 3: Questions + -ing spelling ────────────────────────────────────
+    // ─── Step 3: Happening now + -ing spelling ────────────────────────────────
     {
-      id: 'step-3-3-questions',
+      id: 'step-3-3-now-spelling',
       type: 'theory',
       left: {
         en: {
-          title: 'Questions & -ing spelling',
+          title: 'Happening now & -ing spelling',
           explanation:
-            'To make a question, put <b>am / is / are before the subject</b>. ' +
-            'You can also add a question word (what, where, why…) at the start. ' +
-            'Some verbs change spelling before <b>-ing</b>.',
+            'We use the <b>present continuous</b> for actions happening now or around now. ' +
+            'We also need the correct spelling before <b>-ing</b>.',
           table: {
-            headers: ['Rule', 'Base verb', '-ing form'],
+            headers: ['Focus', 'Rule / meaning', 'Example'],
             rows: [
-              ['Most verbs: add -ing', 'work / read / eat', 'working / reading / eating'],
-              ['End in -e: drop e, add -ing', 'come / write / have', 'coming / writing / having'],
-              ['Short verb, stressed vowel: double consonant', 'sit / run / swim', 'sitting / running / swimming'],
-              ['End in -ie: change to -y, add -ing', 'lie / die', 'lying / dying'],
+              ['now', 'action happening at this moment', "I'm talking to you now."],
+              ['around now', 'temporary action in progress this period', "We're staying with friends this week."],
+              ['spelling: drop -e', 'remove final -e before -ing', 'write → writing'],
+              ['spelling: double consonant', 'double after a short stressed vowel', 'sit → sitting'],
+              ['spelling: -ie → y', 'change -ie before -ing', 'lie → lying'],
             ],
           },
           notes: [
-            'Short answers: "Yes, I am." / "No, I\'m not." — "Yes, she is." / "No, she isn\'t."',
-            '"listen" → "listening" (only one consonant doubled when stress is on last syllable).',
+            'Common time expressions are <b>now</b>, <b>right now</b>, <b>at the moment</b>, <b>today</b> and <b>this week</b>.',
+            'This unit focuses on actions in progress, not on routine actions.',
           ],
         },
         ru: {
-          title: 'Вопросы и правописание -ing',
+          title: 'Сейчас происходит + правописание -ing',
           explanation:
-            'Для образования вопроса ставим <b>am / is / are перед подлежащим</b>. ' +
-            'Можно также добавить вопросительное слово (what, where, why…) в начало. ' +
-            'Некоторые глаголы меняют написание перед <b>-ing</b>.',
+            'Мы используем <b>present continuous</b> для действий, которые происходят сейчас или в текущий период. ' +
+            'Также важно правильно писать форму с <b>-ing</b>.',
           table: {
-            headers: ['Правило', 'Начальная форма', 'Форма -ing'],
+            headers: ['Фокус', 'Правило / значение', 'Пример'],
             rows: [
-              ['Большинство глаголов: добавить -ing', 'work / read / eat', 'working / reading / eating'],
-              ['Оканчиваются на -e: убрать e, добавить -ing', 'come / write / have', 'coming / writing / having'],
-              ['Короткий глагол, ударный гласный: удвоить согласную', 'sit / run / swim', 'sitting / running / swimming'],
-              ['Оканчиваются на -ie: заменить на -y, добавить -ing', 'lie / die', 'lying / dying'],
+              ['now', 'действие происходит прямо в этот момент', "I'm talking to you now."],
+              ['around now', 'временная ситуация в текущий период', "We're staying with friends this week."],
+              ['правописание: drop -e', 'убираем конечную -e перед -ing', 'write → writing'],
+              ['правописание: двойная согласная', 'удваиваем после короткого ударного гласного', 'sit → sitting'],
+              ['правописание: -ie → y', 'меняем -ie перед -ing', 'lie → lying'],
             ],
           },
           notes: [
-            'Краткие ответы: "Yes, I am." / "No, I\'m not." — "Yes, she is." / "No, she isn\'t."',
-            '"listen" → "listening" (согласная удваивается только при ударении на последнем слоге).',
+            'Часто используются слова <b>now</b>, <b>right now</b>, <b>at the moment</b>, <b>today</b> и <b>this week</b>.',
+            'Этот юнит про действия в процессе, а не про регулярные привычки.',
           ],
         },
       },
       right: {
         en: {
-          title: 'Examples — Questions & short answers',
+          title: 'Examples — happening now',
           items: [
-            { english: 'Are you working? — Yes, I am.', russian: 'Ты работаешь? — Да.', highlight: 'Are you working' },
-            { english: 'Is she sleeping? — No, she isn\'t.', russian: 'Она спит? — Нет.', highlight: 'Is she sleeping' },
-            { english: 'Is it raining? — Yes, it is.', russian: 'Идёт дождь? — Да.', highlight: 'Is it raining' },
-            { english: 'Are they coming? — No, they aren\'t.', russian: 'Они идут? — Нет.', highlight: 'Are they coming' },
-            { english: 'What are you doing?', russian: 'Что ты делаешь?', highlight: 'What are you doing' },
-            { english: 'Where is he going?', russian: 'Куда он идёт?', highlight: 'Where is he going' },
-            { english: 'Why are you sitting here?', russian: 'Почему ты здесь сидишь?', highlight: 'Why are you sitting' },
+            { english: "Please don't turn off the light. I'm reading.", russian: 'Пожалуйста, не выключай свет. Я читаю.', highlight: "I'm reading" },
+            { english: "Look at Eva. She's wearing two different shoes.", russian: 'Посмотри на Еву. На ней две разные туфли.', highlight: "She's wearing" },
+            { english: "We're staying with my aunt this week.", russian: 'На этой неделе мы живём у моей тёти.', highlight: "We're staying" },
+            { english: 'The dog is lying in the sun.', russian: 'Собака лежит на солнце.', highlight: 'is lying' },
+            { english: 'The students are writing a test right now.', russian: 'Студенты прямо сейчас пишут тест.', highlight: 'are writing' },
+            { english: "Tom isn't cooking tonight. He's eating out.", russian: 'Том сегодня не готовит. Он ужинает вне дома.', highlight: "isn't cooking" },
+            { english: 'The bus is coming now. Let\'s go.', russian: 'Автобус сейчас подъезжает. Пойдём.', highlight: 'is coming' },
           ],
         },
         ru: {
-          title: 'Примеры — Вопросы и краткие ответы',
+          title: 'Примеры — Что происходит сейчас',
           items: [
-            { english: 'Are you working? — Yes, I am.', russian: 'Ты работаешь? — Да.', highlight: 'Are you working' },
-            { english: 'Is she sleeping? — No, she isn\'t.', russian: 'Она спит? — Нет.', highlight: 'Is she sleeping' },
-            { english: 'Is it raining? — Yes, it is.', russian: 'Идёт дождь? — Да.', highlight: 'Is it raining' },
-            { english: 'Are they coming? — No, they aren\'t.', russian: 'Они идут? — Нет.', highlight: 'Are they coming' },
-            { english: 'What are you doing?', russian: 'Что ты делаешь?', highlight: 'What are you doing' },
-            { english: 'Where is he going?', russian: 'Куда он идёт?', highlight: 'Where is he going' },
-            { english: 'Why are you sitting here?', russian: 'Почему ты здесь сидишь?', highlight: 'Why are you sitting' },
+            { english: "Please don't turn off the light. I'm reading.", russian: 'Пожалуйста, не выключай свет. Я читаю.', highlight: "I'm reading" },
+            { english: "Look at Eva. She's wearing two different shoes.", russian: 'Посмотри на Еву. На ней две разные туфли.', highlight: "She's wearing" },
+            { english: "We're staying with my aunt this week.", russian: 'На этой неделе мы живём у моей тёти.', highlight: "We're staying" },
+            { english: 'The dog is lying in the sun.', russian: 'Собака лежит на солнце.', highlight: 'is lying' },
+            { english: 'The students are writing a test right now.', russian: 'Студенты прямо сейчас пишут тест.', highlight: 'are writing' },
+            { english: "Tom isn't cooking tonight. He's eating out.", russian: 'Том сегодня не готовит. Он ужинает вне дома.', highlight: "isn't cooking" },
+            { english: 'The bus is coming now. Let\'s go.', russian: 'Автобус сейчас подъезжает. Пойдём.', highlight: 'is coming' },
           ],
         },
       },
@@ -249,7 +249,7 @@ const unit3: Unit = {
             rows: [
               ['Positive', "I'm / he's / they're + -ing", "I'm eating"],
               ['Negative', "I'm not / isn't / aren't + -ing", "She isn't working"],
-              ['Question', 'Am / Is / Are + subject + -ing?', 'Are they waiting?'],
+              ['Spelling', 'drop -e / double consonant / -ie → y', 'write → writing / sit → sitting / lie → lying'],
             ],
           },
           notes: [
@@ -265,7 +265,7 @@ const unit3: Unit = {
             rows: [
               ['Утверждение', "I'm / he's / they're + -ing", "I'm eating"],
               ['Отрицание', "I'm not / isn't / aren't + -ing", "She isn't working"],
-              ['Вопрос', 'Am / Is / Are + подлежащее + -ing?', 'Are they waiting?'],
+              ['Правописание', 'drop -e / двойная согласная / -ie → y', 'write → writing / sit → sitting / lie → lying'],
             ],
           },
           notes: [
@@ -300,10 +300,11 @@ const unit3: Unit = {
             {
               id: 'p3-3',
               type: 'fill-blank',
-              prompt: '___ they ___ (wait) for the bus?',
-              translation: "Они ждут автобус?",
-              correctAnswer: 'Are / waiting',
-              explanation: 'Question form: Are + they + wait-ing?',
+              prompt: 'They ___ (wait) for the bus.',
+              translation: "Они ждут автобус.",
+              correctAnswer: 'are waiting',
+              altAnswers: ["'re waiting"],
+              explanation: "they + are + wait-ing → they're waiting / they are waiting",
             },
             {
               id: 'p3-4',
@@ -359,10 +360,11 @@ const unit3: Unit = {
             {
               id: 'p3-3',
               type: 'fill-blank',
-              prompt: '___ they ___ (wait) for the bus?',
-              translation: "Они ждут автобус?",
-              correctAnswer: 'Are / waiting',
-              explanation: 'Вопросительная форма: Are + they + wait-ing?',
+              prompt: 'They ___ (wait) for the bus.',
+              translation: "Они ждут автобус.",
+              correctAnswer: 'are waiting',
+              altAnswers: ["'re waiting"],
+              explanation: "they + are + wait-ing → they're waiting / they are waiting",
             },
             {
               id: 'p3-4',
@@ -443,14 +445,14 @@ const unit3: Unit = {
             },
             {
               id: 'q3-5',
-              question: 'Which question is correct?',
+              question: 'Which sentence is about something happening now?',
               options: [
-                'Is they sleeping?',
-                'Are they sleeping?',
-                'Do they sleeping?',
+                'I go to work by bus.',
+                "I'm waiting for the bus.",
+                'I waited for the bus yesterday.',
               ],
               correctIndex: 1,
-              explanation: 'With "they" we use "are" → Are they sleeping?',
+              explanation: 'The present continuous describes something happening now → "I\'m waiting for the bus."',
             },
           ],
         },
@@ -496,14 +498,14 @@ const unit3: Unit = {
             },
             {
               id: 'q3-5',
-              question: 'Какой вопрос правильный?',
+              question: 'Какое предложение описывает действие, происходящее сейчас?',
               options: [
-                'Is they sleeping?',
-                'Are they sleeping?',
-                'Do they sleeping?',
+                'I go to work by bus.',
+                "I'm waiting for the bus.",
+                'I waited for the bus yesterday.',
               ],
               correctIndex: 1,
-              explanation: 'С "they" используем "are" → Are they sleeping?',
+              explanation: 'Present continuous описывает то, что происходит сейчас → "I\'m waiting for the bus."',
             },
           ],
         },
@@ -521,7 +523,7 @@ const unit3: Unit = {
             'Use <b>am / is / are + verb-ing</b> for actions happening <em>right now</em>.',
             'Contractions in speech: <b>I\'m working</b>, <b>she\'s reading</b>, <b>they\'re waiting</b>.',
             'Negative: <b>isn\'t</b> / <b>aren\'t</b> + -ing → "She isn\'t sleeping."',
-            'Questions: put <b>am / is / are before the subject</b> → "Are they coming?"',
+            'Use it for actions happening <b>now</b> or for temporary situations <b>around now</b> → "We\'re staying with friends this week."',
             'Spelling: drop final <b>-e</b> (write → writing), double consonant for short verbs (sit → sitting).',
             'Short answers use the full auxiliary: "Yes, I <b>am</b>." / "No, she <b>isn\'t</b>."',
           ],
@@ -533,7 +535,7 @@ const unit3: Unit = {
             'Используем <b>am / is / are + глагол-ing</b> для действий, происходящих <em>прямо сейчас</em>.',
             'Краткие формы в речи: <b>I\'m working</b>, <b>she\'s reading</b>, <b>they\'re waiting</b>.',
             'Отрицание: <b>isn\'t</b> / <b>aren\'t</b> + -ing → "She isn\'t sleeping."',
-            'Вопросы: ставим <b>am / is / are перед подлежащим</b> → "Are they coming?"',
+            'Используем это время для действий <b>сейчас</b> и временных ситуаций <b>в текущий период</b> → "We\'re staying with friends this week."',
             'Правописание: убираем конечное <b>-e</b> (write → writing), удваиваем согласную у коротких глаголов (sit → sitting).',
             'В кратких ответах используем вспомогательный глагол полностью: "Yes, I <b>am</b>." / "No, she <b>isn\'t</b>."',
           ],

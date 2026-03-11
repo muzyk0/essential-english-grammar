@@ -332,6 +332,10 @@ const unit12: Unit = {
               prompt: '___ they enjoy the concert? — Yes, they ___.',
               translation: "Им понравился концерт? — Да.",
               correctAnswer: 'Did ... did',
+              blankAnswers: [
+                { correctAnswer: 'Did' },
+                { correctAnswer: 'did' },
+              ],
               explanation: 'Question: Did they enjoy? Short answer: Yes, they did.',
             },
           ],
@@ -389,6 +393,10 @@ const unit12: Unit = {
               prompt: '___ they enjoy the concert? — Yes, they ___.',
               translation: "Им понравился концерт? — Да.",
               correctAnswer: 'Did ... did',
+              blankAnswers: [
+                { correctAnswer: 'Did' },
+                { correctAnswer: 'did' },
+              ],
               explanation: 'Вопрос: Did they enjoy? Краткий ответ: Yes, they did.',
             },
           ],

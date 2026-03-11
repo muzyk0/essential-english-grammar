@@ -339,6 +339,10 @@ const unit10: Unit = {
               prompt: '___ you at the concert on Saturday? — Yes, I ___.',
               translation: "Ты был(а) на концерте в субботу? — Да.",
               correctAnswer: 'Were / was',
+              blankAnswers: [
+                { correctAnswer: 'Were' },
+                { correctAnswer: 'was' },
+              ],
               explanation: 'Question → Were you? | Short positive answer → Yes, I was.',
             },
           ],
@@ -394,6 +398,10 @@ const unit10: Unit = {
               prompt: '___ you at the concert on Saturday? — Yes, I ___.',
               translation: "Ты был(а) на концерте в субботу? — Да.",
               correctAnswer: 'Were / was',
+              blankAnswers: [
+                { correctAnswer: 'Were' },
+                { correctAnswer: 'was' },
+              ],
               explanation: 'Вопрос → Were you? | Краткий утвердительный ответ → Yes, I was.',
             },
           ],
