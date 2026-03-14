@@ -1,0 +1,16 @@
+{
+  "unitNumber": 25,
+  "title": "What are you doing tomorrow?",
+  "sectionTitle": "Future",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U025P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U025P002.html",
+  "appUnitPath": "src/data/units/unit25.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    13,
+    14,
+    15,
+    16
+  ]
+}

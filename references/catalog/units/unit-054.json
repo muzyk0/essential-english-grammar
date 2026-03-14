@@ -1,0 +1,15 @@
+{
+  "unitNumber": 54,
+  "title": "I went to the shop to …",
+  "sectionTitle": "-ing and to …",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U054P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U054P002.html",
+  "appUnitPath": "src/data/units/unit54.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    15,
+    16,
+    17
+  ]
+}

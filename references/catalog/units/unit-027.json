@@ -1,0 +1,16 @@
+{
+  "unitNumber": 27,
+  "title": "will/shall 1",
+  "sectionTitle": "Future",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U027P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U027P002.html",
+  "appUnitPath": "src/data/units/unit27.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    13,
+    14,
+    15,
+    16
+  ]
+}

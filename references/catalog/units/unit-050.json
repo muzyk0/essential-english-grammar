@@ -1,0 +1,10 @@
+{
+  "unitNumber": 50,
+  "title": "She said that … He told me that …",
+  "sectionTitle": "Reported speech",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U050P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U050P002.html",
+  "appUnitPath": "src/data/units/unit50.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

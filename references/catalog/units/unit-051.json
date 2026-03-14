@@ -1,0 +1,13 @@
+{
+  "unitNumber": 51,
+  "title": "work/working go/going do/doing",
+  "sectionTitle": "-ing and to …",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U051P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U051P002.html",
+  "appUnitPath": "src/data/units/unit51.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    17
+  ]
+}

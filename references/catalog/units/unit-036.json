@@ -1,0 +1,10 @@
+{
+  "unitNumber": 36,
+  "title": "I used to …",
+  "sectionTitle": "Modals, imperative etc.",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U036P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U036P002.html",
+  "appUnitPath": "src/data/units/unit36.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

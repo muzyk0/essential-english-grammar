@@ -13,7 +13,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 
 - If the user says `next`, choose the next review pack automatically instead of asking for unit numbers.
 - For `next`, prefer running `bun run review-pack:next --json` inside the repo if that helper exists.
-- If the helper is unavailable, read `references/markdown/additional-exercises/README.md`, `src/data/review-packs/index.ts`, and the existing pack files and apply the fallback rules below.
+- If the helper is unavailable, read `references/catalog/README.md`, `references/catalog/additional-exercises/`, `src/data/review-packs/index.ts`, and the existing pack files and apply the fallback rules below.
 - Expand coverage labels into explicit unit lists whenever the label is contiguous, for example:
   - `Units 3–4` -> `[3, 4]`
   - `Units 10–12` -> `[10, 11, 12]`
@@ -22,7 +22,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Skip a candidate if:
   - a review pack already exists for the same `coversUnits`
   - one or more units in that range do not exist yet in `src/data/units/index.ts`
-- Choose the first remaining contiguous candidate in the order shown in `references/markdown/additional-exercises/README.md`.
+- Choose the first remaining contiguous candidate in the order shown in `references/catalog/README.md` / `references/catalog/additional-exercises/`.
 - Announce the chosen scope before writing files. With the current repo state, `next` should normally pick `Units 3–4` because `Units 1–2` is already covered.
 - If the user gives explicit units or a topic, use that instead of auto-selection.
 
@@ -32,7 +32,8 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Read `UNITS.md` if the request is phrased by topic instead of unit numbers.
 - Read `src/types/unit.ts`, `src/data/review-packs/index.ts`, and one existing pack such as `src/data/review-packs/reviewPack1to2.ts`.
 - Read `src/components/ReviewPage.tsx`, `src/components/UnitPage.tsx`, and `src/context/LanguageContext.tsx` only if the task may require new UI strings or routing changes.
-- Read `references/markdown/additional-exercises/README.md` plus only the relevant `page-XXX.md` files for the requested range.
+- Read `references/catalog/README.md` plus only the relevant `references/catalog/additional-exercises/page-XXX.md` files for the requested range.
+- Use those catalog entries to find the real EPUB HTML pages under `references/EPUB/OEBPS/html/`, then inspect the source pages when accuracy or scope matters.
 - Read the covered `src/data/units/unitN.ts` files to align the pack with the existing progression and terminology.
 
 ### 3. Resolve the pack scope
@@ -42,6 +43,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Fill `coversUnits` with explicit unit numbers; these numbers drive related links from unit pages.
 - If the request is still too vague after applying the `next` rules, ask one short clarification question.
 - Treat the book's Additional exercises as editorial evidence of scope and difficulty only.
+- Use review-pack candidates from `references/catalog/additional-exercises/*.md|json` as coverage hints, not as exact exercise mappings.
 
 ### 4. Write or update the pack
 
@@ -80,6 +82,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 
 - Never copy or closely paraphrase the book's explanations, exercise wording, answer order, answer key, images, audio, or page layout.
 - Expect one Additional exercises page to cover several different unit ranges.
+- Treat catalog candidates as overlap signals only; the final review pack may use different tasks from the source page.
 - Prefer original mixed practice that blends the covered units instead of reconstructing the book page by page.
 - Match the app's existing tone and difficulty.
 - Reuse the existing `ReviewPack` architecture and `Step[]` model; add a new step type only if the UI genuinely needs it.

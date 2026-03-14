@@ -1,0 +1,13 @@
+{
+  "unitNumber": 1,
+  "title": "am/is/are",
+  "sectionTitle": "Present",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U001P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U001P002.html",
+  "appUnitPath": "src/data/units/unit1.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    3
+  ]
+}

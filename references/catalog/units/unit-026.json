@@ -1,0 +1,16 @@
+{
+  "unitNumber": 26,
+  "title": "I’m going to …",
+  "sectionTitle": "Future",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U026P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U026P002.html",
+  "appUnitPath": "src/data/units/unit26.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    13,
+    14,
+    15,
+    16
+  ]
+}

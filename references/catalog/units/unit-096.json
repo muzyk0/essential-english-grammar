@@ -1,0 +1,10 @@
+{
+  "unitNumber": 96,
+  "title": "Give me that book! Give it to me!",
+  "sectionTitle": "Word order",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U096P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U096P002.html",
+  "appUnitPath": "src/data/units/unit96.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

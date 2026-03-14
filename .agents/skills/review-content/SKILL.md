@@ -24,14 +24,17 @@ Review one completed `Unit` or `ReviewPack` and report findings before any summa
   - the target `src/data/units/unitN.ts`
   - `src/data/units/index.ts`
   - `UNITS.md`
-  - `references/markdown/unit-NNN.md`
-  - relevant `references/markdown/additional-exercises/page-XXX.md` files only if they help confirm scope or difficulty
+  - `references/catalog/README.md`
+  - `references/catalog/units/unit-NNN.md`
+  - the real EPUB HTML source pages referenced by that catalog entry when theory accuracy or page structure matters
+  - relevant `references/catalog/additional-exercises/page-XXX.md` files only if they help confirm scope or difficulty
 - For a review-pack review, read:
   - the target `src/data/review-packs/...`
   - `src/data/review-packs/index.ts`
   - the covered unit files from `src/data/units/`
-  - `references/markdown/additional-exercises/README.md`
-  - relevant `references/markdown/additional-exercises/page-XXX.md` files
+  - `references/catalog/README.md`
+  - relevant `references/catalog/additional-exercises/page-XXX.md` files
+  - the real EPUB HTML source pages referenced by those catalog entries when accuracy or scope matters
 
 ### 3. Review the content
 
@@ -51,6 +54,7 @@ Review one completed `Unit` or `ReviewPack` and report findings before any summa
   - grammar meaning matches the reference unit or Additional exercises scope
   - difficulty and contrast selection are appropriate
   - content is original and not too close to the book's wording, examples, or answer order
+  - review-pack/source relationships are treated as coverage-based candidates, not exact task mappings
 
 ### 4. Verify
 

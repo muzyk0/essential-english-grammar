@@ -1,0 +1,13 @@
+{
+  "unitNumber": 71,
+  "title": "go to work go home go to the cinema",
+  "sectionTitle": "A and the",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U071P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U071P002.html",
+  "appUnitPath": "src/data/units/unit71.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    18
+  ]
+}
