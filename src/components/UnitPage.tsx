@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { getReviewPacksForUnit } from '../data/review-packs';
@@ -7,17 +7,12 @@ import ProgressBar from './ProgressBar';
 import StepRenderer from './steps/StepRenderer';
 import type { StepType } from '../types/unit';
 
-export default function UnitPage() {
-  const { unitId } = useParams<{ unitId: string }>();
+function UnitPageContent({ unitId }: { unitId?: string }) {
   const { lang, t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
 
   const unitIndex = units.findIndex((u) => u.id === unitId);
   const unit = unitIndex >= 0 ? units[unitIndex] : undefined;
-
-  useEffect(() => {
-    setCurrentStep(0);
-  }, [unitId]);
 
   if (!unit) {
     return (
@@ -117,4 +112,10 @@ export default function UnitPage() {
       </div>
     </div>
   );
+}
+
+export default function UnitPage() {
+  const { unitId } = useParams<{ unitId: string }>();
+
+  return <UnitPageContent key={unitId ?? 'unknown-unit'} unitId={unitId} />;
 }

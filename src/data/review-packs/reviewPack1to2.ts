@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import type { ReviewPack } from '../../types/unit';
 
 const reviewPack1to2: ReviewPack = {

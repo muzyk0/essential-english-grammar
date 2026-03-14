@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import reviewPacks from '../data/review-packs';
@@ -7,16 +7,11 @@ import ProgressBar from './ProgressBar';
 import StepRenderer from './steps/StepRenderer';
 import type { StepType, Unit } from '../types/unit';
 
-export default function ReviewPage() {
-  const { reviewId } = useParams<{ reviewId: string }>();
+function ReviewPageContent({ reviewId }: { reviewId?: string }) {
   const { lang, t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
 
   const pack = reviewPacks.find((item) => item.id === reviewId);
-
-  useEffect(() => {
-    setCurrentStep(0);
-  }, [reviewId]);
 
   if (!pack) {
     return (
@@ -122,4 +117,10 @@ export default function ReviewPage() {
       </div>
     </div>
   );
+}
+
+export default function ReviewPage() {
+  const { reviewId } = useParams<{ reviewId: string }>();
+
+  return <ReviewPageContent key={reviewId ?? 'unknown-review'} reviewId={reviewId} />;
 }
