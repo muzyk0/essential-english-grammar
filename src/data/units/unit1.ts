@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import type { Unit } from '../../types/unit';
 
 // Unit 1: am / is / are
