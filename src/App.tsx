@@ -5,12 +5,13 @@ import Sidebar from './components/layout/Sidebar';
 import HomePage from './components/HomePage';
 import ReviewPage from './components/ReviewPage';
 import UnitPage from './components/UnitPage';
+import { appBase } from './config/appBase';
 import './index.css';
 
 export default function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter basename="/essential-english-grammar">
+      <BrowserRouter basename={appBase}>
         <div className="app-shell">
           <Header />
           <div className="app-body">
