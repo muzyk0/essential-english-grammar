@@ -11,7 +11,7 @@ type Candidate = {
 }
 
 const rootDir = process.cwd()
-const readmePath = path.join(rootDir, 'references', 'markdown', 'additional-exercises', 'README.md')
+const readmePath = path.join(rootDir, 'references', 'catalog', 'README.md')
 
 async function main() {
   const outputJson = process.argv.includes('--json')
@@ -65,7 +65,9 @@ function parseCandidates(readme: string): Candidate[] {
   const lines = readme.split('\n')
 
   for (const line of lines) {
-    const match = line.match(/^- \[Page (\d{3})\]\(\.\/(page-\d{3}\.md)\) — (.*?)(?: \| answer popups: .*|)$/)
+    const match = line.match(
+      /^- \[Page (\d{3})\]\(\.\/additional-exercises\/(page-\d{3}\.md)\)(?: — (.*))?$/,
+    )
 
     if (!match) {
       continue
@@ -73,7 +75,13 @@ function parseCandidates(readme: string): Candidate[] {
 
     const pageNumber = Number.parseInt(match[1], 10)
     const pageFile = match[2]
-    const coverageLabels = match[3].split(';')
+    const coverageSource = match[3]?.trim()
+
+    if (!coverageSource) {
+      continue
+    }
+
+    const coverageLabels = coverageSource.split(';')
 
     for (const [index, rawLabel] of coverageLabels.entries()) {
       const parsed = parseCoverageLabel(rawLabel)

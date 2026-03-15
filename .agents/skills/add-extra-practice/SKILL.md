@@ -32,7 +32,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Read `UNITS.md` if the request is phrased by topic instead of unit numbers.
 - Read `src/types/unit.ts`, `src/data/review-packs/index.ts`, and one existing pack such as `src/data/review-packs/reviewPack1to2.ts`.
 - Read `src/components/ReviewPage.tsx`, `src/components/UnitPage.tsx`, and `src/context/LanguageContext.tsx` only if the task may require new UI strings or routing changes.
-- Read `references/catalog/README.md` plus only the relevant `references/catalog/additional-exercises/page-XXX.md` files for the requested range.
+- Consult `references/catalog/README.md` together with only the relevant `references/catalog/additional-exercises/page-XXX.md` files for the requested range.
 - Use those catalog entries to find the real EPUB HTML pages under `references/EPUB/OEBPS/html/`, then inspect the source pages when accuracy or scope matters.
 - Read the covered `src/data/units/unitN.ts` files to align the pack with the existing progression and terminology.
 
