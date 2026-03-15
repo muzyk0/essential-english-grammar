@@ -1,0 +1,19 @@
+{
+  "unitNumber": 8,
+  "title": "I am doing (present continuous) and I do (present simple)",
+  "sectionTitle": "Present",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U008P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U008P002.html",
+  "appUnitPath": "src/data/units/unit8.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    4,
+    7,
+    8,
+    11,
+    14,
+    15,
+    16
+  ]
+}

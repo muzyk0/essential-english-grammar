@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "extract:markdown": "bun scripts/extract-epub-markdown.ts",
+    "extract:index": "bun scripts/build-reference-catalog.ts",
+    "extract:markdown": "bun scripts/build-reference-catalog.ts",
     "unit:next": "bun scripts/find-next-unit.ts",
     "review-pack:next": "bun scripts/find-next-review-pack.ts"
   },

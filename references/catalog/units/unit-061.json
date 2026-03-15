@@ -1,0 +1,10 @@
+{
+  "unitNumber": 61,
+  "title": "Whose is this? It’s mine/yours/hers etc.",
+  "sectionTitle": "Pronouns and possessives",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U061P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U061P002.html",
+  "appUnitPath": "src/data/units/unit61.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

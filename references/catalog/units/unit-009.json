@@ -1,0 +1,19 @@
+{
+  "unitNumber": 9,
+  "title": "I have … and I’ve got …",
+  "sectionTitle": "Present",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U009P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U009P002.html",
+  "appUnitPath": "src/data/units/unit9.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    3,
+    7,
+    8,
+    11,
+    14,
+    15,
+    16
+  ]
+}

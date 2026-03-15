@@ -1,0 +1,10 @@
+{
+  "unitNumber": 30,
+  "title": "can and could",
+  "sectionTitle": "Modals, imperative etc.",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U030P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U030P002.html",
+  "appUnitPath": "src/data/units/unit30.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

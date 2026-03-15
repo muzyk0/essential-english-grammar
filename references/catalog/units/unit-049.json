@@ -1,0 +1,10 @@
+{
+  "unitNumber": 49,
+  "title": "Do you know where …? I don’t know what … etc.",
+  "sectionTitle": "Questions",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U049P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U049P002.html",
+  "appUnitPath": "src/data/units/unit49.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

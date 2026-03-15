@@ -1,0 +1,10 @@
+{
+  "unitNumber": 60,
+  "title": "my/his/their etc.",
+  "sectionTitle": "Pronouns and possessives",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U060P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U060P002.html",
+  "appUnitPath": "src/data/units/unit60.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

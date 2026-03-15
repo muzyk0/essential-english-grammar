@@ -1,0 +1,10 @@
+{
+  "unitNumber": 32,
+  "title": "should",
+  "sectionTitle": "Modals, imperative etc.",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U032P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U032P002.html",
+  "appUnitPath": "src/data/units/unit32.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

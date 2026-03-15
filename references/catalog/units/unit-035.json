@@ -1,0 +1,10 @@
+{
+  "unitNumber": 35,
+  "title": "Do this! Don’t do that! Let’s do this!",
+  "sectionTitle": "Modals, imperative etc.",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U035P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U035P002.html",
+  "appUnitPath": "src/data/units/unit35.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

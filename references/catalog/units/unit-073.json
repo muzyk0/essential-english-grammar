@@ -1,0 +1,13 @@
+{
+  "unitNumber": 73,
+  "title": "the … (names of places)",
+  "sectionTitle": "A and the",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U073P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U073P002.html",
+  "appUnitPath": "src/data/units/unit73.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    18
+  ]
+}

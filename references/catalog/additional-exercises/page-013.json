@@ -1,0 +1,21 @@
+{
+  "pageNumber": 13,
+  "sourcePath": "references/EPUB/OEBPS/html/ESSB01ADEXP013.html",
+  "coverage": [
+    "Units 25–28"
+  ],
+  "coverageInferred": false,
+  "coveredUnitNumbers": [
+    25,
+    26,
+    27,
+    28
+  ],
+  "popupExercises": [
+    1,
+    2,
+    27,
+    28
+  ],
+  "reviewPackCandidates": []
+}

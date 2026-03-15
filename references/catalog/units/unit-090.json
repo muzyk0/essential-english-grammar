@@ -1,0 +1,10 @@
+{
+  "unitNumber": 90,
+  "title": "the oldest the most expensive",
+  "sectionTitle": "Adjectives and adverbs",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U090P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U090P002.html",
+  "appUnitPath": "src/data/units/unit90.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

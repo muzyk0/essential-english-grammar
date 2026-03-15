@@ -1,0 +1,10 @@
+{
+  "unitNumber": 42,
+  "title": "too/either so am I / neither do I etc.",
+  "sectionTitle": "Auxiliary verbs",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U042P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U042P002.html",
+  "appUnitPath": "src/data/units/unit42.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

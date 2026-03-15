@@ -9,7 +9,9 @@ lerna-debug.log*
 
 node_modules
 dist
-references
+references/*
+!references/catalog/
+!references/catalog/**
 dist-ssr
 *.local
 

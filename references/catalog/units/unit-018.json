@@ -1,0 +1,20 @@
+{
+  "unitNumber": 18,
+  "title": "How long have you …? (present perfect 4)",
+  "sectionTitle": "Present perfect",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U018P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U018P002.html",
+  "appUnitPath": "src/data/units/unit18.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    7,
+    8,
+    9,
+    10,
+    11,
+    14,
+    15,
+    16
+  ]
+}

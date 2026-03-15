@@ -1,0 +1,21 @@
+{
+  "unitNumber": 5,
+  "title": "I do/work/like etc. (present simple)",
+  "sectionTitle": "Present",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U005P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U005P002.html",
+  "appUnitPath": "src/data/units/unit5.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    11,
+    14,
+    15,
+    16
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "unitNumber": 13,
+  "title": "I was doing (past continuous)",
+  "sectionTitle": "Past",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U013P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U013P002.html",
+  "appUnitPath": "src/data/units/unit13.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    6,
+    7,
+    8,
+    11,
+    14,
+    15,
+    16
+  ]
+}

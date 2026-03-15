@@ -1,0 +1,10 @@
+{
+  "unitNumber": 62,
+  "title": "I/me/my/mine",
+  "sectionTitle": "Pronouns and possessives",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U062P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U062P002.html",
+  "appUnitPath": "src/data/units/unit62.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

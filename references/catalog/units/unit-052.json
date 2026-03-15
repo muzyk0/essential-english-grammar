@@ -1,0 +1,15 @@
+{
+  "unitNumber": 52,
+  "title": "to … (I want to do) and -ing (I enjoy doing)",
+  "sectionTitle": "-ing and to …",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U052P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U052P002.html",
+  "appUnitPath": "src/data/units/unit52.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    15,
+    16,
+    17
+  ]
+}

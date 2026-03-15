@@ -1,0 +1,10 @@
+{
+  "unitNumber": 100,
+  "title": "If I had … If we went … etc.",
+  "sectionTitle": "Conjunctions and clauses",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U100P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U100P002.html",
+  "appUnitPath": "src/data/units/unit100.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

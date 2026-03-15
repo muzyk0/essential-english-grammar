@@ -1,0 +1,10 @@
+{
+  "unitNumber": 74,
+  "title": "this/that/these/those",
+  "sectionTitle": "Determiners and pronouns",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U074P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U074P002.html",
+  "appUnitPath": "src/data/units/unit74.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

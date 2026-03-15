@@ -1,0 +1,36 @@
+{
+  "pageNumber": 3,
+  "sourcePath": "references/EPUB/OEBPS/html/ESSB01ADEXP003.html",
+  "coverage": [
+    "Units 1–2",
+    "Units 5–7",
+    "Unit 9"
+  ],
+  "coverageInferred": false,
+  "coveredUnitNumbers": [
+    1,
+    2,
+    5,
+    6,
+    7,
+    9
+  ],
+  "popupExercises": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7
+  ],
+  "reviewPackCandidates": [
+    {
+      "path": "src/data/review-packs/reviewPack1to2.ts",
+      "overlapUnits": [
+        1,
+        2
+      ],
+      "candidateType": "exact"
+    }
+  ]
+}

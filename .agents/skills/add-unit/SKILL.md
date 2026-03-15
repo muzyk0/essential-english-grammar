@@ -20,8 +20,9 @@ Create or update one full grammar unit for the `essential-english-grammar` app.
 
 - Read `CLAUDE.md`, `AGENTS.md`, and `UNITS.md`.
 - Read `src/types/unit.ts`, `src/data/units/index.ts`, and one strong reference unit such as `src/data/units/unit1.ts`.
-- Read `references/markdown/unit-NNN.md` for the matching unit if it exists.
-- Read `references/markdown/additional-exercises/README.md` plus only the relevant `page-XXX.md` files that mention the unit, if they exist.
+- Read `references/catalog/README.md` and `references/catalog/units/unit-NNN.md` for the matching unit if they exist.
+- Use the unit catalog entry to find the real EPUB HTML source pages under `references/EPUB/OEBPS/html/`, then inspect those HTML files when theory accuracy or page structure matters.
+- Read `references/catalog/additional-exercises/page-XXX.md` only when the unit catalog entry points to relevant Additional exercises pages.
 - Read nearby units only when needed for continuity, contrast, or `nextUnit` wording.
 
 ### 3. Write or update the unit
@@ -59,7 +60,8 @@ Create or update one full grammar unit for the `essential-english-grammar` app.
 ## Content Rules
 
 - Never copy or closely paraphrase the book's explanations, tables, examples, exercise wording, answer order, answer key, images, audio, or layout.
-- Use the book and markdown exports only as editorial references for scope and correctness.
+- Use the real EPUB HTML pages as the primary editorial reference for scope and correctness.
+- Use `references/catalog/` only as a navigation/index layer into those source pages.
 - Additional exercises may confirm difficulty and topic coverage for the unit, but should not be transcribed into the app.
 - Match the app's existing structure and tone.
 - Reuse the existing `Unit` and `Step[]` architecture; add a new step type only if the UI genuinely requires a new interaction.

@@ -1,0 +1,19 @@
+{
+  "unitNumber": 10,
+  "title": "was/were",
+  "sectionTitle": "Past",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U010P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U010P002.html",
+  "appUnitPath": "src/data/units/unit10.ts",
+  "appUnitExists": true,
+  "relatedAdditionalExercisePages": [
+    1,
+    5,
+    7,
+    8,
+    11,
+    14,
+    15,
+    16
+  ]
+}

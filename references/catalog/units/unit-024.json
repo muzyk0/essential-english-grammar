@@ -1,0 +1,10 @@
+{
+  "unitNumber": 24,
+  "title": "Regular and irregular verbs",
+  "sectionTitle": "Verb forms",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U024P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U024P002.html",
+  "appUnitPath": "src/data/units/unit24.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": []
+}

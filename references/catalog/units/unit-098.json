@@ -1,0 +1,14 @@
+{
+  "unitNumber": 98,
+  "title": "When …",
+  "sectionTitle": "Conjunctions and clauses",
+  "theoryPath": "references/EPUB/OEBPS/html/ESSB01U098P001.html",
+  "exercisesPath": "references/EPUB/OEBPS/html/ESSB01U098P002.html",
+  "appUnitPath": "src/data/units/unit98.ts",
+  "appUnitExists": false,
+  "relatedAdditionalExercisePages": [
+    1,
+    15,
+    16
+  ]
+}

@@ -14,7 +14,8 @@ Treat the app as a learning companion to the original book, not a replacement fo
 - Practice, quiz, and summary content should be original learning material. They may target the same grammar point as the book, but should not reproduce the book's exercise wording, answer order, examples, or answer keys 1:1.
 - Short topic labels such as `am/is/are` or `present simple` may match the book, but the app must not become a page-for-page digital substitute for it.
 - Never reuse the book's images, audio, page artwork, or fixed-layout page structure in shipped content.
-- Use the book and local reference exports only as editorial sources to verify correctness and coverage.
+- Use the local EPUB pages as the primary editorial source of truth for correctness and coverage.
+- Use `references/catalog/` as a navigation/index layer into the EPUB, not as a reconstructed content source.
 - Additional exercises may cover several units at once. Use them to confirm grammar scope, but do not transcribe them into the app.
 
 ## Commands
@@ -24,6 +25,7 @@ bun dev          # start dev server at http://localhost:5173
 bun run build    # type-check (tsc -b) then build to dist/
 bun run lint     # ESLint
 bun run preview  # serve the production build locally
+bun run extract:index  # rebuild references/catalog from local EPUB sources
 bun run unit:next   # print the next auto-selected unit from UNITS.md
 bun run review-pack:next   # print the next auto-selected review-pack scope
 ```
@@ -76,8 +78,10 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 - The global language state (`lang: 'en' | 'ru'`) lives in `LanguageContext` and defaults to `'ru'`.
 
 ### Reference material
-- Unit references: `references/markdown/unit-NNN.md`
-- Multi-unit references: `references/markdown/additional-exercises/README.md` and matching `page-XXX.md`
+- Primary source: local EPUB HTML pages under `references/EPUB/OEBPS/html/`
+- Navigation/index layer: `references/catalog/units/unit-NNN.md`, `references/catalog/additional-exercises/page-XXX.md`, and the matching `.json` files
+- Use `references/catalog/README.md` as the entry point when you need to locate a unit, an Additional exercises page, or other reference pages.
+- The catalog is metadata-first and intentionally does not reconstruct full lesson text. Use it to find the right source files, then inspect the real EPUB HTML pages when accuracy matters.
 - These files are for editorial verification only. Use them to confirm topic coverage, scope, and difficulty, then write original app content.
 
 ### Auto-selecting the next unit
@@ -87,10 +91,11 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 
 ### Auto-selecting the next review pack
 - Prefer `bun run review-pack:next` over hand-picking the next range.
-- The helper chooses the first uncovered contiguous range from `references/markdown/additional-exercises/README.md`.
-- It skips mixed non-contiguous labels such as `Units 1–2, 5–7, 9`.
-- It skips ranges already covered by existing `ReviewPack.coversUnits`.
-- It skips ranges containing units that do not yet exist in `src/data/units/index.ts`.
+- It should skip the following cases:
+  - `references/catalog/additional-exercises/` does not provide a clean coverage source for the candidate
+  - the label is mixed and non-contiguous, such as `Units 1–2, 5–7, 9`
+  - the range is already covered by existing `ReviewPack.coversUnits`
+  - the range contains units that do not yet exist in `src/data/units/index.ts`
 
 ### Styling
 All styles are in `src/index.css` (no CSS modules or framework). Design tokens are CSS variables at the top of the file. `src/App.css` is intentionally empty. The book-spread layout uses a two-column CSS grid that collapses to single column at `<900px`; the sidebar hides at `<768px`.
