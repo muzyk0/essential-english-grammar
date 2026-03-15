@@ -2,6 +2,7 @@
 
 - Source: `references/EPUB/OEBPS/html/ESSB01ADEXP001.html`
 - Coverage: `Units 1–2`, `Units 3–4`, `Units 5–7`, `Units 1–2, 5–7, 9`, `Units 3–8`, `Units 10–12`, `Units 11–14`, `Units 3–14`, `Units 15–19`, `Units 18–20`, `Units 3–20`, `Units 21–22`, `Units 25–28`, `Units 3–20, 25–28`, `Units 3–22, 25–28, 52, 54, 98, 105`, `Units 51–55, 105, 112`, `Units 65, 69–73`, `Units 103–108, 111`
+- Coverage inferred: no
 - Covered units: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 25, 26, 27, 28, 51, 52, 53, 54, 55, 65, 69, 70, 71, 72, 73, 98, 103, 104, 105, 106, 107, 108, 111, 112
 - Visible popup exercises: 1
 - Review-pack candidates: `src/data/review-packs/reviewPack1to2.ts` (exact; overlap: 1, 2)

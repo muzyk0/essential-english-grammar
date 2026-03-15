@@ -23,7 +23,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
   - a review pack already exists for the same `coversUnits`
   - one or more units in that range do not exist yet in `src/data/units/index.ts`
 - Choose the first remaining contiguous candidate in the order shown in `references/catalog/README.md` / `references/catalog/additional-exercises/`.
-- Announce the chosen scope before writing files. With the current repo state, `next` should normally pick `Units 3–4` because `Units 1–2` is already covered.
+- Announce the chosen scope before writing files and report why that candidate was selected under the fallback rules.
 - If the user gives explicit units or a topic, use that instead of auto-selection.
 
 ### 2. Build context
@@ -43,7 +43,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Fill `coversUnits` with explicit unit numbers; these numbers drive related links from unit pages.
 - If the request is still too vague after applying the `next` rules, ask one short clarification question.
 - Treat the book's Additional exercises as editorial evidence of scope and difficulty only.
-- Use review-pack candidates from `references/catalog/additional-exercises/*.md|json` as coverage hints, not as exact exercise mappings.
+- Use review-pack candidates from `references/catalog/additional-exercises/*.md` and matching `.json` files as coverage hints, not as exact exercise mappings.
 
 ### 4. Write or update the pack
 

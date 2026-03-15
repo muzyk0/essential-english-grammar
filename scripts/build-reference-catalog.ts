@@ -77,6 +77,22 @@ const structurePath = path.join(referencesDir, 'EPUB', 'structure.json')
 const reviewPackDir = path.join(rootDir, 'src', 'data', 'review-packs')
 const defaultOutDir = path.join(referencesDir, 'catalog')
 
+function sanitizeOutDir(candidate: string): string {
+  const resolved = path.resolve(rootDir, candidate || defaultOutDir)
+  const relativeToReferences = path.relative(referencesDir, resolved)
+
+  if (
+    relativeToReferences === '' ||
+    relativeToReferences.startsWith('..') ||
+    path.isAbsolute(relativeToReferences) ||
+    resolved === epubRootDir
+  ) {
+    return defaultOutDir
+  }
+
+  return resolved
+}
+
 function parseArgs(argv: string[]): CliOptions {
   let outDir = defaultOutDir
 
@@ -84,17 +100,17 @@ function parseArgs(argv: string[]): CliOptions {
     const argument = argv[index]
 
     if (argument === '--out-dir' && argv[index + 1]) {
-      outDir = path.resolve(rootDir, argv[index + 1])
+      outDir = argv[index + 1]
       index += 1
       continue
     }
 
     if (argument.startsWith('--out-dir=')) {
-      outDir = path.resolve(rootDir, argument.slice('--out-dir='.length))
+      outDir = argument.slice('--out-dir='.length)
     }
   }
 
-  return { outDir }
+  return { outDir: sanitizeOutDir(outDir) }
 }
 
 function decodeHtml(text: string): string {
@@ -127,7 +143,7 @@ function decodeHtml(text: string): string {
 function normalizeText(text: string): string {
   return decodeHtml(text)
     .replaceAll('\u00A0', ' ')
-    .replace(/<br\s*\/?/gi, ' ')
+    .replace(/<br\b[^>]*>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .replace(/\s+([,.;:!?])/g, '$1')
@@ -280,14 +296,32 @@ async function listAdditionalExercisePages(): Promise<Array<{ pageNumber: number
   }))
 }
 
-async function listReviewPackInfos(): Promise<ReviewPackInfo[]> {
-  const fileNames = (await readdir(reviewPackDir)).filter(
-    (fileName) => fileName !== 'index.ts' && fileName.endsWith('.ts'),
+async function collectReviewPackFiles(dir: string): Promise<string[]> {
+  const entries = await readdir(dir, { withFileTypes: true })
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(dir, entry.name)
+
+      if (entry.isDirectory()) {
+        return collectReviewPackFiles(entryPath)
+      }
+
+      if (entry.isFile() && entry.name !== 'index.ts' && entry.name.endsWith('.ts')) {
+        return [entryPath]
+      }
+
+      return []
+    }),
   )
 
+  return nested.flat()
+}
+
+async function listReviewPackInfos(): Promise<ReviewPackInfo[]> {
+  const reviewPackPaths = await collectReviewPackFiles(reviewPackDir)
+
   const reviewPackInfos = await Promise.all(
-    fileNames.sort().map(async (fileName) => {
-      const reviewPackPath = path.join(reviewPackDir, fileName)
+    reviewPackPaths.sort().map(async (reviewPackPath) => {
       const content = await readFile(reviewPackPath, 'utf8')
       const coversUnitsMatch = content.match(/coversUnits\s*:\s*\[([^\]]*)\]/)
       const coversUnits = (coversUnitsMatch?.[1] ?? '')
@@ -402,7 +436,8 @@ function renderAdditionalExerciseMarkdown(manifest: AdditionalExerciseManifest):
   return `# Additional Exercises Page ${String(manifest.pageNumber).padStart(3, '0')}
 
 - Source: \`${manifest.sourcePath}\`
-- Coverage: ${manifest.coverage.length > 0 ? manifest.coverage.map((item) => `\`${item}\``).join(', ') : '_Not detected_'}${manifest.coverageInferred ? ' (inferred)' : ''}
+- Coverage: ${manifest.coverage.length > 0 ? manifest.coverage.map((item) => `\`${item}\``).join(', ') : '_Not detected_'}
+- Coverage inferred: ${manifest.coverageInferred ? 'yes' : 'no'}
 - Covered units: ${manifest.coveredUnitNumbers.length > 0 ? manifest.coveredUnitNumbers.join(', ') : '_None detected_'}
 - Visible popup exercises: ${manifest.popupExercises.length > 0 ? manifest.popupExercises.join(', ') : '_None_'}
 - Review-pack candidates: ${renderReviewPackCandidates(manifest.reviewPackCandidates)}
@@ -421,6 +456,9 @@ function renderCatalogReadme(units: UnitManifest[], additionalPages: AdditionalE
   )
 
   return `# Reference Catalog
+
+> ⚠️ GENERATED FILE — DO NOT EDIT MANUALLY.
+> Rebuild with \`bun run extract:index\`.
 
 Catalog builder output for the local EPUB references.
 
@@ -456,15 +494,15 @@ ${miscLines.join('\n')}
 }
 
 async function main() {
-  const options = parseArgs(process.argv.slice(2))
+  const { outDir } = parseArgs(process.argv.slice(2))
   const tocXml = await readFile(tocPath, 'utf8')
   const structure = JSON.parse(await readFile(structurePath, 'utf8')) as StructureFile
   const tocUnits = parseUnitsFromToc(tocXml)
   const additionalPageSources = await listAdditionalExercisePages()
 
-  await rm(options.outDir, { recursive: true, force: true })
-  await mkdir(path.join(options.outDir, 'units'), { recursive: true })
-  await mkdir(path.join(options.outDir, 'additional-exercises'), { recursive: true })
+  await rm(outDir, { recursive: true, force: true })
+  await mkdir(path.join(outDir, 'units'), { recursive: true })
+  await mkdir(path.join(outDir, 'additional-exercises'), { recursive: true })
 
   const additionalPages: AdditionalExerciseManifest[] = []
   let previousCoverage: string[] = []
@@ -514,15 +552,15 @@ async function main() {
     units.push(manifest)
 
     const baseName = `unit-${formatUnitNumber(unit.number)}`
-    await writeJson(path.join(options.outDir, 'units', `${baseName}.json`), manifest)
-    await writeFile(path.join(options.outDir, 'units', `${baseName}.md`), renderUnitManifestMarkdown(manifest), 'utf8')
+    await writeJson(path.join(outDir, 'units', `${baseName}.json`), manifest)
+    await writeFile(path.join(outDir, 'units', `${baseName}.md`), renderUnitManifestMarkdown(manifest), 'utf8')
   }
 
   for (const page of additionalPages) {
     const baseName = `page-${String(page.pageNumber).padStart(3, '0')}`
-    await writeJson(path.join(options.outDir, 'additional-exercises', `${baseName}.json`), page)
+    await writeJson(path.join(outDir, 'additional-exercises', `${baseName}.json`), page)
     await writeFile(
-      path.join(options.outDir, 'additional-exercises', `${baseName}.md`),
+      path.join(outDir, 'additional-exercises', `${baseName}.md`),
       renderAdditionalExerciseMarkdown(page),
       'utf8',
     )
@@ -541,13 +579,13 @@ async function main() {
       sectionPath: page.path,
     }))
 
-  await writeJson(path.join(options.outDir, 'units.json'), units)
-  await writeJson(path.join(options.outDir, 'additional-exercises.json'), additionalPages)
-  await writeJson(path.join(options.outDir, 'misc-pages.json'), miscPages)
-  await writeFile(path.join(options.outDir, 'README.md'), renderCatalogReadme(units, additionalPages, miscPages), 'utf8')
+  await writeJson(path.join(outDir, 'units.json'), units)
+  await writeJson(path.join(outDir, 'additional-exercises.json'), additionalPages)
+  await writeJson(path.join(outDir, 'misc-pages.json'), miscPages)
+  await writeFile(path.join(outDir, 'README.md'), renderCatalogReadme(units, additionalPages, miscPages), 'utf8')
 
   console.log(
-    `Generated catalog with ${units.length} unit manifest(s), ${additionalPages.length} additional-exercise manifest(s), and ${miscPages.length} misc page record(s) in ${relativeToRoot(options.outDir)}`,
+    `Generated catalog with ${units.length} unit manifest(s), ${additionalPages.length} additional-exercise manifest(s), and ${miscPages.length} misc page record(s) in ${relativeToRoot(outDir)}`,
   )
 }
 

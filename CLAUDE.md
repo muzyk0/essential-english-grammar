@@ -91,10 +91,11 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 
 ### Auto-selecting the next review pack
 - Prefer `bun run review-pack:next` over hand-picking the next range.
-- The helper should use `references/catalog/additional-exercises/` as the source for coverage lookup.
-- It should skip mixed non-contiguous labels such as `Units 1–2, 5–7, 9` when choosing the next clean contiguous pack.
-- It should skip ranges already covered by existing `ReviewPack.coversUnits`.
-- It should skip ranges containing units that do not yet exist in `src/data/units/index.ts`.
+- It should skip the following cases:
+  - `references/catalog/additional-exercises/` does not provide a clean coverage source for the candidate
+  - the label is mixed and non-contiguous, such as `Units 1–2, 5–7, 9`
+  - the range is already covered by existing `ReviewPack.coversUnits`
+  - the range contains units that do not yet exist in `src/data/units/index.ts`
 
 ### Styling
 All styles are in `src/index.css` (no CSS modules or framework). Design tokens are CSS variables at the top of the file. `src/App.css` is intentionally empty. The book-spread layout uses a two-column CSS grid that collapses to single column at `<900px`; the sidebar hides at `<768px`.

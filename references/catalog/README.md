@@ -1,5 +1,8 @@
 # Reference Catalog
 
+> ⚠️ GENERATED FILE — DO NOT EDIT MANUALLY.
+> Rebuild with `bun run extract:index`.
+
 Catalog builder output for the local EPUB references.
 
 This directory is intentionally metadata-first:
