@@ -170,41 +170,39 @@ const unit3: Unit = {
         en: {
           title: 'Happening now & -ing spelling',
           explanation:
-            'We use the <b>present continuous</b> for actions happening now or around now. ' +
+            'We use the <b>present continuous</b> for actions happening now. ' +
             'We also need the correct spelling before <b>-ing</b>.',
           table: {
             headers: ['Focus', 'Rule / meaning', 'Example'],
             rows: [
               ['now', 'action happening at this moment', "I'm talking to you now."],
-              ['around now', 'temporary action in progress this period', "We're staying with friends this week."],
               ['spelling: drop -e', 'remove final -e before -ing', 'write → writing'],
               ['spelling: double consonant', 'double after a short stressed vowel', 'sit → sitting'],
               ['spelling: -ie → y', 'change -ie before -ing', 'lie → lying'],
             ],
           },
           notes: [
-            'Common time expressions are <b>now</b>, <b>right now</b>, <b>at the moment</b>, <b>today</b> and <b>this week</b>.',
-            'This unit focuses on actions in progress, not on routine actions.',
+            'Common time expressions are <b>now</b>, <b>right now</b> and <b>at the moment</b>.',
+            'Use this form when the action is in progress at the time of speaking.',
           ],
         },
         ru: {
           title: 'Сейчас происходит + правописание -ing',
           explanation:
-            'Мы используем <b>present continuous</b> для действий, которые происходят сейчас или в текущий период. ' +
+            'Мы используем <b>present continuous</b> для действий, которые происходят сейчас. ' +
             'Также важно правильно писать форму с <b>-ing</b>.',
           table: {
             headers: ['Фокус', 'Правило / значение', 'Пример'],
             rows: [
               ['now', 'действие происходит прямо в этот момент', "I'm talking to you now."],
-              ['around now', 'временная ситуация в текущий период', "We're staying with friends this week."],
               ['правописание: drop -e', 'убираем конечную -e перед -ing', 'write → writing'],
               ['правописание: двойная согласная', 'удваиваем после короткого ударного гласного', 'sit → sitting'],
               ['правописание: -ie → y', 'меняем -ie перед -ing', 'lie → lying'],
             ],
           },
           notes: [
-            'Часто используются слова <b>now</b>, <b>right now</b>, <b>at the moment</b>, <b>today</b> и <b>this week</b>.',
-            'Этот юнит про действия в процессе, а не про регулярные привычки.',
+            'Часто используются слова <b>now</b>, <b>right now</b> и <b>at the moment</b>.',
+            'Используйте эту форму, когда действие происходит в момент речи.',
           ],
         },
       },
@@ -214,10 +212,10 @@ const unit3: Unit = {
           items: [
             { english: "Please don't turn off the light. I'm reading.", russian: 'Пожалуйста, не выключай свет. Я читаю.', highlight: "I'm reading" },
             { english: "Look at Eva. She's wearing two different shoes.", russian: 'Посмотри на Еву. На ней две разные туфли.', highlight: "She's wearing" },
-            { english: "We're staying with my aunt this week.", russian: 'На этой неделе мы живём у моей тёти.', highlight: "We're staying" },
+            { english: "They're swimming in the pool.", russian: 'Они плавают в бассейне.', highlight: "They're swimming" },
             { english: 'The dog is lying in the sun.', russian: 'Собака лежит на солнце.', highlight: 'is lying' },
             { english: 'The students are writing a test right now.', russian: 'Студенты прямо сейчас пишут тест.', highlight: 'are writing' },
-            { english: "Tom isn't cooking tonight. He's eating out.", russian: 'Том сегодня не готовит. Он ужинает вне дома.', highlight: "isn't cooking" },
+            { english: "You aren't listening to me.", russian: 'Ты меня не слушаешь.', highlight: "aren't listening" },
             { english: 'The bus is coming now. Let\'s go.', russian: 'Автобус сейчас подъезжает. Пойдём.', highlight: 'is coming' },
           ],
         },
@@ -226,10 +224,10 @@ const unit3: Unit = {
           items: [
             { english: "Please don't turn off the light. I'm reading.", russian: 'Пожалуйста, не выключай свет. Я читаю.', highlight: "I'm reading" },
             { english: "Look at Eva. She's wearing two different shoes.", russian: 'Посмотри на Еву. На ней две разные туфли.', highlight: "She's wearing" },
-            { english: "We're staying with my aunt this week.", russian: 'На этой неделе мы живём у моей тёти.', highlight: "We're staying" },
+            { english: "They're swimming in the pool.", russian: 'Они плавают в бассейне.', highlight: "They're swimming" },
             { english: 'The dog is lying in the sun.', russian: 'Собака лежит на солнце.', highlight: 'is lying' },
             { english: 'The students are writing a test right now.', russian: 'Студенты прямо сейчас пишут тест.', highlight: 'are writing' },
-            { english: "Tom isn't cooking tonight. He's eating out.", russian: 'Том сегодня не готовит. Он ужинает вне дома.', highlight: "isn't cooking" },
+            { english: "You aren't listening to me.", russian: 'Ты меня не слушаешь.', highlight: "aren't listening" },
             { english: 'The bus is coming now. Let\'s go.', russian: 'Автобус сейчас подъезжает. Пойдём.', highlight: 'is coming' },
           ],
         },
@@ -523,11 +521,10 @@ const unit3: Unit = {
             'Use <b>am / is / are + verb-ing</b> for actions happening <em>right now</em>.',
             'Contractions in speech: <b>I\'m working</b>, <b>she\'s reading</b>, <b>they\'re waiting</b>.',
             'Negative: <b>isn\'t</b> / <b>aren\'t</b> + -ing → "She isn\'t sleeping."',
-            'Use it for actions happening <b>now</b> or for temporary situations <b>around now</b> → "We\'re staying with friends this week."',
+            'Use words like <b>now</b>, <b>right now</b> and <b>at the moment</b> with this form.',
             'Spelling: drop final <b>-e</b> (write → writing), double consonant for short verbs (sit → sitting).',
-            'Short answers use the full auxiliary: "Yes, I <b>am</b>." / "No, she <b>isn\'t</b>."',
           ],
-          nextUnit: 'Unit 4 — are you doing? (questions & negatives)',
+          nextUnit: 'Unit 4 — are you doing? (questions)',
         },
         ru: {
           title: 'Итоги — настоящее длительное',
@@ -535,11 +532,10 @@ const unit3: Unit = {
             'Используем <b>am / is / are + глагол-ing</b> для действий, происходящих <em>прямо сейчас</em>.',
             'Краткие формы в речи: <b>I\'m working</b>, <b>she\'s reading</b>, <b>they\'re waiting</b>.',
             'Отрицание: <b>isn\'t</b> / <b>aren\'t</b> + -ing → "She isn\'t sleeping."',
-            'Используем это время для действий <b>сейчас</b> и временных ситуаций <b>в текущий период</b> → "We\'re staying with friends this week."',
+            'С этой формой часто используются слова <b>now</b>, <b>right now</b> и <b>at the moment</b>.',
             'Правописание: убираем конечное <b>-e</b> (write → writing), удваиваем согласную у коротких глаголов (sit → sitting).',
-            'В кратких ответах используем вспомогательный глагол полностью: "Yes, I <b>am</b>." / "No, she <b>isn\'t</b>."',
           ],
-          nextUnit: 'Юнит 4 — are you doing? (вопросы и отрицание)',
+          nextUnit: 'Юнит 4 — are you doing? (вопросы)',
         },
       },
     },
