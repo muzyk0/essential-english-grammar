@@ -19,6 +19,7 @@ type AnswerState = {
 type BlankSpec = {
   correctAnswer: string;
   altAnswers?: string[];
+  acceptedPatterns?: string[];
 };
 
 export default function PracticeStep({ step, lang }: Props) {
@@ -44,6 +45,21 @@ export default function PracticeStep({ step, lang }: Props) {
   };
 
   const handleCheck = (q: PracticeQuestion) => {
+    const answerMode = getAnswerMode(q);
+    if (answerMode === 'example') {
+      const specs = getBlankSpecs(q);
+      const state = answers[q.id] ?? createAnswerState(getBlankCount(q.prompt));
+      const correct = specs.every((spec, index) => {
+        const userAnswer = state.values[index]?.trim() ?? '';
+        return matchesExampleAnswer(userAnswer, spec);
+      });
+      setAnswers((prev) => ({
+        ...prev,
+        [q.id]: { ...state, checked: true, correct, answerRevealed: false, translationVisible: false },
+      }));
+      return;
+    }
+
     const specs = getBlankSpecs(q);
     const state = answers[q.id] ?? createAnswerState(specs.length);
     const correct = specs.every((spec, index) => {
@@ -92,7 +108,9 @@ export default function PracticeStep({ step, lang }: Props) {
         <ol className="practice-list">
           {right.questions.map((q) => {
             const state = answers[q.id] ?? createAnswerState(getBlankCount(q.prompt));
-            const canShowTranslation = Boolean(q.translation) && (state.correct || state.answerRevealed);
+            const answerMode = getAnswerMode(q);
+            const canShowTranslation = Boolean(q.translation)
+              && (answerMode === 'example' ? state.checked || state.answerRevealed : state.correct || state.answerRevealed);
             return (
               <li key={q.id} className="practice-item">
                 <div className="practice-prompt">
@@ -110,24 +128,31 @@ export default function PracticeStep({ step, lang }: Props) {
                 ) : (
                   <>
                     <div className="practice-feedback">
-                      <span className={state.correct ? 'feedback--correct' : 'feedback--incorrect'}>
-                        {state.correct ? t('practice.correct') : t('practice.incorrect')}
+                      <span className={answerMode === 'example' || state.correct ? 'feedback--correct' : 'feedback--incorrect'}>
+                        {answerMode === 'example'
+                          ? state.correct
+                            ? t('practice.recorded')
+                            : t('practice.incorrect')
+                          : state.correct
+                            ? t('practice.correct')
+                            : t('practice.incorrect')}
                       </span>
-                      {!state.correct && state.answerRevealed && (
-                        <span className="feedback-answer">→ {q.correctAnswer}</span>
+                      {((answerMode === 'example' && state.answerRevealed) || (!state.correct && state.answerRevealed)) && (
+                        <span className="feedback-answer">→ {getAcceptedAnswerDisplay(q)}</span>
                       )}
-                      {q.explanation && (state.correct || state.answerRevealed) && (
+                      {q.explanation && ((answerMode === 'example' && (state.correct || state.answerRevealed)) || state.correct || state.answerRevealed) && (
                         <span className="feedback-explanation">{q.explanation}</span>
                       )}
                     </div>
 
                     <div className="practice-actions">
-                      {!state.correct && !state.answerRevealed && (
+                      {((answerMode === 'example' && !state.correct && !state.answerRevealed)
+                        || (answerMode === 'exact' && !state.correct && !state.answerRevealed)) && (
                         <button
                           className="btn btn--secondary btn--practice-action"
                           onClick={() => handleRevealAnswer(q.id)}
                         >
-                          {t('btn.showAnswer')}
+                          {answerMode === 'example' ? t('btn.showExample') : t('btn.showAnswer')}
                         </button>
                       )}
 
@@ -223,7 +248,11 @@ function getBlankSpecs(question: PracticeQuestion): BlankSpec[] {
   }
 
   if (blankCount === 1) {
-    return [{ correctAnswer: question.correctAnswer, altAnswers: question.altAnswers }];
+    return [{
+      correctAnswer: question.correctAnswer,
+      altAnswers: question.altAnswers,
+      acceptedPatterns: question.acceptedPatterns,
+    }];
   }
 
   const separator = question.correctAnswer.includes(' ... ')
@@ -245,8 +274,47 @@ function getBlankSpecs(question: PracticeQuestion): BlankSpec[] {
   ];
 }
 
+function getAnswerMode(question: PracticeQuestion) {
+  return question.answerMode ?? 'exact';
+}
+
 function hasAllBlankValues(state: AnswerState, question: PracticeQuestion) {
   return getBlankSpecs(question).every((_, index) => Boolean(state.values[index]?.trim()));
+}
+
+function getAcceptedAnswerDisplay(question: PracticeQuestion) {
+  return getBlankSpecs(question)
+    .map((spec) => formatAcceptedAnswers([spec.correctAnswer, ...(spec.altAnswers ?? [])]))
+    .join(' ... ');
+}
+
+function matchesExampleAnswer(userAnswer: string, spec: BlankSpec) {
+  const trimmed = userAnswer.trim();
+  if (!trimmed) return false;
+
+  if (!spec.acceptedPatterns?.length) return true;
+
+  return spec.acceptedPatterns.some((pattern) => {
+    try {
+      return new RegExp(pattern, 'i').test(trimmed);
+    } catch {
+      return false;
+    }
+  });
+}
+
+function formatAcceptedAnswers(answers: string[]) {
+  const seen = new Set<string>();
+  const unique: string[] = [];
+
+  for (const answer of answers.map((value) => value.trim()).filter(Boolean)) {
+    const normalized = normalizeAnswer(answer);
+    if (seen.has(normalized)) continue;
+    seen.add(normalized);
+    unique.push(answer);
+  }
+
+  return unique.join(' / ');
 }
 
 function normalizeAnswer(value: string) {

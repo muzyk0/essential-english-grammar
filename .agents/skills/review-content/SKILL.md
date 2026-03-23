@@ -37,6 +37,7 @@ Review one existing `Unit` or `ReviewPack`, compare it with the real book source
   - `references/catalog/README.md`
   - relevant `references/catalog/additional-exercises/page-XXX.md` files
   - the real EPUB HTML pages referenced by those catalog entries when scope or accuracy matters
+- In exercise HTML, inspect hidden answer/example blocks as well as the visible prompt text. The EPUB may encode acceptable answers inline rather than on a separate keys page.
 - Treat `references/catalog/` as navigation metadata only. Do not expect generated markdown reconstructions of theory, examples, or exercises there.
 - Sanity-check the catalog links against the requested unit or review-pack scope. If a linked HTML file looks inconsistent with the unit number, title, or topic, cross-check `references/catalog/README.md`, nearby catalog entries, and the EPUB filenames before trusting it.
 - Read nearby app units or packs only when they help preserve continuity, terminology, or contrast selection.
@@ -46,12 +47,15 @@ Review one existing `Unit` or `ReviewPack`, compare it with the real book source
 - Start from the written unit or review pack already in the repo. Preserve good material instead of rewriting blindly.
 - For units, verify theory first. The meaning, contrasts, forms, and usage notes should match the book unit as closely as possible while staying in original wording.
 - Use the exercises page to confirm what learners should practise, but do not copy the tasks, answer order, or sample wording.
+- Distinguish between fixed-answer tasks, tasks with several acceptable answers, and tasks that only provide example answers. Do not assume every exercise has one canonical solution.
 - For review packs, allow the exercises to differ more freely. Verify unit coverage, grammar contrasts, level, and `coversUnits` / `coverageLabel` alignment rather than exact task mapping.
 - Check for:
   - factual grammar mismatches
   - missing or misleading contrasts
   - invented rules not supported by the source unit
   - content that is too close to the book's wording or examples
+  - open-ended source tasks that were flattened into misleading single-answer app items
+  - translations or instructions that wrongly force one polarity or one personal answer
   - missing bilingual fields
   - broken `highlight`, `correctIndex`, ids, or HTML tags
   - missing `altAnswers` where more than one form should be accepted
@@ -69,6 +73,10 @@ Review one existing `Unit` or `ReviewPack`, compare it with the real book source
   - keep them original
   - allow them to differ from the book's exact tasks
   - keep them inside the same grammar point and difficulty range
+- If the source exercise provides several acceptable answers or only example answers, either preserve that openness explicitly in the app content or intentionally redesign the task into bounded original practice. Do not present it as though the book had a single fixed answer when it does not.
+- When the source exercise types are clearly separated, keep that separation in the app too instead of mixing fixed-answer, example-answer, and true-sentence work into one undifferentiated practice block.
+- For open personal/example-answer prompts, do not treat "any non-empty text" as sufficient when the source prompt gives a structural cue such as `My ...` or `I ...`. Prefer `answerMode: 'example'` plus `acceptedPatterns` so the app validates the sentence frame while keeping the content open.
+- In `answerMode: 'example'`, stored answers should behave as model answers, not as the only valid response.
 - Maintain data invariants:
   - every user-facing field has both `en` and `ru`
   - `highlight` is a literal substring of `english`

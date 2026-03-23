@@ -34,6 +34,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Read `src/components/ReviewPage.tsx`, `src/components/UnitPage.tsx`, and `src/context/LanguageContext.tsx` only if the task may require new UI strings or routing changes.
 - Consult `references/catalog/README.md` together with only the relevant `references/catalog/additional-exercises/page-XXX.md` files for the requested range.
 - Use those catalog entries to find the real EPUB HTML pages under `references/EPUB/OEBPS/html/`, then inspect the source pages when accuracy or scope matters.
+- When inspecting source exercise HTML, check hidden answer/example blocks too. They may reveal multiple acceptable responses or show that a task is open-ended.
 - Read the covered `src/data/units/unitN.ts` files to align the pack with the existing progression and terminology.
 
 ### 3. Resolve the pack scope
@@ -56,10 +57,14 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
   4. `practice` or `examples` for a second mixed round
   5. `quiz`
   6. `summary`
+- Split the pack into more than one `practice` / `examples` step when the source material clearly separates fixed-answer work, example-answer work, and true-sentence work.
 - Keep every user-facing field bilingual with `en` and `ru`.
 - Keep theory accurate in meaning, but rewrite it from scratch.
 - Write fresh examples, prompts, quiz options, and explanations.
 - Use `altAnswers` whenever more than one answer should be accepted.
+- If the source material suggests truth-based or example-answer tasks, preserve that openness in the review pack's instructions or redesign the task into bounded original practice. Do not silently convert it into a fake single-answer replica.
+- For open personal/example-answer prompts, do not default to "any non-empty text". If the prompt gives a structural cue such as `My ...`, `I ...`, or another fixed starter, pair `answerMode: 'example'` with `acceptedPatterns` so the app checks the sentence frame while still allowing personal content.
+- In `answerMode: 'example'`, keep `correctAnswer` / `altAnswers` only as model answers.
 - Keep `highlight` as a literal substring of `english`.
 - Use only `<b>` and `<em>` inside `explanation` and `points`.
 - Use stable question ids with a pack prefix such as `rp34-p1` and `rp34-q1`.
@@ -83,6 +88,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Never copy or closely paraphrase the book's explanations, exercise wording, answer order, answer key, images, audio, or page layout.
 - Expect one Additional exercises page to cover several different unit ranges.
 - Treat catalog candidates as overlap signals only; the final review pack may use different tasks from the source page.
+- Treat embedded example answers as evidence about openness and difficulty, not as a fixed answer key to reproduce.
 - Prefer original mixed practice that blends the covered units instead of reconstructing the book page by page.
 - Match the app's existing tone and difficulty.
 - Reuse the existing `ReviewPack` architecture and `Step[]` model; add a new step type only if the UI genuinely needs it.

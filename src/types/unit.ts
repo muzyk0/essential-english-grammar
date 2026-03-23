@@ -40,11 +40,14 @@ export interface PracticeQuestion {
   prompt: string;          // Use ___ for blanks, e.g. "She ___ a teacher."
   translation?: string;    // Optional Russian translation shown on demand
   options?: string[];      // Only for multiple-choice
+  answerMode?: 'exact' | 'example'; // example = any non-empty answer is accepted; stored answers are model answers
+  acceptedPatterns?: string[]; // Optional regex patterns for structurally valid example answers
   correctAnswer: string;   // Exact correct answer text
   altAnswers?: string[];   // Alternative acceptable answers (e.g. full form when short form is preferred)
   blankAnswers?: Array<{
     correctAnswer: string;
     altAnswers?: string[];
+    acceptedPatterns?: string[];
   }>;
   explanation?: string;    // Shown after answering
 }
