@@ -307,11 +307,11 @@ const unit1: Unit = {
             {
               id: 'p3',
               type: 'fill-blank',
-              prompt: 'We ___ not ready yet.',
+              prompt: 'We ___ ready yet.',
               translation: "Мы ещё не готовы.",
               correctAnswer: "aren't",
               altAnswers: ['are not', "'re not"],
-              explanation: 'With "we" in the negative, common answers are "aren\'t" or "we\'re not".',
+              explanation: 'With "we" in the negative, common answers are "aren\'t", "are not" or "we\'re not".',
             },
             {
               id: 'p4',
@@ -384,11 +384,11 @@ const unit1: Unit = {
             {
               id: 'p3',
               type: 'fill-blank',
-              prompt: 'We ___ not ready yet.',
+              prompt: 'We ___ ready yet.',
               translation: "Мы ещё не готовы.",
               correctAnswer: "aren't",
               altAnswers: ['are not', "'re not"],
-              explanation: 'С "we" в отрицании часто используем "aren\'t" или "we\'re not".',
+              explanation: 'С "we" в отрицании часто используем "aren\'t", "are not" или "we\'re not".',
             },
             {
               id: 'p4',
