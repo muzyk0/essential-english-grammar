@@ -13,13 +13,23 @@ What already exists:
 - content is stored in TypeScript (`src/data/units/*.ts`, `src/data/review-packs/*.ts`);
 - the app structure already supports units, steps, and review packs;
 - some content is written manually, while some is still rough AI-generated draft material;
-- local book references have not yet been added to the project, but they will later live in `references/` (which remains in `.gitignore`).
+- local book references already live in `references/` and should be treated as the editorial source of truth.
 
 What matters at this stage:
 - there will eventually be many units;
 - the earliest units do not represent the full complexity of the future content model;
-- later units may require more nuanced explanations, richer practice, and more varied step design;
+- later units may require more nuanced explanations, richer practice, more varied step design, and stricter exercise-specific validation;
 - because of that, the final template should not be based only on the earliest and simplest units.
+
+### 1.1. Non-negotiable fidelity rule
+
+When the book's task design matters for correctness, the app should follow that design closely even if the concrete examples are rewritten.
+
+That means:
+- preserve the difference between fixed-answer, bounded-open, and model-answer tasks;
+- keep source exercise boundaries or subsection boundaries when they affect learner expectations;
+- if the source uses cues, word banks, picture prompts, or visible worked examples, represent those cues in the app too;
+- if the current interface cannot represent a task honestly, extend the interface instead of flattening the content.
 
 ---
 
@@ -165,6 +175,7 @@ In practice, this means:
 - aligning the tone and style of explanations;
 - replacing weak or repetitive examples;
 - reworking exercises that do not really test the target grammar;
+- restoring source exercise logic where past content was oversimplified to fit the old UI;
 - improving summaries so they actually conclude the lesson instead of acting like filler.
 
 ### Stage 3. Extract the best patterns from within units 1–14
@@ -175,6 +186,7 @@ This should include reviewing:
 - which theory-step structure works best;
 - which examples-step format reads most clearly;
 - how practice should be structured;
+- which exercise-specific UI patterns are required so picture prompts, word banks, cue-based tasks, and bounded-open answers can be represented honestly;
 - how quizzes should be written so they are not just a dull duplicate of practice;
 - how summaries can be short but still useful.
 
@@ -225,6 +237,7 @@ After the template exists, create a short and practical `CONTENT_GUIDE.md`.
 It should explain:
 - how to write theory based on the book without copying it;
 - how to adapt book material into an interactive format;
+- how to preserve source task mode while still rewriting examples;
 - how to write examples;
 - how to design practice;
 - how to write quizzes;
@@ -239,6 +252,8 @@ Later, it would be useful to add:
 Examples of useful validations:
 - every step has the required fields;
 - `practice` questions are not empty;
+- structured personal/example-answer tasks use `acceptedPatterns` instead of raw non-empty validation;
+- bounded-open tasks list all accepted variants explicitly;
 - `quiz` items use a valid `correctIndex`;
 - bilingual content always includes both locales;
 - summaries are not empty;

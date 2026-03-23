@@ -34,13 +34,22 @@ export interface ExamplesContent {
   items: ExampleItem[];
 }
 
+export interface PracticeVisual {
+  emoji: string;
+  title?: string;
+  description?: string;
+}
+
 export interface PracticeQuestion {
   id: string;
   type: 'fill-blank' | 'multiple-choice';
+  displayNumber?: string;
+  cue?: string;            // Optional source-style cue, e.g. "(name?)" or "(it / hot today)"
+  visual?: PracticeVisual; // Optional original visual prompt for picture-style exercises
   prompt: string;          // Use ___ for blanks, e.g. "She ___ a teacher."
   translation?: string;    // Optional Russian translation shown on demand
   options?: string[];      // Only for multiple-choice
-  answerMode?: 'exact' | 'example'; // example = any non-empty answer is accepted; stored answers are model answers
+  answerMode?: 'exact' | 'example'; // example = model-answer mode; use acceptedPatterns when the frame must be checked
   acceptedPatterns?: string[]; // Optional regex patterns for structurally valid example answers
   correctAnswer: string;   // Exact correct answer text
   altAnswers?: string[];   // Alternative acceptable answers (e.g. full form when short form is preferred)
@@ -52,10 +61,26 @@ export interface PracticeQuestion {
   explanation?: string;    // Shown after answering
 }
 
+export interface PracticeExample {
+  cue?: string;
+  answer: string;
+  note?: string;
+}
+
+export interface PracticeSection {
+  id: string;
+  title?: string;
+  instructions?: string;
+  wordBank?: string[];
+  examples?: PracticeExample[];
+  questions: PracticeQuestion[];
+}
+
 export interface PracticeContent {
   title: string;
-  instructions: string;
-  questions: PracticeQuestion[];
+  instructions?: string;
+  questions?: PracticeQuestion[];
+  sections?: PracticeSection[];
 }
 
 export interface QuizQuestion {

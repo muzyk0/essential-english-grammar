@@ -23,6 +23,7 @@ Create or update one full grammar unit for the `essential-english-grammar` app.
 - Read `references/catalog/README.md` and `references/catalog/units/unit-NNN.md` for the matching unit if they exist.
 - Use the unit catalog entry to find the real EPUB HTML source pages under `references/EPUB/OEBPS/html/`, then inspect those HTML files when theory accuracy or page structure matters.
 - When reading the exercises HTML, inspect hidden answer/example blocks too. The EPUB may embed acceptable answers in the same file instead of providing a separate keys page.
+- While reading the source pages, note the visible rubric for each exercise and whether the book shows a worked example, word bank, cue, picture prompt, or subsection heading. Those are part of the task design and should survive adaptation.
 - Read `references/catalog/additional-exercises/page-XXX.md` only when the unit catalog entry points to relevant Additional exercises pages.
 - Read nearby units only when needed for continuity, contrast, or `nextUnit` wording.
 
@@ -37,7 +38,9 @@ Create or update one full grammar unit for the `essential-english-grammar` app.
   4. one or more `practice` steps
   5. `quiz`
   6. `summary`
-- Do not compress distinct source exercise modes into one blurred practice step when the book clearly separates them. If the source distinguishes fixed-answer work, example-answer work, and `true sentences, positive or negative`, reflect that distinction in the app structure too.
+- Do not compress distinct source exercise modes into one blurred practice step when the book clearly separates them. If the source distinguishes fixed-answer work, example-answer work, picture prompts, word-bank tasks, or `true sentences, positive or negative`, reflect that distinction in the app structure too.
+- Keep the order and exercise boundaries close to the book unless there is a clear product reason to change them.
+- If the source shows a worked example item, example answers, or sub-rubrics inside one exercise, represent those explicitly in the app instead of silently dropping them.
 - Keep every user-facing field bilingual with `en` and `ru`.
 - Keep theory accurate in meaning to Murphy, but rewrite it from scratch.
 - Write fresh examples, practice prompts, quiz options, explanations, and summary points.
@@ -46,6 +49,9 @@ Create or update one full grammar unit for the `essential-english-grammar` app.
 - Do not let translations, hints, or explanations force one polarity when the task is intentionally open-ended.
 - For open personal/example-answer prompts, do not default to "any non-empty text". If the source prompt gives a structural cue such as `My ...`, `I ...`, or `My favourite colour ...`, add `answerMode: 'example'` together with `acceptedPatterns` so the app checks the required sentence frame while still allowing personal content.
 - In `answerMode: 'example'`, treat `correctAnswer` / `altAnswers` as model answers shown on demand, not as the only valid response.
+- When the source task is bounded but not single-answer, prefer strict bounded validation over loose free text. Accept every source-supported variant, but no broader set.
+- Use `PracticeContent.sections`, `cue`, `wordBank`, and `visual` fields when they help preserve the source task honestly.
+- If the current `Unit` / `Step[]` / practice UI cannot represent the source task without distortion, update `src/types/unit.ts` and the relevant components before finalising the unit.
 - Keep `highlight` as a literal substring of `english`.
 - Use only `<b>` and `<em>` inside `explanation` and `points`.
 - Use stable ids such as `p14-1` and `q14-1`.

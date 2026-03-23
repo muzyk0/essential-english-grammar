@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import reviewPacks from '../data/review-packs';
 import units from '../data/units';
 import ProgressBar from './ProgressBar';
 import StepRenderer from './steps/StepRenderer';
+import useStepKeyboardNavigation from '../hooks/useStepKeyboardNavigation';
 import type { StepType, Unit } from '../types/unit';
 
 function ReviewPageContent({ reviewId }: { reviewId?: string }) {
   const { lang, t } = useLanguage();
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
 
   const pack = reviewPacks.find((item) => item.id === reviewId);
@@ -32,6 +34,38 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
   const step = pack.steps[safeCurrentStep];
   const isFirst = safeCurrentStep === 0;
   const isLast = safeCurrentStep === pack.steps.length - 1;
+
+  const goPreviousStep = useCallback(() => {
+    setCurrentStep((stepIndex) => Math.max(0, stepIndex - 1));
+  }, []);
+
+  const goNextStep = useCallback(() => {
+    if (safeCurrentStep < pack.steps.length - 1) {
+      setCurrentStep((stepIndex) => Math.min(pack.steps.length - 1, stepIndex + 1));
+      return;
+    }
+
+    if (nextUnit) {
+      navigate(`/unit/${nextUnit.id}`);
+    }
+  }, [navigate, nextUnit, pack.steps.length, safeCurrentStep]);
+
+  const goFirstStep = useCallback(() => {
+    setCurrentStep(0);
+  }, []);
+
+  const goLastStep = useCallback(() => {
+    setCurrentStep(pack.steps.length - 1);
+  }, [pack.steps.length]);
+
+  useStepKeyboardNavigation({
+    current: safeCurrentStep,
+    total: pack.steps.length,
+    onPrevious: goPreviousStep,
+    onNext: goNextStep,
+    onFirst: goFirstStep,
+    onLast: goLastStep,
+  });
 
   return (
     <div className="unit-page">
@@ -79,8 +113,10 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
       <div className="step-nav">
         <button
           className="btn btn--secondary"
-          onClick={() => setCurrentStep((stepIndex) => Math.max(0, stepIndex - 1))}
+          onClick={goPreviousStep}
           disabled={isFirst}
+          aria-keyshortcuts="ArrowLeft"
+          title={t('nav.stepKeyboardHint')}
         >
           {t('btn.prev')}
         </button>
@@ -98,23 +134,27 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
 
         {isLast ? (
           nextUnit ? (
-            <Link to={`/unit/${nextUnit.id}`} className="btn btn--primary">
+            <Link to={`/unit/${nextUnit.id}`} className="btn btn--primary" aria-keyshortcuts="ArrowRight" title={t('nav.stepKeyboardHint')}>
               {t('btn.nextUnit')}
             </Link>
           ) : (
-            <button className="btn btn--primary" disabled>
+            <button className="btn btn--primary" disabled aria-keyshortcuts="ArrowRight" title={t('nav.stepKeyboardHint')}>
               {t('btn.next')}
             </button>
           )
         ) : (
           <button
             className="btn btn--primary"
-            onClick={() => setCurrentStep((stepIndex) => Math.min(pack.steps.length - 1, stepIndex + 1))}
+            onClick={goNextStep}
+            aria-keyshortcuts="ArrowRight"
+            title={t('nav.stepKeyboardHint')}
           >
             {t('btn.next')}
           </button>
         )}
       </div>
+
+      <p className="step-nav-hint">{t('nav.stepKeyboardHint')}</p>
     </div>
   );
 }

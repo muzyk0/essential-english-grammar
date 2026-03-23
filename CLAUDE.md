@@ -12,6 +12,8 @@ Treat the app as a learning companion to the original book, not a replacement fo
 
 - Keep theory accurate to the grammar point in *Essential Grammar in Use*, but write all user-facing theory in original words. Do not copy or closely paraphrase the book's explanations, example blocks, tables, or summaries sentence-by-sentence.
 - Practice, quiz, and summary content should be original learning material. They may target the same grammar point as the book, but should not reproduce the book's exercise wording, answer order, examples, or answer keys 1:1.
+- Keep the source unit's exercise structure and task mode as close to the book as possible even when the concrete examples are rewritten. If the book separates short-form work, fixed-answer completion, personal example answers, picture prompts, or `positive or negative` truth tasks, the app should reflect that separation instead of flattening everything into one generic practice block.
+- If the current app model cannot represent a source task honestly, extend the data model or UI first. Do not distort the content just to fit the existing interface.
 - Short topic labels such as `am/is/are` or `present simple` may match the book, but the app must not become a page-for-page digital substitute for it.
 - Never reuse the book's images, audio, page artwork, or fixed-layout page structure in shipped content.
 - Use the local EPUB pages as the primary editorial source of truth for correctness and coverage.
@@ -51,6 +53,13 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 3. Import it and append to the array in `src/data/units/index.ts`.
 4. For practice fill-blank questions with contractions, always set `altAnswers` with the alternative form (e.g. `correctAnswer: "'m", altAnswers: ["am"]` or `correctAnswer: "isn't", altAnswers: ["is not"]`). Both contracted and full forms must be accepted.
 5. Keep theory faithful in meaning to Murphy, but rewrite it from scratch. Practice and quiz items should be newly authored rather than copied from the book.
+6. Preserve the source exercise logic. Keep separate exercises or subparts separate in the app when that distinction matters for correctness, validation, or learner expectations.
+7. If the source exercise uses cues, model answers, picture prompts, word banks, or bounded `positive / negative` choices, represent those explicitly in the app instead of converting them to a looser generic text task.
+8. Validation should be as strict as the source allows:
+   - exact answer for fixed-answer tasks
+   - `altAnswers` for bounded alternatives
+   - `answerMode: 'example'` plus `acceptedPatterns` for personal/example-answer tasks with a fixed sentence frame
+   - truly open acceptance only when the source is genuinely open-ended
 
 ### Adding a review pack
 1. If the user wants the next pack automatically, run `bun run review-pack:next` first and use that scope.
@@ -68,6 +77,7 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 
 ### Step layout contract
 - `theory` / `examples` / `practice` steps: two-page book spread (`left` = `TheoryContent`, `right` = `ExamplesContent` or `PracticeContent`). Both sides are `Translated<T>` objects with `en` and `ru` keys.
+- `practice` content may be a single question list or sectioned into multiple subparts when the source exercise has distinct rubrics or answer modes.
 - `quiz` / `summary` steps: centred single-page layout, use a `content: Translated<...>` field instead of `left`/`right`.
 - `ReviewPack.steps` uses the same `Step[]` union as `Unit.steps`, so `StepRenderer` and `ProgressBar` work for both pages.
 
@@ -102,6 +112,9 @@ All styles are in `src/index.css` (no CSS modules or framework). Design tokens a
 
 ### Practice answer validation
 `PracticeQuestion` has an optional `altAnswers: string[]` field for alternative acceptable answers. `PracticeStep.tsx` checks user input against both `correctAnswer` and all `altAnswers`. Use this whenever a question has grammatically valid variants (contracted vs full verb forms).
+- `PracticeQuestion.answerMode: 'example'` is for model-answer tasks where the learner's content may differ, but the sentence frame should still be checked when the source cue fixes it.
+- `PracticeQuestion.acceptedPatterns` should be used for those structured personal/example-answer tasks instead of accepting any non-empty text.
+- `PracticeContent.sections`, `PracticeQuestion.cue`, and `PracticeQuestion.visual` exist so source exercise rubrics, cues, word banks, and picture-style prompts can be represented honestly instead of being flattened away.
 
 ### `explanation` and `points` fields
 These fields in `TheoryContent` and `SummaryContent` may contain simple inline HTML (`<b>`, `<em>`) and are rendered with `dangerouslySetInnerHTML`. Keep to those two tags only — no user-supplied content ever reaches these fields.

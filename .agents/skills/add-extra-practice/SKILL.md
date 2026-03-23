@@ -35,6 +35,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - Consult `references/catalog/README.md` together with only the relevant `references/catalog/additional-exercises/page-XXX.md` files for the requested range.
 - Use those catalog entries to find the real EPUB HTML pages under `references/EPUB/OEBPS/html/`, then inspect the source pages when accuracy or scope matters.
 - When inspecting source exercise HTML, check hidden answer/example blocks too. They may reveal multiple acceptable responses or show that a task is open-ended.
+- Note visible task design details too: sub-rubrics, worked examples, picture prompts, cue format, and word banks. Even in review packs, these details help distinguish fixed-answer tasks from bounded-open tasks.
 - Read the covered `src/data/units/unitN.ts` files to align the pack with the existing progression and terminology.
 
 ### 3. Resolve the pack scope
@@ -57,7 +58,7 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
   4. `practice` or `examples` for a second mixed round
   5. `quiz`
   6. `summary`
-- Split the pack into more than one `practice` / `examples` step when the source material clearly separates fixed-answer work, example-answer work, and true-sentence work.
+- Split the pack into more than one `practice` / `examples` step when the source material clearly separates fixed-answer work, example-answer work, picture prompts, word-bank tasks, and true-sentence work.
 - Keep every user-facing field bilingual with `en` and `ru`.
 - Keep theory accurate in meaning, but rewrite it from scratch.
 - Write fresh examples, prompts, quiz options, and explanations.
@@ -65,6 +66,9 @@ Create original multi-unit extra practice for the `essential-english-grammar` ap
 - If the source material suggests truth-based or example-answer tasks, preserve that openness in the review pack's instructions or redesign the task into bounded original practice. Do not silently convert it into a fake single-answer replica.
 - For open personal/example-answer prompts, do not default to "any non-empty text". If the prompt gives a structural cue such as `My ...`, `I ...`, or another fixed starter, pair `answerMode: 'example'` with `acceptedPatterns` so the app checks the sentence frame while still allowing personal content.
 - In `answerMode: 'example'`, keep `correctAnswer` / `altAnswers` only as model answers.
+- For bounded-open tasks, accept every supported variant but avoid broader free-text validation than the task really needs.
+- Use `PracticeContent.sections`, `cue`, `wordBank`, and `visual` when that preserves the chosen task design more faithfully.
+- If the current practice UI cannot represent the intended task cleanly, update the shared practice model/components instead of weakening the pack content.
 - Keep `highlight` as a literal substring of `english`.
 - Use only `<b>` and `<em>` inside `explanation` and `points`.
 - Use stable question ids with a pack prefix such as `rp34-p1` and `rp34-q1`.
