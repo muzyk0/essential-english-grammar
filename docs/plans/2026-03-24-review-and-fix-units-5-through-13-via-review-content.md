@@ -150,11 +150,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit12` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `didn't` and `Did ... ?`, base-form verbs after `did/didn't`, negative completion, mirrored `Did you ... ?` prompts, bounded personal past statements, and cue-based B questions.
-- [ ] Preserve correct material and fix only confirmed mismatches in grammar notes, example coverage, translations, `answerMode: 'example'`, `acceptedPatterns`, `altAnswers`, and exercise structure.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 13.
+- [x] Invoke `$review-content unit12` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `didn't` and `Did ... ?`, base-form verbs after `did/didn't`, negative completion, mirrored `Did you ... ?` prompts, bounded personal past statements, and cue-based B questions.
+- [x] Preserve correct material and fix only confirmed mismatches in grammar notes, example coverage, translations, `answerMode: 'example'`, `acceptedPatterns`, `altAnswers`, and exercise structure.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue. (Reviewed; no registration or status changes were needed.)
+- [x] Run `bun run build` before moving to unit 13.
 
 ### Task 9: Review and Fix Unit 13
 
