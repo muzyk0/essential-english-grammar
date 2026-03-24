@@ -85,4 +85,18 @@ describe('unit9', () => {
     ]);
     expect(finalQuestion?.options).not.toContain("I haven't a car.");
   });
+
+  test('keeps both short-answer families explicit in the summary', () => {
+    const summaryStep = unit9.steps.find((step) => step.id === 'step-6-summary');
+    expect(summaryStep).toBeDefined();
+    expect(summaryStep?.type).toBe('summary');
+
+    if (!summaryStep || summaryStep.type !== 'summary') return;
+
+    const shortAnswers = summaryStep.content.en.points[5] ?? '';
+    expect(shortAnswers).toContain('Yes, I do.');
+    expect(shortAnswers).toContain("No, I don't.");
+    expect(shortAnswers).toContain('Yes, I have.');
+    expect(shortAnswers).toContain("No, I haven't.");
+  });
 });

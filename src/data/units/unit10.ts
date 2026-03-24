@@ -1,5 +1,10 @@
 import type { Unit } from '../../types/unit';
 
+const WAS_LOCATION_PATTERNS = [
+  '^was\\s+(?:at|in|on|under|near|inside|outside|behind|beside|by|with|between)\\b(?:\\s+.+)?$',
+  '^was\\s+(?:home|here|there|upstairs|downstairs|away|abroad|inside|outside)$',
+];
+
 // Unit 10: was / were
 // Based on Essential Grammar in Use by Raymond Murphy (Unit 10)
 const unit10: Unit = {
@@ -344,7 +349,7 @@ const unit10: Unit = {
                   prompt: 'I ___.',
                   translation: 'Напишите одно правдивое предложение о том, где вы были вчера в три часа.',
                   correctAnswer: 'was at work',
-                  acceptedPatterns: ['^was\\s+.+$'],
+                  acceptedPatterns: WAS_LOCATION_PATTERNS,
                   explanation: 'Use the frame I was ... and finish it with your real place.',
                 },
               ],
@@ -676,7 +681,7 @@ const unit10: Unit = {
                   prompt: 'I ___.',
                   translation: 'Напишите одно правдивое предложение о том, где вы были вчера в три часа.',
                   correctAnswer: 'was at work',
-                  acceptedPatterns: ['^was\\s+.+$'],
+                  acceptedPatterns: WAS_LOCATION_PATTERNS,
                   explanation: 'Используйте рамку I was ... и дополните её своим местом.',
                 },
               ],
@@ -939,14 +944,14 @@ const unit10: Unit = {
                 'She be a nurse.',
               ],
               correctIndex: 1,
-              explanation: 'She takes was in the past.',
+              explanation: 'With she, use was for the past.',
             },
             {
               id: 'q10-2',
               question: 'Choose the correct negative form: "They ___ happy."',
               options: ["wasn't", "weren't", 'didn\'t be'],
               correctIndex: 1,
-              explanation: 'They takes were, so the negative is weren\'t.',
+              explanation: 'With they, use were, so the negative is weren\'t.',
             },
             {
               id: 'q10-3',

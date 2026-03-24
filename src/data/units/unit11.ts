@@ -1,7 +1,8 @@
 import type { ExampleItem, PracticeExample, PracticeQuestion, Unit } from '../../types/unit';
 
 const OPEN_PAST_PATTERNS = [
-  '^(?:[a-z]+ed|was|were|went|got|had|ate|made|did|saw|came|bought|met|left|took|wrote|read|spoke|drove|found|felt|ran|sat|stood|slept|paid|thought|heard|knew|said|told|gave|won|lost|flew|broke|brought|built|caught|drank|fell|forgot|kept|put|sold|spent|swam|taught|understood|wore|woke)\\b(?:\\s+.+)?$',
+  "^(?:didn['’]t|did\\s+not)\\s+[a-z]+(?:\\s+.+)?$",
+  '^(?:[a-z]{2,}ed|was|went|got|had|ate|made|did|saw|came|bought|met|left|took|wrote|read|spoke|drove|found|felt|ran|sat|stood|slept|paid|thought|heard|knew|said|told|gave|won|lost|flew|broke|brought|built|caught|drank|fell|forgot|kept|put|sold|spent|swam|taught|understood|wore|woke|fed|sent|cut|let|shut|set)\\b(?:\\s+.+)?$',
 ];
 
 const regularExamples: ExampleItem[] = [

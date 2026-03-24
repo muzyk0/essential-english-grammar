@@ -1,5 +1,5 @@
-import { Fragment, useRef, useState } from 'react';
-import type { KeyboardEvent, MutableRefObject } from 'react';
+import { Fragment, useState } from 'react';
+import type { KeyboardEvent } from 'react';
 import type {
   PracticeContent,
   PracticeQuestion,
@@ -8,6 +8,13 @@ import type {
   Language,
 } from '../../types/unit';
 import { useLanguage } from '../../context/LanguageContext';
+import {
+  getAnswerMode,
+  getBlankCount,
+  getBlankSpecs,
+  isPracticeAnswerCorrect,
+  normalizeAnswer,
+} from './practiceValidation';
 import TheoryPanel from './TheoryPanel';
 
 type Props = {
@@ -23,18 +30,11 @@ type AnswerState = {
   translationVisible: boolean;
 };
 
-type BlankSpec = {
-  correctAnswer: string;
-  altAnswers?: string[];
-  acceptedPatterns?: string[];
-};
-
 export default function PracticeStep({ step, lang }: Props) {
   const { t } = useLanguage();
   const right = step.right[lang];
   const sections = normalizePracticeSections(right);
   const allQuestions = sections.flatMap((section) => section.questions);
-  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   const [answers, setAnswers] = useState<Record<string, AnswerState>>(
     Object.fromEntries(allQuestions.map((q) => [q.id, createAnswerState(getBlankCount(q.prompt))]))
@@ -156,9 +156,17 @@ export default function PracticeStep({ step, lang }: Props) {
     return !state.checked && hasAllBlankValues(state, q);
   }).length;
 
+  const sectionStartIndices: number[] = [];
+  let nextSectionStart = 0;
+  for (const section of sections) {
+    sectionStartIndices.push(nextSectionStart);
+    nextSectionStart += section.questions.length;
+  }
+
   const focusQuestionInput = (questionId: string, blankIndex: number) => {
     requestAnimationFrame(() => {
-      const input = inputRefs.current[getInputRefKey(questionId, blankIndex)];
+      const selector = `input[data-question-id="${questionId}"][data-blank-index="${blankIndex}"]`;
+      const input = document.querySelector<HTMLInputElement>(selector);
       input?.focus();
       input?.select();
     });
@@ -176,9 +184,6 @@ export default function PracticeStep({ step, lang }: Props) {
       return;
     }
   };
-
-  let questionCounter = 0;
-
   return (
     <div className="book-spread">
       <TheoryPanel content={step.left[lang]} />
@@ -200,10 +205,8 @@ export default function PracticeStep({ step, lang }: Props) {
         </div>
 
         <div className="practice-sections">
-          {sections.map((section) => {
-            const startIndex = questionCounter;
-            questionCounter += section.questions.length;
-
+          {sections.map((section, sectionIndex) => {
+            const startIndex = sectionStartIndices[sectionIndex] ?? 0;
             return (
               <section key={section.id} className="practice-section">
                 {section.title && <h3 className="practice-section-title">{section.title}</h3>}
@@ -254,7 +257,7 @@ export default function PracticeStep({ step, lang }: Props) {
                             {q.cue && <div className="practice-cue">{q.cue}</div>}
 
                             <div className="practice-prompt">
-                              {renderPromptWithBlanks(q, state, handleInput, handleBlankKeyDown, inputRefs)}
+                              {renderPromptWithBlanks(q, state, handleInput, handleBlankKeyDown)}
                             </div>
 
                             {!state.checked ? (
@@ -359,8 +362,7 @@ function renderPromptWithBlanks(
   question: PracticeQuestion,
   state: AnswerState,
   onInput: (id: string, blankIndex: number, value: string) => void,
-  onKeyDown: (event: KeyboardEvent<HTMLInputElement>, question: PracticeQuestion, blankIndex: number) => void,
-  inputRefs: MutableRefObject<Record<string, HTMLInputElement | null>>
+  onKeyDown: (event: KeyboardEvent<HTMLInputElement>, question: PracticeQuestion, blankIndex: number) => void
 ) {
   const { prompt, id } = question;
   const parts = prompt.split('___');
@@ -387,9 +389,8 @@ function renderPromptWithBlanks(
               onKeyDown={(event) => onKeyDown(event, question, index)}
               disabled={state.checked && state.correct !== false}
               aria-label={`fill in the blank ${index + 1}`}
-              ref={(node) => {
-                inputRefs.current[getInputRefKey(id, index)] = node;
-              }}
+              data-question-id={id}
+              data-blank-index={index}
               style={getBlankInputStyle(specs[index]?.correctAnswer ?? '')}
             />
           )}
@@ -397,48 +398,6 @@ function renderPromptWithBlanks(
       ))}
     </>
   );
-}
-
-function getBlankCount(prompt: string) {
-  return Math.max(prompt.split('___').length - 1, 1);
-}
-
-function getBlankSpecs(question: PracticeQuestion): BlankSpec[] {
-  const blankCount = getBlankCount(question.prompt);
-
-  if (question.blankAnswers?.length === blankCount) {
-    return question.blankAnswers;
-  }
-
-  if (blankCount === 1) {
-    return [{
-      correctAnswer: question.correctAnswer,
-      altAnswers: question.altAnswers,
-      acceptedPatterns: question.acceptedPatterns,
-    }];
-  }
-
-  const separator = question.correctAnswer.includes(' ... ')
-    ? ' ... '
-    : question.correctAnswer.includes(' / ')
-      ? ' / '
-      : null;
-
-  if (separator) {
-    const parts = question.correctAnswer.split(separator).map((part) => part.trim());
-    if (parts.length === blankCount) {
-      return parts.map((part) => ({ correctAnswer: part }));
-    }
-  }
-
-  return [
-    { correctAnswer: question.correctAnswer, altAnswers: question.altAnswers },
-    ...Array.from({ length: blankCount - 1 }, () => ({ correctAnswer: '' })),
-  ];
-}
-
-function getAnswerMode(question: PracticeQuestion) {
-  return question.answerMode ?? 'exact';
 }
 
 function hasAllBlankValues(state: AnswerState, question: PracticeQuestion) {
@@ -452,42 +411,13 @@ function getAcceptedAnswerDisplay(question: PracticeQuestion) {
 }
 
 function createCheckedState(question: PracticeQuestion, state: AnswerState): AnswerState {
-  const answerMode = getAnswerMode(question);
-  const specs = getBlankSpecs(question);
-
-  const correct = answerMode === 'example'
-    ? specs.every((spec, index) => {
-        const userAnswer = state.values[index]?.trim() ?? '';
-        return matchesExampleAnswer(userAnswer, spec);
-      })
-    : specs.every((spec, index) => {
-        const userAnswer = normalizeAnswer(state.values[index] ?? '');
-        const allValid = [spec.correctAnswer, ...(spec.altAnswers ?? [])].map(normalizeAnswer);
-        return allValid.includes(userAnswer);
-      });
-
   return {
     ...state,
     checked: true,
-    correct,
+    correct: isPracticeAnswerCorrect(question, state.values),
     answerRevealed: false,
     translationVisible: false,
   };
-}
-
-function matchesExampleAnswer(userAnswer: string, spec: BlankSpec) {
-  const trimmed = userAnswer.trim();
-  if (!trimmed) return false;
-
-  if (!spec.acceptedPatterns?.length) return true;
-
-  return spec.acceptedPatterns.some((pattern) => {
-    try {
-      return new RegExp(pattern, 'i').test(trimmed);
-    } catch {
-      return false;
-    }
-  });
 }
 
 function formatAcceptedAnswers(answers: string[]) {
@@ -504,15 +434,7 @@ function formatAcceptedAnswers(answers: string[]) {
   return unique.join(' / ');
 }
 
-function normalizeAnswer(value: string) {
-  return value.trim().toLowerCase();
-}
-
 function getBlankInputStyle(correctAnswer: string) {
   const width = `${Math.max(6, Math.min(correctAnswer.length + 2, 28))}ch`;
   return { width, maxWidth: '100%' };
-}
-
-function getInputRefKey(questionId: string, blankIndex: number) {
-  return `${questionId}:${blankIndex}`;
 }

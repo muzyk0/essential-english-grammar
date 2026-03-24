@@ -6,6 +6,11 @@ import type {
   Unit,
 } from '../../types/unit';
 
+const WAS_LOCATION_PATTERNS = [
+  '^was\\s+(?:at|in|on|under|near|inside|outside|behind|beside|by|with|between)\\b(?:\\s+.+)?$',
+  '^was\\s+(?:home|here|there|upstairs|downstairs|away|abroad|inside|outside)$',
+];
+
 const actionExamples: ExampleItem[] = [
   {
     english: 'At four yesterday, Paul was at the sports club.',
@@ -198,7 +203,7 @@ const exercise1Questions: PracticeQuestion[] = [
     blankAnswers: [
       {
         correctAnswer: 'was at home',
-        acceptedPatterns: ['^was\\s+.+$'],
+        acceptedPatterns: WAS_LOCATION_PATTERNS,
       },
       {
         correctAnswer: 'was reading a book',
@@ -358,7 +363,7 @@ const exercise4Questions: PracticeQuestion[] = [
     type: 'fill-blank',
     cue: '(carry / a bag)',
     prompt: 'He ___ .',
-    translation: 'На нём была сумка.',
+    translation: 'Он нёс сумку.',
     correctAnswer: 'was carrying a bag',
     explanation: 'The picture shows a positive action.',
   },
@@ -821,7 +826,6 @@ const unit13: Unit = {
             'Use <b>what / where / why</b> when a question needs more than yes or no.',
             'Compare <b>am / is / are + -ing</b> for now with <b>was / were + -ing</b> for a past moment.',
           ],
-          nextUnit: 'Unit 14 — I was doing vs I did',
         },
         ru: {
           title: 'Итоги — Past continuous',
@@ -833,7 +837,6 @@ const unit13: Unit = {
             'Добавляйте <b>what / where / why</b>, если нужен не только ответ yes / no.',
             'Сравнивайте <b>am / is / are + -ing</b> для настоящего момента и <b>was / were + -ing</b> для прошлого.',
           ],
-          nextUnit: 'Юнит 14 — I was doing vs I did',
         },
       },
     },

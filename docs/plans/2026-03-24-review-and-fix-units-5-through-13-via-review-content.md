@@ -187,8 +187,8 @@ Files:
 - Verify: `src/data/units/unit12.ts`
 - Verify: `src/data/units/unit13.ts`
 
-- [ ] Run `bun run build` after all nine unit reviews are complete.
-- [ ] Confirm units 5 through 13 remain registered correctly and in order in `src/data/units/index.ts`.
-- [ ] Confirm `unit13` is still the latest unit entry in the repo and that `UNITS.md` still matches the reviewed unit set.
-- [ ] Record any remaining source ambiguities or shared follow-up work discovered during the build and registration check.
+- [x] Run `bun run build` after all nine unit reviews are complete. (Final review verification completed with a successful production build.)
+- [x] Confirm units 5 through 13 remain registered correctly and in order in `src/data/units/index.ts`.
+- [x] Confirm `unit13` is still the latest unit entry in the repo and that `UNITS.md` still matches the reviewed unit set.
+- [x] Record any remaining source ambiguities or shared follow-up work discovered during the build and registration check. (No additional ambiguities or shared follow-up work were found.)
 ---
