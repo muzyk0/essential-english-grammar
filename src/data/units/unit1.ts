@@ -284,30 +284,30 @@ const unit1: Unit = {
             {
               id: 'u1-ex1-main-en',
               examples: [
-                { cue: '1', answer: "he is -> he's", note: 'Example' },
+                { cue: '1', answer: "she is -> she's", note: 'Example' },
               ],
               questions: [
                 {
                   id: 'u1-ex1-2',
                   displayNumber: '2',
                   type: 'fill-blank',
-                  prompt: 'we are -> ___',
-                  correctAnswer: "we're",
+                  prompt: 'they are -> ___',
+                  correctAnswer: "they're",
                 },
                 {
                   id: 'u1-ex1-3',
                   displayNumber: '3',
                   type: 'fill-blank',
-                  prompt: 'they are not -> ___',
-                  correctAnswer: "they aren't",
-                  altAnswers: ["they're not"],
+                  prompt: 'it is not -> ___',
+                  correctAnswer: "it isn't",
+                  altAnswers: ["it's not"],
                 },
                 {
                   id: 'u1-ex1-4',
                   displayNumber: '4',
                   type: 'fill-blank',
-                  prompt: 'it is -> ___',
-                  correctAnswer: "it's",
+                  prompt: 'that is -> ___',
+                  correctAnswer: "that's",
                 },
                 {
                   id: 'u1-ex1-5',
@@ -320,8 +320,9 @@ const unit1: Unit = {
                   id: 'u1-ex1-6',
                   displayNumber: '6',
                   type: 'fill-blank',
-                  prompt: 'there is -> ___',
-                  correctAnswer: "there's",
+                  prompt: 'you are not -> ___',
+                  correctAnswer: "you aren't",
+                  altAnswers: ["you're not"],
                 },
               ],
             },
@@ -333,30 +334,30 @@ const unit1: Unit = {
             {
               id: 'u1-ex1-main-ru',
               examples: [
-                { cue: '1', answer: "he is -> he's", note: 'Пример' },
+                { cue: '1', answer: "she is -> she's", note: 'Пример' },
               ],
               questions: [
                 {
                   id: 'u1-ex1-2',
                   displayNumber: '2',
                   type: 'fill-blank',
-                  prompt: 'we are -> ___',
-                  correctAnswer: "we're",
+                  prompt: 'they are -> ___',
+                  correctAnswer: "they're",
                 },
                 {
                   id: 'u1-ex1-3',
                   displayNumber: '3',
                   type: 'fill-blank',
-                  prompt: 'they are not -> ___',
-                  correctAnswer: "they aren't",
-                  altAnswers: ["they're not"],
+                  prompt: 'it is not -> ___',
+                  correctAnswer: "it isn't",
+                  altAnswers: ["it's not"],
                 },
                 {
                   id: 'u1-ex1-4',
                   displayNumber: '4',
                   type: 'fill-blank',
-                  prompt: 'it is -> ___',
-                  correctAnswer: "it's",
+                  prompt: 'that is -> ___',
+                  correctAnswer: "that's",
                 },
                 {
                   id: 'u1-ex1-5',
@@ -369,8 +370,9 @@ const unit1: Unit = {
                   id: 'u1-ex1-6',
                   displayNumber: '6',
                   type: 'fill-blank',
-                  prompt: 'there is -> ___',
-                  correctAnswer: "there's",
+                  prompt: 'you are not -> ___',
+                  correctAnswer: "you aren't",
+                  altAnswers: ["you're not"],
                 },
               ],
             },
@@ -758,8 +760,8 @@ const unit1: Unit = {
         en: {
           title: 'Exercise 4 strategy',
           explanation:
-            'This exercise is <b>about you</b>. The sentence frame is fixed by the prompt, but the personal information is your own. ' +
-            'The app checks the structure of the answer, not the exact personal details.',
+            'This exercise is <b>about you</b>. Keep the sentence frame from the cue, but fill it with your own real information. ' +
+            'The pattern stays the same even though the details are personal.',
           table: {
             headers: ['Cue', 'Required frame'],
             rows: [
@@ -771,15 +773,15 @@ const unit1: Unit = {
             ],
           },
           notes: [
-            'Model answers are examples only. Your true information can be different.',
-            'This is not a free-text box: the sentence frame still has to match the cue.',
+            'Model answers are only examples. Your true details can be different.',
+            'Use the cue to keep the right sentence shape: for example, My name is ... or I\'m from ...',
           ],
         },
         ru: {
           title: 'Как делать упражнение 4',
           explanation:
-            'Это упражнение <b>о вас</b>. Каркас предложения задаёт подсказка, а личную информацию вы подставляете свою. ' +
-            'Приложение проверяет структуру ответа, а не конкретные личные данные.',
+            'Это упражнение <b>о вас</b>. Подсказка задаёт каркас предложения, а личную информацию вы подставляете свою. ' +
+            'Сама модель остаётся той же, даже если факты у каждого разные.',
           table: {
             headers: ['Подсказка', 'Нужная модель'],
             rows: [
@@ -791,8 +793,8 @@ const unit1: Unit = {
             ],
           },
           notes: [
-            'Образцы ответов - это только примеры. Ваши правдивые данные могут быть другими.',
-            'Это не свободное поле ввода: структура предложения всё равно должна соответствовать подсказке.',
+            'Образцы ответов - только примеры. Ваши правдивые данные могут быть другими.',
+            'Ориентируйтесь на подсказку и сохраняйте нужную модель: например, My name is ... или I\'m from ...',
           ],
         },
       },
@@ -863,7 +865,7 @@ const unit1: Unit = {
               translation: 'Напишите про любимый цвет или любимые цвета.',
               correctAnswer: 'favourite colour is green.',
               altAnswers: ['favourite colours are green and black.'],
-              acceptedPatterns: ["^favourite\\s+colou?rs?\\s+(is|['’]s|are)\\s+.+[.!?]?$"],
+              acceptedPatterns: ["^(favourite\\s+colour\\s+(is|['’]s)|favourite\\s+colours\\s+are)\\s+.+[.!?]?$"],
               explanation: 'Use My favourite colour is ... or My favourite colours are ...',
             },
             {
@@ -947,7 +949,7 @@ const unit1: Unit = {
               translation: 'Напишите про любимый цвет или любимые цвета.',
               correctAnswer: 'favourite colour is green.',
               altAnswers: ['favourite colours are green and black.'],
-              acceptedPatterns: ["^favourite\\s+colou?rs?\\s+(is|['’]s|are)\\s+.+[.!?]?$"],
+              acceptedPatterns: ["^(favourite\\s+colour\\s+(is|['’]s)|favourite\\s+colours\\s+are)\\s+.+[.!?]?$"],
               explanation: 'Используйте My favourite colour is ... или My favourite colours are ...',
             },
             {
@@ -975,35 +977,35 @@ const unit1: Unit = {
         en: {
           title: 'Exercise 5 strategy',
           explanation:
-            'This is a <b>picture sentence</b> exercise. Look at the scene, choose the right adjective from the word bank, and make a sentence with <em>is</em> or <em>are</em>.',
+            'This is a <b>picture sentence</b> exercise. Look at the picture, choose the right adjective from the word bank, and make a sentence with <em>is</em> or <em>are</em>.',
           table: {
-            headers: ['Picture shows ...', 'Sentence pattern'],
+            headers: ['Picture shows ...', 'What to write'],
             rows: [
-              ['one person', 'He\'s ... / She\'s ...'],
+              ['one person', 'He\'s ... / She\'s ... or the full form'],
               ['two or more people', 'They\'re ... / They are ...'],
-              ['the chosen adjective', 'cold / hot / hungry / scared ...'],
+              ['no subject is given', 'write the whole sentence yourself'],
             ],
           },
           notes: [
-            'The word bank is fixed, so the app checks the exact sentence rather than free text.',
-            'Use the subject that belongs to the picture: he, she or they.',
+            'Use only the adjectives from the word bank.',
+            'Sometimes the subject is already there, and sometimes you need to choose he, she or they from the picture.',
           ],
         },
         ru: {
           title: 'Как делать упражнение 5',
           explanation:
-            'Это упражнение на <b>картинки и предложения</b>. Посмотрите на сцену, выберите нужное прилагательное из набора слов и составьте предложение с <em>is</em> или <em>are</em>.',
+            'Это упражнение на <b>картинки и предложения</b>. Посмотрите на картинку, выберите нужное прилагательное из набора слов и составьте предложение с <em>is</em> или <em>are</em>.',
           table: {
-            headers: ['На картинке ...', 'Модель предложения'],
+            headers: ['На картинке ...', 'Что написать'],
             rows: [
-              ['один человек', 'He\'s ... / She\'s ...'],
+              ['один человек', 'He\'s ... / She\'s ... или полная форма'],
               ['двое или больше', 'They\'re ... / They are ...'],
-              ['нужное прилагательное', 'cold / hot / hungry / scared ...'],
+              ['подлежащее не дано', 'нужно написать всё предложение целиком'],
             ],
           },
           notes: [
-            'Набор слов фиксированный, поэтому приложение проверяет точное предложение, а не свободный текст.',
-            'Используйте подлежащее, которое подходит к картинке: he, she или they.',
+            'Используйте только прилагательные из набора слов.',
+            'Иногда подлежащее уже дано, а иногда его нужно выбрать по картинке: he, she или they.',
           ],
         },
       },
@@ -1013,8 +1015,8 @@ const unit1: Unit = {
           sections: [
             {
               id: 'u1-ex5-main-en',
-              instructions: 'Use the words in the box to complete the picture sentences.',
-              wordBank: ['angry', 'cold', 'hot', 'hungry', 'scared', 'thirsty'],
+              instructions: 'Use the remaining words in the box to complete the picture sentences.',
+              wordBank: ['angry', 'cold', 'hot', 'hungry', 'scared'],
               examples: [
                 { cue: '1', answer: "She's thirsty.", note: 'Example' },
               ],
@@ -1037,32 +1039,6 @@ const unit1: Unit = {
                   displayNumber: '3',
                   type: 'fill-blank',
                   visual: {
-                    emoji: '😨',
-                    title: 'A boy and a dog',
-                    description: 'He jumps back when the dog barks.',
-                  },
-                  prompt: 'He ___',
-                  correctAnswer: 'is scared.',
-                  altAnswers: ["'s scared."],
-                },
-                {
-                  id: 'u1-ex5-4',
-                  displayNumber: '4',
-                  type: 'fill-blank',
-                  visual: {
-                    emoji: '🍔',
-                    title: 'After school',
-                    description: 'The children are looking at the kitchen table.',
-                  },
-                  prompt: 'They ___',
-                  correctAnswer: 'are hungry.',
-                  altAnswers: ["'re hungry."],
-                },
-                {
-                  id: 'u1-ex5-5',
-                  displayNumber: '5',
-                  type: 'fill-blank',
-                  visual: {
                     emoji: '🥵',
                     title: 'On the bus',
                     description: 'The man is fanning himself in a heavy coat.',
@@ -1070,6 +1046,32 @@ const unit1: Unit = {
                   prompt: 'He ___',
                   correctAnswer: 'is hot.',
                   altAnswers: ["'s hot."],
+                },
+                {
+                  id: 'u1-ex5-4',
+                  displayNumber: '4',
+                  type: 'fill-blank',
+                  visual: {
+                    emoji: '😨',
+                    title: 'A boy and a dog',
+                    description: 'He jumps back when the dog barks.',
+                  },
+                  prompt: '___',
+                  correctAnswer: "He's scared.",
+                  altAnswers: ['He is scared.'],
+                },
+                {
+                  id: 'u1-ex5-5',
+                  displayNumber: '5',
+                  type: 'fill-blank',
+                  visual: {
+                    emoji: '🍔',
+                    title: 'After school',
+                    description: 'The children are looking at the kitchen table.',
+                  },
+                  prompt: '___',
+                  correctAnswer: "They're hungry.",
+                  altAnswers: ['They are hungry.'],
                 },
                 {
                   id: 'u1-ex5-6',
@@ -1080,9 +1082,9 @@ const unit1: Unit = {
                     title: 'Broken toy',
                     description: 'She is looking at the toy on the floor.',
                   },
-                  prompt: 'She ___',
-                  correctAnswer: 'is angry.',
-                  altAnswers: ["'s angry."],
+                  prompt: '___',
+                  correctAnswer: "She's angry.",
+                  altAnswers: ['She is angry.'],
                 },
               ],
             },
@@ -1093,8 +1095,8 @@ const unit1: Unit = {
           sections: [
             {
               id: 'u1-ex5-main-ru',
-              instructions: 'Используйте слова из набора, чтобы дополнить предложения по картинкам.',
-              wordBank: ['angry', 'cold', 'hot', 'hungry', 'scared', 'thirsty'],
+              instructions: 'Используйте оставшиеся слова из набора, чтобы дополнить предложения по картинкам.',
+              wordBank: ['angry', 'cold', 'hot', 'hungry', 'scared'],
               examples: [
                 { cue: '1', answer: "She's thirsty.", note: 'Пример' },
               ],
@@ -1117,32 +1119,6 @@ const unit1: Unit = {
                   displayNumber: '3',
                   type: 'fill-blank',
                   visual: {
-                    emoji: '😨',
-                    title: 'Мальчик и собака',
-                    description: 'Он отскакивает назад, когда собака лает.',
-                  },
-                  prompt: 'He ___',
-                  correctAnswer: 'is scared.',
-                  altAnswers: ["'s scared."],
-                },
-                {
-                  id: 'u1-ex5-4',
-                  displayNumber: '4',
-                  type: 'fill-blank',
-                  visual: {
-                    emoji: '🍔',
-                    title: 'После школы',
-                    description: 'Дети смотрят на кухонный стол.',
-                  },
-                  prompt: 'They ___',
-                  correctAnswer: 'are hungry.',
-                  altAnswers: ["'re hungry."],
-                },
-                {
-                  id: 'u1-ex5-5',
-                  displayNumber: '5',
-                  type: 'fill-blank',
-                  visual: {
                     emoji: '🥵',
                     title: 'В автобусе',
                     description: 'Мужчина обмахивается рукой в тёплом пальто.',
@@ -1150,6 +1126,32 @@ const unit1: Unit = {
                   prompt: 'He ___',
                   correctAnswer: 'is hot.',
                   altAnswers: ["'s hot."],
+                },
+                {
+                  id: 'u1-ex5-4',
+                  displayNumber: '4',
+                  type: 'fill-blank',
+                  visual: {
+                    emoji: '😨',
+                    title: 'Мальчик и собака',
+                    description: 'Он отскакивает назад, когда собака лает.',
+                  },
+                  prompt: '___',
+                  correctAnswer: "He's scared.",
+                  altAnswers: ['He is scared.'],
+                },
+                {
+                  id: 'u1-ex5-5',
+                  displayNumber: '5',
+                  type: 'fill-blank',
+                  visual: {
+                    emoji: '🍔',
+                    title: 'После школы',
+                    description: 'Дети смотрят на кухонный стол.',
+                  },
+                  prompt: '___',
+                  correctAnswer: "They're hungry.",
+                  altAnswers: ['They are hungry.'],
                 },
                 {
                   id: 'u1-ex5-6',
@@ -1160,9 +1162,9 @@ const unit1: Unit = {
                     title: 'Сломанная игрушка',
                     description: 'Она смотрит на игрушку на полу.',
                   },
-                  prompt: 'She ___',
-                  correctAnswer: 'is angry.',
-                  altAnswers: ["'s angry."],
+                  prompt: '___',
+                  correctAnswer: "She's angry.",
+                  altAnswers: ['She is angry.'],
                 },
               ],
             },
@@ -1178,37 +1180,37 @@ const unit1: Unit = {
         en: {
           title: 'Exercise 6 strategy',
           explanation:
-            'This exercise asks for <b>true sentences, positive or negative</b>. Some cues really allow both answers; others describe facts, so only one answer is sensible. ' +
-            'The important rule is to follow the rubric, not to guess a fake single-answer pattern.',
+            'This exercise asks for <b>true sentences, positive or negative</b>. Some cues depend on today or on you, so either answer may be true. ' +
+            'Other cues are general facts, so only one form makes sense.',
           table: {
-            headers: ['Task type', 'What the app should accept'],
+            headers: ['Cue type', 'How to answer'],
             rows: [
-              ['today / your situation', 'positive or negative'],
-              ['general fact', 'the one sensible answer'],
-              ['I ... statements', 'positive or negative within the fixed frame'],
+              ['today / your situation', 'choose the true positive or negative form'],
+              ['general fact', 'write the form that matches the fact'],
+              ['I ... statements', 'keep the frame and decide if it is true for you'],
             ],
           },
           notes: [
-            'When the prompt is open but bounded, accept every form the book logic allows, not arbitrary extra text.',
-            'This is different from Exercise 4: here the sentence content is mostly fixed and only the polarity may change.',
+            'Use only the forms asked for in the task: is / isn\'t, are / aren\'t, I\'m / I\'m not.',
+            'Most of the sentence is already given. Your job is to choose the right be form and the right polarity.',
           ],
         },
         ru: {
           title: 'Как делать упражнение 6',
           explanation:
-            'В этом упражнении нужны <b>правдивые предложения, положительные или отрицательные</b>. В одних подсказках реально подходят оба варианта, ' +
-            'а в других речь идёт о фактах, поэтому разумен только один ответ. Главное правило - следовать rubric задания, а не придумывать ложный single-answer режим.',
+            'В этом упражнении нужны <b>правдивые предложения, положительные или отрицательные</b>. Одни подсказки зависят от сегодняшней ситуации или от вас, ' +
+            'поэтому возможны оба варианта. Другие описывают факты, и там подходит только одна форма.',
           table: {
-            headers: ['Тип задания', 'Что должно приниматься'],
+            headers: ['Тип подсказки', 'Как отвечать'],
             rows: [
-              ['сегодня / ваша ситуация', 'положительный или отрицательный вариант'],
-              ['общий факт', 'один разумный ответ'],
-              ['предложения с I ...', 'положительный или отрицательный вариант в фиксированной рамке'],
+              ['сегодня / ваша ситуация', 'выберите правдивую положительную или отрицательную форму'],
+              ['общий факт', 'напишите форму, которая соответствует факту'],
+              ['предложения с I ...', 'сохраните модель и решите, верно это для вас или нет'],
             ],
           },
           notes: [
-            'Если подсказка открытая, но рамка фиксирована, нужно принимать все формы, которые допускает логика книги, а не произвольный текст.',
-            'Это отличается от Exercise 4: здесь содержание в основном задано, и меняется главным образом полярность.',
+            'Используйте только те формы, которые прямо указаны в задании: is / isn\'t, are / aren\'t, I\'m / I\'m not.',
+            'Большая часть предложения уже дана. Ваша задача - выбрать правильную форму be и нужную полярность.',
           ],
         },
       },
@@ -1506,9 +1508,10 @@ const unit1: Unit = {
           points: [
             'Use <b>am</b> with I, <b>is</b> with he/she/it and singular nouns, and <b>are</b> with we/you/they and plural nouns.',
             'Make the negative with <b>not</b>: I\'m not, isn\'t / is not, aren\'t / are not.',
-            'Short forms such as <b>I\'m</b>, <b>she\'s</b>, <b>that\'s</b>, <b>there\'s</b> and <b>here\'s</b> are very common.',
-            'Exercise types matter: some tasks want one exact answer, some allow model answers, and some accept positive or negative forms.',
-            'When the book fixes the sentence frame, the app should check that frame instead of allowing arbitrary text.',
+            'Use these forms to give basic information such as your name, age, nationality, job, interests and favourite things.',
+            'Short forms such as <b>I\'m</b>, <b>she\'s</b>, <b>that\'s</b>, <b>there\'s</b> and <b>here\'s</b> are very common in speech and informal writing.',
+            'With plural subjects, use <b>are</b>: My favourite sports are ..., They are ..., We aren\'t ...',
+            'Questions with <b>am / is / are</b> come next in Unit 2.',
           ],
           nextUnit: 'Unit 2 — am / is / are (questions)',
         },
@@ -1517,9 +1520,10 @@ const unit1: Unit = {
           points: [
             'Используйте <b>am</b> с I, <b>is</b> с he/she/it и существительными в единственном числе, а <b>are</b> с we/you/they и существительными во множественном числе.',
             'Отрицание образуется с <b>not</b>: I\'m not, isn\'t / is not, aren\'t / are not.',
-            'Краткие формы вроде <b>I\'m</b>, <b>she\'s</b>, <b>that\'s</b>, <b>there\'s</b> и <b>here\'s</b> очень частотны.',
-            'Тип упражнения важен: где-то нужен один точный ответ, где-то допустим образец, а где-то разрешены и положительная, и отрицательная формы.',
-            'Если книга задаёт фиксированный каркас предложения, приложение должно проверять именно этот каркас, а не принимать произвольный текст.',
+            'Эти формы нужны, когда вы сообщаете базовую информацию: имя, возраст, национальность, профессию, интересы и любимые вещи.',
+            'Краткие формы вроде <b>I\'m</b>, <b>she\'s</b>, <b>that\'s</b>, <b>there\'s</b> и <b>here\'s</b> очень частотны в речи и неформальном письме.',
+            'С подлежащими во множественном числе используйте <b>are</b>: My favourite sports are ..., They are ..., We aren\'t ...',
+            'Вопросы с <b>am / is / are</b> разбираются в Unit 2.',
           ],
           nextUnit: 'Юнит 2 — am / is / are (вопросы)',
         },
