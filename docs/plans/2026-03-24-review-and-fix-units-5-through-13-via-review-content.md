@@ -118,11 +118,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit10` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `was/were` as the past of `am/is/are`, picture-based location prompts, present-versus-past `be` selection, positive/negative completion with `was/were/wasn't/weren't`, and reordered `was/were` questions.
-- [ ] Preserve correct material and fix only confirmed mismatches in grammar framing, examples, translations, validation strictness, and exercise-type honesty.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 11.
+- [x] Invoke `$review-content unit10` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `was/were` as the past of `am/is/are`, picture-based location prompts, present-versus-past `be` selection, positive/negative completion with `was/were/wasn't/weren't`, and reordered `was/were` questions.
+- [x] Preserve correct material and fix only confirmed mismatches in grammar framing, examples, translations, validation strictness, and exercise-type honesty.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 11.
 
 ### Task 7: Review and Fix Unit 11
 
