@@ -51,11 +51,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit6` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `don't` versus `doesn't`, base-form verbs after `doesn't`, negative rewriting, the likes/dislikes matrix task, bounded self-statements, negative completion, and mixed positive-or-negative verb forms.
-- [ ] Preserve good existing material and fix only confirmed mismatches in explanations, examples, translations, validation strictness, acceptable variants, and section boundaries.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 7.
+- [x] Invoke `$review-content unit6` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `don't` versus `doesn't`, base-form verbs after `doesn't`, negative rewriting, the likes/dislikes matrix task, bounded self-statements, negative completion, and mixed positive-or-negative verb forms.
+- [x] Preserve good existing material and fix only confirmed mismatches in explanations, examples, translations, validation strictness, acceptable variants, and section boundaries.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 7.
 
 ### Task 3: Review and Fix Unit 7
 
