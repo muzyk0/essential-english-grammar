@@ -35,11 +35,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit5` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: present simple positive forms, third-person `-s/-es`, `have -> has`, picture-based sentence building, controlled completion, and word-order practice built from prompts.
-- [ ] Preserve good existing material and fix only confirmed mismatches in theory, examples, practice, quiz, summary, translations, validation strictness, `altAnswers`, and structural honesty.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 6.
+- [x] Invoke `$review-content unit5` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: present simple positive forms, third-person `-s/-es`, `have -> has`, picture-based sentence building, controlled completion, and word-order practice built from prompts.
+- [x] Preserve good existing material and fix only confirmed mismatches in theory, examples, practice, quiz, summary, translations, validation strictness, `altAnswers`, and structural honesty.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 6.
 
 ### Task 2: Review and Fix Unit 6
 
