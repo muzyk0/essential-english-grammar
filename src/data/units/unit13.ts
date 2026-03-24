@@ -6,9 +6,11 @@ import type {
   Unit,
 } from '../../types/unit';
 
+const PLACE_WORD_PATTERN = "[a-z0-9]+(?:[.'’-][a-z0-9]+)*(?:['’.])?";
+const PLACE_PHRASE_PATTERN = `${PLACE_WORD_PATTERN}(?:\\s+${PLACE_WORD_PATTERN})*`;
 const WAS_LOCATION_PATTERNS = [
-  '^was\\s+(?:at|in|on|under|near|inside|outside|behind|beside|by|with|between)\\b(?:\\s+.+)?$',
-  '^was\\s+(?:home|here|there|upstairs|downstairs|away|abroad|inside|outside)$',
+  `^was\\s+(?:at|in|on|under|near|inside|outside|behind|beside|by)\\s+${PLACE_PHRASE_PATTERN}(?:[.!?])?$`,
+  '^was\\s+(?:home|here|there|upstairs|downstairs|away|abroad|inside|outside)(?:[.!?])?$',
 ];
 
 const actionExamples: ExampleItem[] = [

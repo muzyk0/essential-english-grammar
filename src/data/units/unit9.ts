@@ -1,5 +1,14 @@
 import type { Unit } from '../../types/unit';
 
+const SIBLING_SINGULAR_GROUP_PATTERN = '(?:(?:a|one|1)\\s+(?:brother|sister))';
+const SIBLING_PLURAL_COUNT_PATTERN = '(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|[2-9]|[1-9]\\d+)';
+const SIBLING_PLURAL_GROUP_PATTERN = `${SIBLING_PLURAL_COUNT_PATTERN}\\s+(?:brothers|sisters)`;
+const SIBLING_GROUP_PATTERN = `(?:${SIBLING_SINGULAR_GROUP_PATTERN}|${SIBLING_PLURAL_GROUP_PATTERN})`;
+const SIBLING_POSSESSION_PATTERNS = [
+  `^(i('ve\\s+got|\\s+have\\s+got|\\s+have)\\s+(${SIBLING_GROUP_PATTERN}(\\s+and\\s+${SIBLING_GROUP_PATTERN})?))(?:[.!?])?$`,
+  "^(i\\s+(haven['’]t\\s+got|have\\s+not\\s+got|(don['’]t|do\\s+not)\\s+have)\\s+(any\\s+)?(brothers\\s+or\\s+sisters|brothers\\s+and\\s+sisters|brothers|sisters))(?:[.!?])?$",
+];
+
 // Unit 9: I have ... / I've got ...
 // Based on Essential Grammar in Use by Raymond Murphy (Unit 9)
 const unit9: Unit = {
@@ -568,10 +577,7 @@ const unit9: Unit = {
                   translation: 'Напишите одно правдивое предложение о том, есть ли у вас братья или сёстры.',
                   correctAnswer: "I've got a brother and a sister",
                   altAnswers: ['I have got a brother and a sister', 'I have a brother and a sister', "I haven't got any brothers or sisters", 'I have not got any brothers or sisters', "I don't have any brothers or sisters", 'I do not have any brothers or sisters'],
-                  acceptedPatterns: [
-                    "^(i('ve\\s+got|\\s+have\\s+got|\\s+have)\\s+((a|one|two|three)\\s+(brother|brothers|sister|sisters)(\\s+and\\s+(a|one|two|three)\\s+(brother|brothers|sister|sisters))?))$",
-                    "^(i\\s+(haven['’]t\\s+got|have\\s+not\\s+got|(don['’]t|do\\s+not)\\s+have)\\s+(any\\s+)?(brothers\\s+or\\s+sisters|brothers\\s+and\\s+sisters|brothers|sisters))$",
-                  ],
+                  acceptedPatterns: SIBLING_POSSESSION_PATTERNS,
                   explanation: 'Positive and negative sibling answers are both accepted if the sentence keeps the cue.',
                 },
               ],
@@ -1005,10 +1011,7 @@ const unit9: Unit = {
                   translation: 'Напишите одно правдивое предложение о том, есть ли у вас братья или сёстры.',
                   correctAnswer: "I've got a brother and a sister",
                   altAnswers: ['I have got a brother and a sister', 'I have a brother and a sister', "I haven't got any brothers or sisters", 'I have not got any brothers or sisters', "I don't have any brothers or sisters", 'I do not have any brothers or sisters'],
-                  acceptedPatterns: [
-                    "^(i('ve\\s+got|\\s+have\\s+got|\\s+have)\\s+((a|one|two|three)\\s+(brother|brothers|sister|sisters)(\\s+and\\s+(a|one|two|three)\\s+(brother|brothers|sister|sisters))?))$",
-                    "^(i\\s+(haven['’]t\\s+got|have\\s+not\\s+got|(don['’]t|do\\s+not)\\s+have)\\s+(any\\s+)?(brothers\\s+or\\s+sisters|brothers\\s+and\\s+sisters|brothers|sisters))$",
-                  ],
+                  acceptedPatterns: SIBLING_POSSESSION_PATTERNS,
                   explanation: 'Принимаются и утвердительные, и отрицательные ответы, если они сохраняют подсказку.',
                 },
               ],

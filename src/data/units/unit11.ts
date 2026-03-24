@@ -1,8 +1,30 @@
 import type { ExampleItem, PracticeExample, PracticeQuestion, Unit } from '../../types/unit';
 
-const OPEN_PAST_PATTERNS = [
-  "^(?:didn['’]t|did\\s+not)\\s+[a-z]+(?:\\s+.+)?$",
-  '^(?:[a-z]{2,}ed|was|went|got|had|ate|made|did|saw|came|bought|met|left|took|wrote|read|spoke|drove|found|felt|ran|sat|stood|slept|paid|thought|heard|knew|said|told|gave|won|lost|flew|broke|brought|built|caught|drank|fell|forgot|kept|put|sold|spent|swam|taught|understood|wore|woke|fed|sent|cut|let|shut|set)\\b(?:\\s+.+)?$',
+const ANSWER_WORD_PATTERN = "[a-z0-9]+(?:[:.,/'’\\-][a-z0-9]+)*(?:['’.])?";
+const PAST_SIMPLE_PRE_VERB_MODIFIER_PATTERN =
+  "(?:(?:just|only|really|finally|already|still|never|often|usually|always|sometimes|also|[a-z]+ly)\\s+)*";
+const PAST_SIMPLE_REGULAR_VERB_PATTERN = "[a-z]+(?:ed|ied)";
+const PAST_SIMPLE_DISTINCT_VERB_PATTERN = [
+  'ate', 'became', 'began', 'bit', 'blew', 'bought', 'broke', 'brought', 'built', 'burned',
+  'burnt', 'came', 'caught', 'chose', 'did', 'drank', 'dreamed', 'dreamt', 'drew', 'drove',
+  'dug', 'fell', 'fed', 'felt', 'flew', 'fought', 'forgot', 'found', 'gave', 'got', 'grew',
+  'had', 'heard', 'held', 'hid', 'hung', 'kept', 'knew', 'laid', 'lay', 'learned', 'learnt',
+  'led', 'left', 'lent', 'lit', 'lost', 'made', 'meant', 'met', 'paid', 'rang', 'ran', 'rode',
+  'rose', 'said', 'sang', 'sat', 'saw', 'sent', 'shone', 'shot', 'showed', 'slept', 'smelled',
+  'smelt', 'sold', 'spent', 'spoke', 'stood', 'stole', 'stuck', 'stung', 'swept', 'swam',
+  'swore', 'taught', 'thought', 'threw', 'told', 'took', 'tore', 'understood', 'went', 'won',
+  'woke', 'wore', 'wrote',
+].join('|');
+const PAST_SIMPLE_SAME_FORM_VERB_PATTERN = [
+  'beat', 'cost', 'cut', 'hit', 'hurt', 'let', 'put', 'read', 'set', 'shut',
+].join('|');
+const PAST_SIMPLE_POSITIVE_VERB_PATTERN = [
+  PAST_SIMPLE_REGULAR_VERB_PATTERN,
+  PAST_SIMPLE_DISTINCT_VERB_PATTERN,
+  PAST_SIMPLE_SAME_FORM_VERB_PATTERN,
+].join('|');
+const YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS = [
+  `^${PAST_SIMPLE_PRE_VERB_MODIFIER_PATTERN}(?:${PAST_SIMPLE_POSITIVE_VERB_PATTERN})(?:\\s+${ANSWER_WORD_PATTERN})*(?:[.!?])?$`,
 ];
 
 const regularExamples: ExampleItem[] = [
@@ -371,7 +393,7 @@ const exercise5Questions: PracticeQuestion[] = [
     prompt: 'Yesterday I ___.',
     translation: 'Напишите собственное предложение о том, что вы делали вчера.',
     correctAnswer: 'got up late',
-    acceptedPatterns: OPEN_PAST_PATTERNS,
+    acceptedPatterns: YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS,
   },
   {
     id: 'u11-ex5-3',
@@ -381,7 +403,7 @@ const exercise5Questions: PracticeQuestion[] = [
     prompt: 'Yesterday I ___.',
     translation: 'Напишите собственное предложение о том, что вы делали вчера.',
     correctAnswer: 'met some friends at lunchtime',
-    acceptedPatterns: OPEN_PAST_PATTERNS,
+    acceptedPatterns: YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS,
   },
   {
     id: 'u11-ex5-4',
@@ -391,7 +413,7 @@ const exercise5Questions: PracticeQuestion[] = [
     prompt: 'Yesterday I ___.',
     translation: 'Напишите собственное предложение о том, что вы делали вчера.',
     correctAnswer: 'went to the supermarket',
-    acceptedPatterns: OPEN_PAST_PATTERNS,
+    acceptedPatterns: YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS,
   },
   {
     id: 'u11-ex5-5',
@@ -401,7 +423,7 @@ const exercise5Questions: PracticeQuestion[] = [
     prompt: 'Yesterday I ___.',
     translation: 'Напишите собственное предложение о том, что вы делали вчера.',
     correctAnswer: 'phoned a lot of people',
-    acceptedPatterns: OPEN_PAST_PATTERNS,
+    acceptedPatterns: YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS,
   },
   {
     id: 'u11-ex5-6',
@@ -411,7 +433,7 @@ const exercise5Questions: PracticeQuestion[] = [
     prompt: 'Yesterday I ___.',
     translation: 'Напишите собственное предложение о том, что вы делали вчера.',
     correctAnswer: 'lost my keys',
-    acceptedPatterns: OPEN_PAST_PATTERNS,
+    acceptedPatterns: YESTERDAY_I_POSITIVE_COMPLETION_PATTERNS,
   },
 ];
 
