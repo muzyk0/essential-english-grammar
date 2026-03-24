@@ -102,11 +102,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit9` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `have` versus `have got`, equivalent negative and question forms, conversion drills in both directions, profile-building from question/answer cues, personal possession statements, and mixed `have/has/don't have/doesn't have` work.
-- [ ] Preserve good existing material and fix only confirmed mismatches in theory, examples, practice, quiz, summary, translations, contraction handling, `altAnswers`, and validation strictness.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 10.
+- [x] Invoke `$review-content unit9` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `have` versus `have got`, equivalent negative and question forms, conversion drills in both directions, profile-building from question/answer cues, personal possession statements, and mixed `have/has/don't have/doesn't have` work.
+- [x] Preserve good existing material and fix only confirmed mismatches in theory, examples, practice, quiz, summary, translations, contraction handling, `altAnswers`, and validation strictness.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 10.
 
 ### Task 6: Review and Fix Unit 10
 
