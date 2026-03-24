@@ -86,11 +86,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit8` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: present continuous for now, present simple for general facts and routines, picture-based `Does he ... ? / Is he ... ? / What is he doing?` contrasts, mixed auxiliary selection, and mixed tense choice.
-- [ ] Preserve correct material and fix only confirmed mismatches in contrast framing, theory accuracy, translations, validation strictness, and exercise structure.
-- [ ] If the current model cannot represent a source task honestly, make the required shared type or renderer change inside this task before finalizing the unit.
-- [ ] Run `bun run build` before moving to unit 9.
+- [x] Invoke `$review-content unit8` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: present continuous for now, present simple for general facts and routines, picture-based `Does he ... ? / Is he ... ? / What is he doing?` contrasts, mixed auxiliary selection, and mixed tense choice.
+- [x] Preserve correct material and fix only confirmed mismatches in contrast framing, theory accuracy, translations, validation strictness, and exercise structure.
+- [x] If the current model cannot represent a source task honestly, make the required shared type or renderer change inside this task before finalizing the unit. (No shared model change was needed.)
+- [x] Run `bun run build` before moving to unit 9.
 
 ### Task 5: Review and Fix Unit 9
 
