@@ -67,11 +67,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit7` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `do/does` question formation, subject-auxiliary-verb word order, yes/no prompts built from statements, reordered wh-questions, and completed question frames from a verb bank.
-- [ ] Preserve correct material and fix only confirmed mismatches in theory, examples, practice structure, quiz correctness, translations, and validation strictness.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 8.
+- [x] Invoke `$review-content unit7` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `do/does` question formation, subject-auxiliary-verb word order, yes/no prompts built from statements, reordered wh-questions, and completed question frames from a verb bank.
+- [x] Preserve correct material and fix only confirmed mismatches in theory, examples, practice structure, quiz correctness, translations, and validation strictness.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 8.
 
 ### Task 4: Review and Fix Unit 8
 
