@@ -166,11 +166,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit13` in fix mode, treat it as the current latest unit in the repo, and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: `was/were + -ing`, actions in progress at a past time, paired location-and-action picture answers, Sarah’s timed morning timeline, `was/were -ing` questions with `what/where/why`, and positive-or-negative picture descriptions.
-- [ ] Preserve correct material and fix only confirmed mismatches in theory, examples, practice structure, quiz, summary, translations, validation strictness, and source-faithful handling of paired-output and picture-based tasks.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to final verification.
+- [x] Invoke `$review-content unit13` in fix mode, treat it as the current latest unit in the repo, and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: `was/were + -ing`, actions in progress at a past time, paired location-and-action picture answers, Sarah’s timed morning timeline, `was/were -ing` questions with `what/where/why`, and positive-or-negative picture descriptions.
+- [x] Preserve correct material and fix only confirmed mismatches in theory, examples, practice structure, quiz, summary, translations, validation strictness, and source-faithful handling of paired-output and picture-based tasks.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue. (Reviewed; `unit13` remains the latest registered unit and `UNITS.md` is already correct.)
+- [x] Run `bun run build` before moving to final verification.
 
 ### Task 10: Final Verification
 
