@@ -134,11 +134,11 @@ Files:
 - Modify if needed: `src/data/units/index.ts`
 - Modify if needed: `UNITS.md`
 
-- [ ] Invoke `$review-content unit11` in fix mode and follow the required review-content read order.
-- [ ] Compare the current unit against the source focus areas: regular versus irregular past simple, spelling changes, verb-box completion, listing past forms, the Madrid journey narrative, and rewriting routine statements as past events.
-- [ ] Preserve correct material and fix only confirmed mismatches in theory, examples, exercise coverage, translations, validation strictness, and separation between regular, irregular, and narrative practice.
-- [ ] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
-- [ ] Run `bun run build` before moving to unit 12.
+- [x] Invoke `$review-content unit11` in fix mode and follow the required review-content read order.
+- [x] Compare the current unit against the source focus areas: regular versus irregular past simple, spelling changes, verb-box completion, listing past forms, the Madrid journey narrative, and rewriting routine statements as past events.
+- [x] Preserve correct material and fix only confirmed mismatches in theory, examples, exercise coverage, translations, validation strictness, and separation between regular, irregular, and narrative practice.
+- [x] Update `src/data/units/index.ts` or `UNITS.md` only if the review proves a real registration or status issue.
+- [x] Run `bun run build` before moving to unit 12.
 
 ### Task 8: Review and Fix Unit 12
 
