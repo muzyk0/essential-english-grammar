@@ -8,6 +8,7 @@ import unit11 from '../src/data/units/unit11';
 import unit12 from '../src/data/units/unit12';
 import unit13 from '../src/data/units/unit13';
 import unit14 from '../src/data/units/unit14';
+import unit15 from '../src/data/units/unit15';
 
 function getPracticeQuestion(unit: Unit, questionId: string): PracticeQuestion {
   for (const step of unit.steps) {
@@ -86,5 +87,22 @@ describe('practice validation', () => {
 
     expect(isPracticeAnswerCorrect(drivingQuestion, ['were you driving', 'came', 'was not driving'])).toBe(true);
     expect(isPracticeAnswerCorrect(drivingQuestion, ['did you drive', 'came', 'was not driving'])).toBe(false);
+  });
+
+  test('accepts contracted and full present-perfect answers in Unit 15 and rejects past-simple drift', () => {
+    const goneQuestion = getPracticeQuestion(unit15, 'u15-ex2-3');
+    const seenQuestion = getPracticeQuestion(unit15, 'u15-ex2-4');
+    const negativeQuestion = getPracticeQuestion(unit15, 'u15-ex2-13');
+
+    expect(isPracticeAnswerCorrect(goneQuestion, ["'s gone"])).toBe(true);
+    expect(isPracticeAnswerCorrect(goneQuestion, ['has gone'])).toBe(true);
+    expect(isPracticeAnswerCorrect(goneQuestion, ['went'])).toBe(false);
+
+    expect(isPracticeAnswerCorrect(seenQuestion, ['Have', 'seen'])).toBe(true);
+    expect(isPracticeAnswerCorrect(seenQuestion, ['Did', 'see'])).toBe(false);
+
+    expect(isPracticeAnswerCorrect(negativeQuestion, ["haven't told"])).toBe(true);
+    expect(isPracticeAnswerCorrect(negativeQuestion, ['have not told'])).toBe(true);
+    expect(isPracticeAnswerCorrect(negativeQuestion, ["didn't tell"])).toBe(false);
   });
 });

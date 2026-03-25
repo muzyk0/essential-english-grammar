@@ -113,15 +113,15 @@ Implement repeatable explicit-unit support for `$add-unit <unit N>` and `$review
 - Modify if needed: `src/components/steps/StepRenderer.tsx`
 - Modify if needed: `src/components/steps/practiceValidation.ts`
 
-- [ ] Use `references/catalog/units/unit-015.md` and the linked EPUB HTML files to create original bilingual Unit 15 content in `src/data/units/unit15.ts`.
-- [ ] Preserve the source exercise shape for Unit 15: picture/result-now prompts, a word box, and present perfect completion with contracted and full-form variants where appropriate.
-- [ ] Prefer existing validation features such as `altAnswers` for contracted/full forms before widening shared validation behavior.
-- [ ] Register `unit15` in numeric order in `src/data/units/index.ts` and mark Unit 15 as `done` in `UNITS.md`.
-- [ ] Run the review-content workflow against Unit 15 after generation so the command pair is proven repeatable for another explicit unit number.
-- [ ] Extend any shared model or UI changes only if Unit 15 needs the same real capability gap, not a second content-specific workaround.
-- [ ] Add tests for Unit 15 structure, preserved practice sections, and at least one representative present-perfect validation rule.
-- [ ] Run `bun test tests/unit15.test.ts tests/practiceValidation.test.ts`
-- [ ] Run `bun run build`
+- [x] Use `references/catalog/units/unit-015.md` and the linked EPUB HTML files to create original bilingual Unit 15 content in `src/data/units/unit15.ts`.
+- [x] Preserve the source exercise shape for Unit 15: picture/result-now prompts, a word box, and present perfect completion with contracted and full-form variants where appropriate.
+- [x] Prefer existing validation features such as `altAnswers` for contracted/full forms before widening shared validation behavior.
+- [x] Register `unit15` in numeric order in `src/data/units/index.ts` and mark Unit 15 as `done` in `UNITS.md`.
+- [x] Run the review-content workflow against Unit 15 after generation so the command pair is proven repeatable for another explicit unit number.
+- [x] Extend any shared model or UI changes only if Unit 15 needs the same real capability gap, not a second content-specific workaround.
+- [x] Add tests for Unit 15 structure, preserved practice sections, and at least one representative present-perfect validation rule.
+- [x] Run `bun test tests/unit15.test.ts tests/practiceValidation.test.ts`
+- [x] Run `bun run build`
 
 ### Task 4: Verify acceptance criteria
 
