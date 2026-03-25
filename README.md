@@ -7,6 +7,7 @@ The app is a bilingual (`en` / `ru`) learning companion. It should stay faithful
 ## Commands
 
 ```bash
+bun test
 bun dev
 bun run build
 bun run lint
@@ -15,7 +16,13 @@ bun run unit:next
 bun run review-pack:next
 ```
 
-`bun run build` is the main correctness check. There is no separate test suite.
+Use `bun test` for the Bun test suite, `bun run build` for TypeScript plus production-build verification, and `bun run lint` for ESLint checks.
+
+## Authoring Workflow
+
+- Start from `references/catalog/units/unit-NNN.md`, then inspect the linked EPUB HTML pages under `references/EPUB/OEBPS/html/`.
+- Create or update the unit in `src/data/units/unitN.ts`, then register it in `src/data/units/index.ts`.
+- In assistant-driven repo authoring, `$add-unit <unit N>` is the create/update step and `$review-content <unit N>` is the QA/check step for that same unit file. These are repo workflows, not runtime app features.
 
 ## Content Structure
 

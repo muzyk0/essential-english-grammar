@@ -1,7 +1,7 @@
 # Units Progress
 
 Tracking file for the Essential Grammar in Use interactive app.
-Updated automatically by the `/add-unit` command.
+Updated as unit files are authored, typically via `$add-unit <unit N>` and then checked with `$review-content <unit N>`.
 
 ## Status legend
 - `done`  — full content (theory + examples + practice + quiz + summary)

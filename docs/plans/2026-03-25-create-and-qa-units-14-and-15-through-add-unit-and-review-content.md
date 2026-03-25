@@ -142,14 +142,14 @@ Verification note: this repository still has no dedicated coverage tooling. Acce
 - Modify: `UNITS.md`
 - Verify if needed: `docs/plans/`
 
-- [ ] Update `README.md` so command guidance, validation guidance, and the presence of Bun tests match the actual repo state.
-- [ ] Update `AGENTS.md` and `CLAUDE.md` only where command wording, test guidance, or source-path guidance still conflicts with the implemented `$add-unit` and `$review-content` workflows.
-- [ ] Keep `UNITS.md` intro wording aligned with the supported authoring command wording and with Units 14 and 15 marked `done`.
-- [ ] Re-run `bun test tests/authoringWorkflow.test.ts` after doc and prompt wording changes if those files are touched.
-- [ ] Run `bun test`
-- [ ] Run `bun run build`
-- [ ] Run `bun run lint`
-- [ ] After implementation is complete, move this plan to `docs/plans/completed/` only if that repository workflow is adopted and the destination directory is created.
+- [x] Update `README.md` so command guidance, validation guidance, and the presence of Bun tests match the actual repo state.
+- [x] Update `AGENTS.md` and `CLAUDE.md` only where command wording, test guidance, or source-path guidance still conflicts with the implemented `$add-unit` and `$review-content` workflows.
+- [x] Keep `UNITS.md` intro wording aligned with the supported authoring command wording and with Units 14 and 15 marked `done`.
+- [x] Re-run `bun test tests/authoringWorkflow.test.ts` after doc and prompt wording changes if those files are touched.
+- [x] Run `bun test`
+- [x] Run `bun run build`
+- [x] Run `bun run lint`
+- [x] After implementation is complete, move this plan to `docs/plans/completed/` only if that repository workflow is adopted and the destination directory is created. Skipped: `docs/plans/completed/` does not exist and that workflow is not adopted in this repo.
 
 ## Validation Commands
 - `bun test tests/authoringWorkflow.test.ts`

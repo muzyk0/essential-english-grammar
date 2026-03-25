@@ -29,6 +29,23 @@ const reviewDocs = [
   },
 ];
 
+const repoDocs = [
+  {
+    path: 'README.md',
+    content: readRepoFile('README.md'),
+  },
+  {
+    path: 'AGENTS.md',
+    content: readRepoFile('AGENTS.md'),
+  },
+  {
+    path: 'CLAUDE.md',
+    content: readRepoFile('CLAUDE.md'),
+  },
+];
+
+const unitsDoc = readRepoFile('UNITS.md');
+
 describe('authoring workflow prompts', () => {
   test('use the catalog-to-EPUB-to-unit flow and avoid stale markdown references', () => {
     for (const file of [...addUnitDocs, ...reviewDocs]) {
@@ -67,5 +84,21 @@ describe('authoring workflow prompts', () => {
     expect(addUnitAgent).toContain('$add-unit next');
     expect(reviewAgent).toContain('$review-content <unit N>');
     expect(reviewAgent).toContain('specified unit');
+  });
+
+  test('keep repo docs aligned with the explicit unit authoring workflow', () => {
+    for (const file of repoDocs) {
+      expect(file.content, file.path).toContain('bun test');
+      expect(file.content, file.path).toContain('$add-unit <unit N>');
+      expect(file.content, file.path).toContain('$review-content <unit N>');
+      expect(file.content, file.path).toContain('src/data/units/unitN.ts');
+      expect(file.content, file.path).toContain('references/catalog/units/unit-NNN.md');
+      expect(file.content, file.path).not.toContain('No test suite is configured');
+      expect(file.content, file.path).not.toContain('There is no separate test suite');
+    }
+
+    expect(unitsDoc).toContain('$add-unit <unit N>');
+    expect(unitsDoc).toContain('$review-content <unit N>');
+    expect(unitsDoc).not.toContain('/add-unit');
   });
 });
