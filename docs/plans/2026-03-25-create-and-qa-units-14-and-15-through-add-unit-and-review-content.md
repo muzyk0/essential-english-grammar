@@ -125,11 +125,13 @@ Implement repeatable explicit-unit support for `$add-unit <unit N>` and `$review
 
 ### Task 4: Verify acceptance criteria
 
-- [ ] Run `bun test`
-- [ ] Run `bun run build`
-- [ ] Run `bun run lint`
-- [ ] Re-check that the feature remains repo-local: no new React route, no command UI in the app, no backend service, and no changes in `src/data/review-packs/` unless a real dependency is discovered.
-- [ ] Document that the repository does not currently have coverage tooling; do not add a separate coverage system as part of this feature unless scope changes.
+- [x] Run `bun test`
+- [x] Run `bun run build`
+- [x] Run `bun run lint`
+- [x] Re-check that the feature remains repo-local: no new React route, no command UI in the app, no backend service, and no changes in `src/data/review-packs/` unless a real dependency is discovered.
+- [x] Document that the repository does not currently have coverage tooling; do not add a separate coverage system as part of this feature unless scope changes.
+
+Verification note: this repository still has no dedicated coverage tooling. Acceptance for this feature remains based on `bun test`, `bun run build`, and `bun run lint`, and no separate coverage system was added.
 
 ### Task 5: Update documentation
 
