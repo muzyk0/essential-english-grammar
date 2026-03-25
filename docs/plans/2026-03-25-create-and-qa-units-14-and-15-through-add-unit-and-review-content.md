@@ -90,15 +90,15 @@ Implement repeatable explicit-unit support for `$add-unit <unit N>` and `$review
 - Modify if needed: `src/components/steps/StepRenderer.tsx`
 - Modify if needed: `src/components/steps/practiceValidation.ts`
 
-- [ ] Use `references/catalog/units/unit-014.md` and the linked EPUB HTML files to create original bilingual Unit 14 content in `src/data/units/unit14.ts`.
-- [ ] Preserve the observed source exercise structure instead of flattening it: picture-led past continuous vs past simple work and mixed-tense completion with bounded answers.
-- [ ] Reuse the existing practice model first: sectioned practice, `visual` or cue-style prompts, multi-blank answers, and strict exact validation.
-- [ ] Register `unit14` in numeric order in `src/data/units/index.ts` and mark Unit 14 as `done` in `UNITS.md`.
-- [ ] Run the review-content workflow against Unit 14 and fold any content-accuracy or exercise-shape corrections into the same task before proceeding.
-- [ ] If Unit 14 reveals a genuine representation gap, make the smallest shared change necessary in the unit types or practice renderer instead of encoding a content-level workaround.
-- [ ] Add tests for Unit 14 structure, preserved exercise boundaries, and at least one representative validation rule from the new practice content.
-- [ ] Run `bun test tests/unit14.test.ts tests/practiceValidation.test.ts`
-- [ ] Run `bun run build`
+- [x] Use `references/catalog/units/unit-014.md` and the linked EPUB HTML files to create original bilingual Unit 14 content in `src/data/units/unit14.ts`.
+- [x] Preserve the observed source exercise structure instead of flattening it: picture-led past continuous vs past simple work and mixed-tense completion with bounded answers.
+- [x] Reuse the existing practice model first: sectioned practice, `visual` or cue-style prompts, multi-blank answers, and strict exact validation.
+- [x] Register `unit14` in numeric order in `src/data/units/index.ts` and mark Unit 14 as `done` in `UNITS.md`.
+- [x] Run the review-content workflow against Unit 14 and fold any content-accuracy or exercise-shape corrections into the same task before proceeding.
+- [x] If Unit 14 reveals a genuine representation gap, make the smallest shared change necessary in the unit types or practice renderer instead of encoding a content-level workaround.
+- [x] Add tests for Unit 14 structure, preserved exercise boundaries, and at least one representative validation rule from the new practice content.
+- [x] Run `bun test tests/unit14.test.ts tests/practiceValidation.test.ts`
+- [x] Run `bun run build`
 
 ### Task 3: Implement Unit 15 through the `$add-unit` path and validate it through `$review-content`
 

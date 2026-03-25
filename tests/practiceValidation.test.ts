@@ -7,6 +7,7 @@ import unit10 from '../src/data/units/unit10';
 import unit11 from '../src/data/units/unit11';
 import unit12 from '../src/data/units/unit12';
 import unit13 from '../src/data/units/unit13';
+import unit14 from '../src/data/units/unit14';
 
 function getPracticeQuestion(unit: Unit, questionId: string): PracticeQuestion {
   for (const step of unit.steps) {
@@ -46,11 +47,11 @@ describe('practice validation', () => {
     expect(isPracticeAnswerCorrect(question, ['was tired'])).toBe(false);
   });
 
-  test('accepts past-simple negatives in unit11 and rejects nonsense regular forms', () => {
+  test('accepts positive past-simple example answers in unit11 and rejects nonsense input', () => {
     const question = getPracticeQuestion(unit11, 'u11-ex5-2');
 
-    expect(isPracticeAnswerCorrect(question, ["didn't have a shower"])).toBe(true);
-    expect(isPracticeAnswerCorrect(question, ['bed'])).toBe(false);
+    expect(isPracticeAnswerCorrect(question, ['got up late'])).toBe(true);
+    expect(isPracticeAnswerCorrect(question, ['go home'])).toBe(false);
   });
 
   test('checks both example-mode and exact answers in unit12', () => {
@@ -68,5 +69,22 @@ describe('practice validation', () => {
 
     expect(isPracticeAnswerCorrect(question, ['was at home', 'was reading a book'])).toBe(true);
     expect(isPracticeAnswerCorrect(question, ['was tired', 'was reading a book'])).toBe(false);
+  });
+
+  test('keeps Unit 14 picture stories exact and accepts bounded negative variants', () => {
+    const pictureQuestion = getPracticeQuestion(unit14, 'u14-ex1-3');
+    const drivingQuestion = getPracticeQuestion(unit14, 'u14-ex2-5');
+
+    expect(isPracticeAnswerCorrect(
+      pictureQuestion,
+      ['was walking', 'met', 'was going', 'was carrying', 'stopped'],
+    )).toBe(true);
+    expect(isPracticeAnswerCorrect(
+      pictureQuestion,
+      ['walked', 'met', 'was going', 'was carrying', 'stopped'],
+    )).toBe(false);
+
+    expect(isPracticeAnswerCorrect(drivingQuestion, ['were you driving', 'came', 'was not driving'])).toBe(true);
+    expect(isPracticeAnswerCorrect(drivingQuestion, ['did you drive', 'came', 'was not driving'])).toBe(false);
   });
 });
