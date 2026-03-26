@@ -64,7 +64,7 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
   if (!pack || !step) {
     return (
       <div className="error-page">
-        <h2>Review pack not found</h2>
+        <h2>{t('error.reviewPackNotFound')}</h2>
         <Link to="/" className="btn btn--primary">{t('btn.backToHome')}</Link>
       </div>
     );

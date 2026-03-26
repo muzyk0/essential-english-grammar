@@ -26,9 +26,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# ralphex progress logs
-.ralphex/progress/
-.ralphex/*.log
-.ralphex/*.pid
-!.ralphex/progress/
-!.ralphex/progress/**
+# ralphex runtime artifacts
+.ralphex/

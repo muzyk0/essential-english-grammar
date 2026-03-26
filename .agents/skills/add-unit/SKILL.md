@@ -58,7 +58,8 @@ Treat `$add-unit <unit N>` as the create stage for a specified unit. This is a r
 ### 5. Verify
 
 - Run `bun run build`.
-- Fix any TypeScript or Vite issues before finishing.
+- Run targeted `bun test ...` commands for `tests/unitN.test.ts` and any shared files touched during authoring.
+- Fix any TypeScript, Vite, or test issues before finishing.
 
 ### 6. Report
 

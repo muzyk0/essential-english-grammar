@@ -373,7 +373,6 @@ const exercise4Questions: PracticeQuestion[] = [
     prompt: 'Our friends often come to see us. They ___ last Friday.',
     translation: 'Наши друзья часто приходят к нам. В прошлую пятницу они пришли к нам.',
     correctAnswer: 'came to see us',
-    altAnswers: ['came'],
   },
 ];
 

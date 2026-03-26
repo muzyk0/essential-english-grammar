@@ -828,6 +828,7 @@ const unit13: Unit = {
             'Use <b>what / where / why</b> when a question needs more than yes or no.',
             'Compare <b>am / is / are + -ing</b> for now with <b>was / were + -ing</b> for a past moment.',
           ],
+          nextUnit: 'Unit 14 — I was doing vs I did',
         },
         ru: {
           title: 'Итоги — Past continuous',
@@ -839,6 +840,7 @@ const unit13: Unit = {
             'Добавляйте <b>what / where / why</b>, если нужен не только ответ yes / no.',
             'Сравнивайте <b>am / is / are + -ing</b> для настоящего момента и <b>was / were + -ing</b> для прошлого.',
           ],
+          nextUnit: 'Юнит 14 — I was doing vs I did',
         },
       },
     },

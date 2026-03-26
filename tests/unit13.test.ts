@@ -111,6 +111,7 @@ describe('unit13', () => {
 
     if (!summaryStep || summaryStep.type !== 'summary') return;
 
-    expect(summaryStep.content.en.nextUnit).toBeUndefined();
+    expect(summaryStep.content.en.nextUnit).toBe('Unit 14 — I was doing vs I did');
+    expect(summaryStep.content.ru.nextUnit).toBe('Юнит 14 — I was doing vs I did');
   });
 });

@@ -50,6 +50,8 @@ export const UI_STRINGS: Record<string, Record<Language, string>> = {
   'review.covers': { en: 'Covers', ru: 'Охват' },
   'review.related': { en: 'Related review packs', ru: 'Связанные пакеты повторения' },
   'review.includedUnits': { en: 'Included units', ru: 'Юниты в подборке' },
+  'error.reviewPackNotFound': { en: 'Review pack not found', ru: 'Пакет повторения не найден' },
+  'error.unitNotFound': { en: 'Unit not found', ru: 'Юнит не найден' },
   'summary.next': { en: 'Next:', ru: 'Дальше:' },
   'unit.theory': { en: 'Theory', ru: 'Теория' },
   'unit.examples': { en: 'Examples', ru: 'Примеры' },

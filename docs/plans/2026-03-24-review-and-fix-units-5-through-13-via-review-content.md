@@ -11,10 +11,10 @@ Review `unit5` through `unit13` sequentially by invoking `$review-content unitN`
 - EPUB inputs: `references/EPUB/OEBPS/html/ESSB01U005P001.html` through `references/EPUB/OEBPS/html/ESSB01U013P002.html`
 - Related patterns: bilingual inline unit content, `PracticeContent.sections`, `PracticeQuestion.altAnswers`, `PracticeQuestion.answerMode`, `PracticeQuestion.acceptedPatterns`, and registration order in `src/data/units/index.ts`
 - Dependencies: local EPUB HTML references and the Bun build pipeline
-- Constraint: no dedicated automated test suite exists, so `bun run build` is the blocking validation step after each task
+- Constraint: no dedicated coverage tooling exists, so each task must pass targeted `bun test ...` checks plus `bun run build` to catch data regressions in `acceptedPatterns` and `altAnswers`
 
 ## Development Approach
-- Testing approach: Regular, with targeted fixes followed by `bun run build`
+- Testing approach: Regular, with targeted fixes followed by relevant `bun test ...` runs and `bun run build`
 - Complete each unit fully before starting the next one
 - Start every unit task with `$review-content unitN` in fix mode and follow the skill read order: `AGENTS.md`, `CLAUDE.md`, `src/types/unit.ts`, the target unit file, `src/data/units/index.ts`, `UNITS.md`, `references/catalog/README.md`, the matching catalog entry, and the referenced EPUB HTML pages
 - Use `references/catalog/` only as navigation metadata; use the EPUB HTML theory and exercise pages, including hidden answer/example blocks, as the editorial source of truth

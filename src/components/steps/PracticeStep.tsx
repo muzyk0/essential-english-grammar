@@ -214,8 +214,8 @@ export default function PracticeStep({ step, lang }: Props) {
 
                 {section.wordBank && section.wordBank.length > 0 && (
                   <div className="practice-word-bank">
-                    {section.wordBank.map((word) => (
-                      <span key={word} className="practice-word-chip">{word}</span>
+                    {section.wordBank.map((word, wordIndex) => (
+                      <span key={`${section.id}-${wordIndex}-${word}`} className="practice-word-chip">{word}</span>
                     ))}
                   </div>
                 )}

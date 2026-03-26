@@ -13,11 +13,15 @@ describe('unit8', () => {
 
     expect(practiceStep.right.en.sections).toHaveLength(3);
     expect(practiceStep.right.ru.sections).toHaveLength(3);
-    expect(practiceStep.right.en.sections?.map((section) => section.title)).toEqual([
-      'Exercise 1 — Answer the picture questions',
-      "Exercise 2 — Choose am/is/are or do/don't/does/doesn't",
-      'Exercise 3 — Choose present continuous or present simple',
+    expect(practiceStep.right.en.sections?.map((section) => section.id)).toEqual([
+      'u8-ex1-picture-questions-en',
+      'u8-ex2-auxiliaries-en',
+      'u8-ex3-tense-choice-en',
     ]);
+    for (const section of practiceStep.right.en.sections ?? []) {
+      expect(section.title?.trim()).toBeTruthy();
+      expect(section.questions.length).toBeGreaterThan(0);
+    }
   });
 
   test('models the picture contrast exercise with worked examples and strict short-answer variants', () => {

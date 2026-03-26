@@ -703,6 +703,7 @@ const unit9: Unit = {
                   prompt: 'An ant ___.',
                   translation: 'У муравья шесть ног.',
                   correctAnswer: 'has got six legs',
+                  altAnswers: ["'s got six legs"],
                   explanation: 'Use the positive got form with it / an ant.',
                 },
                 {

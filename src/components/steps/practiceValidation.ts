@@ -54,7 +54,7 @@ export function isPracticeAnswerCorrect(question: PracticeQuestion, values: stri
 
   return answerMode === 'example'
     ? specs.every((spec, index) => {
-        const userAnswer = values[index]?.trim() ?? '';
+        const userAnswer = values[index] ?? '';
         return matchesExampleAnswer(userAnswer, spec);
       })
     : specs.every((spec, index) => {
@@ -65,18 +65,22 @@ export function isPracticeAnswerCorrect(question: PracticeQuestion, values: stri
 }
 
 export function normalizeAnswer(value: string) {
-  return value.trim().toLowerCase();
+  return value
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
 }
 
 function matchesExampleAnswer(userAnswer: string, spec: BlankSpec) {
-  const trimmed = userAnswer.trim();
-  if (!trimmed) return false;
+  const normalized = normalizeAnswer(userAnswer);
+  if (!normalized) return false;
 
   if (!spec.acceptedPatterns?.length) return true;
 
   return spec.acceptedPatterns.some((pattern) => {
     try {
-      return new RegExp(pattern, 'i').test(trimmed);
+      return new RegExp(pattern, 'i').test(normalized);
     } catch {
       return false;
     }

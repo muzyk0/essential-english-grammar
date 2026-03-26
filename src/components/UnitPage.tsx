@@ -62,7 +62,7 @@ function UnitPageContent({ unitId }: { unitId?: string }) {
   if (!unit || !step) {
     return (
       <div className="error-page">
-        <h2>Unit not found</h2>
+        <h2>{t('error.unitNotFound')}</h2>
         <Link to="/" className="btn btn--primary">{t('btn.backToUnits')}</Link>
       </div>
     );

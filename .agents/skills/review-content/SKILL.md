@@ -14,8 +14,8 @@ Treat `$review-content <unit N>` as the QA and check stage after creating `src/d
 ### 1. Resolve the target and mode
 
 - If the user names a unit number such as `14` or a label such as `unit14`, use `src/data/units/unitN.ts`.
-- If the user gives a direct path to a unit file, use it.
-- If the user explicitly gives a review-pack file path, use that as a secondary path.
+- When the user provides a direct path to a unit file, use it.
+- Treat an explicitly provided review-pack file path as a secondary path.
 - If the user gives no target, inspect the changed files and continue only when exactly one changed `src/data/units/unitN.ts` file is obvious.
 - Default to `fix` mode. Switch to `review-only` mode only when the user explicitly asks for findings without edits.
 - Announce the resolved target and mode before editing.

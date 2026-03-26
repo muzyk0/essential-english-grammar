@@ -13,13 +13,17 @@ describe('unit12', () => {
 
     expect(practiceStep.right.en.sections).toHaveLength(5);
     expect(practiceStep.right.ru.sections).toHaveLength(5);
-    expect(practiceStep.right.en.sections?.map((section) => section.title)).toEqual([
-      'Exercise 1 - Complete with the negative form',
-      'Exercise 2 - Write questions with Did you ... ?',
-      'Exercise 3 - Write a true positive or negative sentence',
-      "Exercise 4 - Write B's questions",
-      'Exercise 5 - Choose the correct past form',
+    expect(practiceStep.right.en.sections?.map((section) => section.id)).toEqual([
+      'u12-ex1-en',
+      'u12-ex2-en',
+      'u12-ex3-en',
+      'u12-ex4-en',
+      'u12-ex5-en',
     ]);
+    for (const section of practiceStep.right.en.sections ?? []) {
+      expect(section.title?.trim()).toBeTruthy();
+      expect(section.questions.length).toBeGreaterThan(0);
+    }
   });
 
   test('keeps bounded personal answers and cue-based questions aligned with the source', () => {

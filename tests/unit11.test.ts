@@ -58,7 +58,7 @@ describe('unit11', () => {
 
     const friends = rewriteSection?.questions.find((question) => question.id === 'u11-ex4-8');
     expect(friends?.correctAnswer).toBe('came to see us');
-    expect(friends?.altAnswers).toContain('came');
+    expect(friends?.altAnswers).toBeUndefined();
   });
 
   test('uses bounded example-mode validation for the final open practice section', () => {

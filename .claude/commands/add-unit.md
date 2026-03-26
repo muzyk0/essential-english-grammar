@@ -71,6 +71,7 @@ Update `UNITS.md`:
 ## Step 4 - Verify
 
 Run `bun run build` and fix any TypeScript or Vite errors before finishing.
+Run targeted `bun test ...` commands for `tests/unitN.test.ts` and any shared files touched during authoring, and finish only when those tests pass.
 
 ## Step 5 - Report
 
