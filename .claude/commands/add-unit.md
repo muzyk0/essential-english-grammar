@@ -1,103 +1,85 @@
-Add a new unit to the Essential Grammar in Use interactive app.
+Add or update one grammar unit in the Essential Grammar in Use app.
 
-## Step 0 — Resolve the unit number
+Examples:
+- `$add-unit 14`
+- `$add-unit 15`
+- `$add-unit next`
+
+Treat `$add-unit <unit N>` as the create stage for a specific unit. This is a repo authoring workflow, not a runtime app feature.
+
+## Step 0 - Resolve the unit number
 
 Read `UNITS.md` first.
 
 - If `$ARGUMENTS` is `next`:
   - Prefer running `bun run unit:next --json` and use its result directly.
-  - If the helper is unavailable, find the **first row** where Status is `stub` or `—`, use that unit number.
-  - Announce: "Next unit to add: Unit N — Topic".
-- Otherwise: use `$ARGUMENTS` as the unit number directly.
+  - If the helper is unavailable, choose the first row whose status is `stub` or `—`.
+- If `$ARGUMENTS` is a number such as `14` or a label such as `unit14`, normalize it to that unit number directly.
+- Announce the resolved unit number before editing.
 
-Call the resolved number **N** for the rest of this prompt.
+Call the resolved number `N` for the rest of this prompt.
 
----
+## Step 1 - Read context
 
-## Step 1 — Read context files
+Read these files before writing content:
+- `CLAUDE.md`
+- `AGENTS.md`
+- `UNITS.md`
+- `src/types/unit.ts`
+- `src/data/units/index.ts`
+- one nearby completed unit such as `src/data/units/unit13.ts`
+- `references/catalog/README.md`
+- `references/catalog/units/unit-NNN.md` for Unit `N`
 
-Read these files before writing any code:
-- `CLAUDE.md` — architecture rules
-- `AGENTS.md` — repo-specific workflow rules
-- `UNITS.md` — source of truth for unit order and status
-- `src/types/unit.ts` — TypeScript types (must conform exactly)
-- `src/data/units/unit1.ts` — reference implementation (depth and structure to match)
-- `src/data/units/index.ts` — where to register the new unit
-- `references/markdown/unit-NNN.md` for the matching book unit, if it exists
-- `references/markdown/additional-exercises/README.md` and any related `page-XXX.md` files that mention Unit N, if they exist
+Follow the repo's current editorial flow:
+- `references/catalog/units/unit-NNN.md`
+- linked EPUB HTML files under `references/EPUB/OEBPS/html/`
+- `src/data/units/unitN.ts`
+- `src/data/units/index.ts`
 
----
+When reading the EPUB HTML:
+- inspect hidden answer and example blocks as well as visible prompts
+- note whether the source uses picture prompts, word banks, cues, bounded alternatives, worked examples, or subsection headings
+- preserve those exercise boundaries in the app instead of flattening them
 
-## Step 2 — Write the unit file
+Read `references/catalog/additional-exercises/page-XXX.md` only when the unit catalog entry points there and the page helps confirm scope or difficulty.
 
-Create or update `src/data/units/unitN.ts` (replace N with the actual number):
+## Step 2 - Write or update `src/data/units/unitN.ts`
 
-```typescript
-import type { Unit } from '../../types/unit';
+Create or update `src/data/units/unitN.ts` and export a typed `Unit`.
 
-const unitN: Unit = {
-  id: 'unitN',
-  number: N,
-  title: { en: '...', ru: '...' },
-  description: { en: '...', ru: '...' },
-  steps: [ /* 6 steps */ ],
-};
+Requirements:
+- keep all user-facing content bilingual with `en` and `ru`
+- keep the grammar meaning faithful to Murphy, but write theory, examples, practice, quiz, and summary content in original wording
+- reuse the existing `Unit` and `Step[]` model unless the source task reveals a real representation gap
+- preserve the source exercise shape honestly with `sections`, `cue`, `visual`, `wordBank`, `blankAnswers`, `altAnswers`, `answerMode: 'example'`, and `acceptedPatterns` where needed
+- use strict validation for bounded tasks
+- use `altAnswers` for acceptable contracted or full-form variants
+- keep `highlight` as a literal substring of `english`
+- keep ids stable and unique, for example `p14-1` or `q14-1`
+- use only `<b>` and `<em>` inside `explanation` and `points`
 
-export default unitN;
-```
+## Step 3 - Register the unit
 
-**Required 6 steps in order:**
+Update `src/data/units/index.ts`:
+- add the import for `unitN`
+- register it in numeric order
 
-| # | type | left page | right page |
-|---|------|-----------|------------|
-| 1 | `theory` | Main grammar rule + form table | 7–9 examples with `highlight` and `russian` |
-| 2 | `examples` | Secondary rule or contrast + table | 7–9 examples |
-| 3 | `theory` | Third aspect (questions, contractions, usage) + table | Examples |
-| 4 | `practice` | Quick-reference table (key rows from steps 1–3) | 6 fill-blank questions with `explanation` |
-| 5 | `quiz` | — | 5 multiple-choice questions with `explanation` |
-| 6 | `summary` | — | 6 bullet `points` (key rules) + `nextUnit` |
+Update `UNITS.md`:
+- mark Unit `N` as `done`
 
-**Content rules:**
-- Every step: both `en` and `ru` for ALL fields (titles, explanations, table headers/rows, notes, items, questions, options, explanations, points).
-- Theory must be accurate in grammar meaning to Murphy's unit, but all user-facing explanation text must be rewritten from scratch. Do not copy or closely paraphrase the book's wording sentence-by-sentence.
-- Examples may teach the same rule, but should be newly authored whenever possible rather than copied from the book.
-- Practice, quiz, and summary content must be original. Do not reproduce the book's exercise wording, answer order, answer keys, or example sets 1:1.
-- Additional exercises may cover multiple units. Use them only to verify scope and difficulty; do not transcribe them directly into the app.
-- Never copy the book's images, audio, page artwork, or fixed-layout structure into app content.
-- `explanation` / `points` may use `<b>` and `<em>` tags only.
-- `highlight` must be a literal substring of the `english` string.
-- Practice `correctAnswer` must match exactly what the user types (include contractions: `'m`, `'re`, `isn't`, etc.).
-- Quiz `correctIndex` is 0-based.
-- Question ids unique within unit: `pN-1`, `qN-1`, etc.
+## Step 4 - Verify
 
----
+Run `bun run build` and fix any TypeScript or Vite errors before finishing.
+Run targeted `bun test ...` commands for `tests/unitN.test.ts` and any shared files touched during authoring, and finish only when those tests pass.
 
-## Step 3 — Register the unit
+## Step 5 - Report
 
-Edit `src/data/units/index.ts`:
-- Add `import unitN from './unitN';`
-- Add `unitN` to the array at the correct position
-
----
-
-## Step 4 — Update UNITS.md
-
-Edit `UNITS.md`: find the row for Unit N and change its Status cell to `done`.
-
----
-
-## Step 5 — Build check
-
-Run `bun run build`. Fix any TypeScript errors before continuing.
-
----
-
-## Step 6 — Report
-
-Print a short summary:
-- Unit number and topic
-- How many steps created
-- UNITS.md updated: what the new status row looks like
-- Any grammar points where you were uncertain about Murphy's book content
+Report briefly:
+- the resolved unit number
+- the unit file path: `src/data/units/unitN.ts`
+- the catalog entry and EPUB HTML files consulted
+- whether `src/data/units/index.ts` and `UNITS.md` were updated
+- any source ambiguities or modeling assumptions
 
 Do not commit unless the user explicitly asks.

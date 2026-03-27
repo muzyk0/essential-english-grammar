@@ -23,6 +23,7 @@ Treat the app as a learning companion to the original book, not a replacement fo
 ## Commands
 
 ```bash
+bun test         # run Bun tests in tests/
 bun dev          # start dev server at http://localhost:5173
 bun run build    # type-check (tsc -b) then build to dist/
 bun run lint     # ESLint
@@ -32,7 +33,13 @@ bun run unit:next   # print the next auto-selected unit from UNITS.md
 bun run review-pack:next   # print the next auto-selected review-pack scope
 ```
 
-No test suite is configured — use `bun run build` as the correctness check (TypeScript + Vite).
+Use `bun test` for Bun tests, `bun run build` for TypeScript plus production-build verification, and `bun run lint` for ESLint checks.
+
+## Assistant authoring workflow
+
+- `$add-unit <unit N>` is the repo authoring create/update step for a specified `src/data/units/unitN.ts`.
+- `$review-content <unit N>` is the repo authoring QA/check step for that same unit file.
+- These workflows are assistant-side only, not runtime app features.
 
 ## Architecture
 
@@ -97,7 +104,7 @@ Core unit content lives in `src/data/units/`. Multi-unit extra practice lives in
 ### Auto-selecting the next unit
 - Prefer `bun run unit:next` over hand-picking the next unit number.
 - The helper chooses the first row in `UNITS.md` whose status is `stub` or `—`.
-- Use that helper for `/add-unit next` style workflows so the command, skill, and repo rules stay aligned.
+- Use that helper for `$add-unit next` style workflows so the command, skill, and repo rules stay aligned.
 
 ### Auto-selecting the next review pack
 - Prefer `bun run review-pack:next` over hand-picking the next range.

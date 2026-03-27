@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { getReviewPacksForUnit } from '../data/review-packs';
@@ -15,29 +15,21 @@ function UnitPageContent({ unitId }: { unitId?: string }) {
 
   const unitIndex = units.findIndex((u) => u.id === unitId);
   const unit = unitIndex >= 0 ? units[unitIndex] : undefined;
-
-  if (!unit) {
-    return (
-      <div className="error-page">
-        <h2>Unit not found</h2>
-        <Link to="/" className="btn btn--primary">{t('btn.backToUnits')}</Link>
-      </div>
-    );
-  }
-
-  const safeCurrentStep = Math.min(currentStep, unit.steps.length - 1);
-  const stepTypes = unit.steps.map((s) => s.type as StepType);
-  const step = unit.steps[safeCurrentStep];
-  const relatedReviewPacks = getReviewPacksForUnit(unit.number);
+  const safeCurrentStep = unit ? Math.min(currentStep, unit.steps.length - 1) : 0;
+  const stepTypes = unit?.steps.map((s) => s.type as StepType) ?? [];
+  const step = unit?.steps[safeCurrentStep];
+  const relatedReviewPacks = unit ? getReviewPacksForUnit(unit.number) : [];
   const isFirst = safeCurrentStep === 0;
-  const isLast = safeCurrentStep === unit.steps.length - 1;
-  const nextUnit = units[unitIndex + 1];
+  const isLast = unit ? safeCurrentStep === unit.steps.length - 1 : true;
+  const nextUnit = unitIndex >= 0 ? units[unitIndex + 1] : undefined;
 
-  const goPreviousStep = useCallback(() => {
+  const goPreviousStep = () => {
     setCurrentStep((stepIndex) => Math.max(0, stepIndex - 1));
-  }, []);
+  };
 
-  const goNextStep = useCallback(() => {
+  const goNextStep = () => {
+    if (!unit) return;
+
     if (safeCurrentStep < unit.steps.length - 1) {
       setCurrentStep((stepIndex) => Math.min(unit.steps.length - 1, stepIndex + 1));
       return;
@@ -46,24 +38,35 @@ function UnitPageContent({ unitId }: { unitId?: string }) {
     if (nextUnit) {
       navigate(`/unit/${nextUnit.id}`);
     }
-  }, [navigate, nextUnit, safeCurrentStep, unit.steps.length]);
+  };
 
-  const goFirstStep = useCallback(() => {
+  const goFirstStep = () => {
     setCurrentStep(0);
-  }, []);
+  };
 
-  const goLastStep = useCallback(() => {
+  const goLastStep = () => {
+    if (!unit) return;
     setCurrentStep(unit.steps.length - 1);
-  }, [unit.steps.length]);
+  };
 
   useStepKeyboardNavigation({
     current: safeCurrentStep,
-    total: unit.steps.length,
+    total: unit?.steps.length ?? 0,
     onPrevious: goPreviousStep,
     onNext: goNextStep,
     onFirst: goFirstStep,
     onLast: goLastStep,
+    enabled: Boolean(unit),
   });
+
+  if (!unit || !step) {
+    return (
+      <div className="error-page">
+        <h2>{t('error.unitNotFound')}</h2>
+        <Link to="/" className="btn btn--primary">{t('btn.backToUnits')}</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="unit-page">

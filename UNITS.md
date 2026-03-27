@@ -1,7 +1,7 @@
 # Units Progress
 
 Tracking file for the Essential Grammar in Use interactive app.
-Updated automatically by the `/add-unit` command.
+Updated as unit files are authored, typically via `$add-unit <unit N>` and then checked with `$review-content <unit N>`.
 
 ## Status legend
 - `done`  — full content (theory + examples + practice + quiz + summary)
@@ -27,8 +27,8 @@ Updated automatically by the `/add-unit` command.
 | 11 | worked/got/went (past simple) | worked/got/went (прошедшее простое) | done |
 | 12 | I didn't ... / Did you ...? (past simple) | I didn't ... / Did you ...? | done |
 | 13 | I was doing (past continuous) | I was doing (прошедшее длительное) | done |
-| 14 | I was doing vs I did | I was doing vs I did | — |
-| 15 | I have done (present perfect 1) | I have done (настоящее совершённое 1) | — |
+| 14 | I was doing vs I did | I was doing vs I did | done |
+| 15 | I have done (present perfect 1) | I have done (настоящее совершённое 1) | done |
 | 16 | I've just ... / I've already ... / I haven't ... yet | just / already / yet | — |
 | 17 | Have you ever ...? (present perfect 2) | Have you ever ...? | — |
 | 18 | How long have you ...? (present perfect 3) | How long have you ...? | — |

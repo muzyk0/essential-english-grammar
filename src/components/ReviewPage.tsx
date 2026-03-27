@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import reviewPacks from '../data/review-packs';
@@ -14,32 +14,24 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
   const [currentStep, setCurrentStep] = useState(0);
 
   const pack = reviewPacks.find((item) => item.id === reviewId);
-
-  if (!pack) {
-    return (
-      <div className="error-page">
-        <h2>Review pack not found</h2>
-        <Link to="/" className="btn btn--primary">{t('btn.backToHome')}</Link>
-      </div>
-    );
-  }
-
-  const coveredUnits = pack.coversUnits
+  const coveredUnits = (pack?.coversUnits ?? [])
     .map((unitNumber) => units.find((unit) => unit.number === unitNumber))
     .filter((unit): unit is Unit => Boolean(unit));
-  const nextUnitNumber = pack.coversUnits.length > 0 ? Math.max(...pack.coversUnits) + 1 : undefined;
+  const nextUnitNumber = pack && pack.coversUnits.length > 0 ? Math.max(...pack.coversUnits) + 1 : undefined;
   const nextUnit = nextUnitNumber ? units.find((unit) => unit.number === nextUnitNumber) : undefined;
-  const safeCurrentStep = Math.min(currentStep, pack.steps.length - 1);
-  const stepTypes = pack.steps.map((step) => step.type as StepType);
-  const step = pack.steps[safeCurrentStep];
+  const safeCurrentStep = pack ? Math.min(currentStep, pack.steps.length - 1) : 0;
+  const stepTypes = pack?.steps.map((step) => step.type as StepType) ?? [];
+  const step = pack?.steps[safeCurrentStep];
   const isFirst = safeCurrentStep === 0;
-  const isLast = safeCurrentStep === pack.steps.length - 1;
+  const isLast = pack ? safeCurrentStep === pack.steps.length - 1 : true;
 
-  const goPreviousStep = useCallback(() => {
+  const goPreviousStep = () => {
     setCurrentStep((stepIndex) => Math.max(0, stepIndex - 1));
-  }, []);
+  };
 
-  const goNextStep = useCallback(() => {
+  const goNextStep = () => {
+    if (!pack) return;
+
     if (safeCurrentStep < pack.steps.length - 1) {
       setCurrentStep((stepIndex) => Math.min(pack.steps.length - 1, stepIndex + 1));
       return;
@@ -48,24 +40,35 @@ function ReviewPageContent({ reviewId }: { reviewId?: string }) {
     if (nextUnit) {
       navigate(`/unit/${nextUnit.id}`);
     }
-  }, [navigate, nextUnit, pack.steps.length, safeCurrentStep]);
+  };
 
-  const goFirstStep = useCallback(() => {
+  const goFirstStep = () => {
     setCurrentStep(0);
-  }, []);
+  };
 
-  const goLastStep = useCallback(() => {
+  const goLastStep = () => {
+    if (!pack) return;
     setCurrentStep(pack.steps.length - 1);
-  }, [pack.steps.length]);
+  };
 
   useStepKeyboardNavigation({
     current: safeCurrentStep,
-    total: pack.steps.length,
+    total: pack?.steps.length ?? 0,
     onPrevious: goPreviousStep,
     onNext: goNextStep,
     onFirst: goFirstStep,
     onLast: goLastStep,
+    enabled: Boolean(pack),
   });
+
+  if (!pack || !step) {
+    return (
+      <div className="error-page">
+        <h2>{t('error.reviewPackNotFound')}</h2>
+        <Link to="/" className="btn btn--primary">{t('btn.backToHome')}</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="unit-page">

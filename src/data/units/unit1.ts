@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import type { Unit } from '../../types/unit';
 
 const unit1: Unit = {

@@ -1,77 +1,94 @@
-Review a completed unit or extra-practice review pack in the Essential Grammar in Use interactive app.
+Review and, by default, fix a specified grammar unit in the Essential Grammar in Use app.
 
-## Step 0 — Resolve the target
+Examples:
+- `$review-content 14`
+- `$review-content 15`
+- `$review-content unit14`
 
-- If `$ARGUMENTS` names a unit number or `unitN`, review `src/data/units/unitN.ts`.
-- If `$ARGUMENTS` names a review pack id, file name, or path, review that review-pack file.
-- If `$ARGUMENTS` is empty:
-  - inspect changed files
-  - if exactly one changed `src/data/units/unitN.ts` or `src/data/review-packs/*.ts` file is obvious, use it
-  - otherwise ask for an explicit target
+Treat `$review-content <unit N>` as the QA and check stage after creating `src/data/units/unitN.ts`. This is a repo authoring workflow, not a runtime app feature and not review-pack generation.
 
-Call the resolved file **TARGET_FILE** and its type **TARGET_KIND** (`unit` or `review-pack`).
+## Step 0 - Resolve the target and mode
 
----
+- If `$ARGUMENTS` is a number such as `14` or a label such as `unit14`, use `src/data/units/unitN.ts`.
+- If `$ARGUMENTS` is a direct path to a unit file, use that file.
+- If `$ARGUMENTS` is empty, inspect changed files and continue only when exactly one changed `src/data/units/unitN.ts` file is obvious.
+- Default to `fix` mode. Switch to review-only only when the user explicitly asks for findings without edits.
+- Announce the resolved unit file and mode before editing.
 
-## Step 1 — Read context files
+Call the resolved file `TARGET_FILE`.
+
+## Step 1 - Read context
 
 Always read:
 - `CLAUDE.md`
 - `AGENTS.md`
-- `src/types/unit.ts`
-- `TARGET_FILE`
-
-If `TARGET_KIND` is `unit`, also read:
-- `src/data/units/index.ts`
 - `UNITS.md`
-- `references/markdown/unit-NNN.md`
-- relevant `references/markdown/additional-exercises/page-XXX.md` files only if they help confirm scope or difficulty
+- `src/types/unit.ts`
+- `src/data/units/index.ts`
+- `TARGET_FILE`
+- `references/catalog/README.md`
+- `references/catalog/units/unit-NNN.md` for the target unit
 
-If `TARGET_KIND` is `review-pack`, also read:
-- `src/data/review-packs/index.ts`
-- the covered unit files from `src/data/units/`
-- `references/markdown/additional-exercises/README.md`
-- relevant `references/markdown/additional-exercises/page-XXX.md` files
+Follow the repo's current QA flow:
+- `references/catalog/units/unit-NNN.md`
+- linked EPUB HTML files under `references/EPUB/OEBPS/html/`
+- `src/data/units/unitN.ts`
+- `src/data/units/index.ts`
 
----
+When reading the EPUB HTML:
+- inspect hidden answer and example blocks as well as visible prompts
+- capture exercise boundaries, worked examples, cues, picture prompts, subsection headings, and word banks
+- use those signals to judge whether the unit preserved the source task shape honestly
 
-## Step 2 — Review checklist
+Read nearby app units only when they help with continuity or terminology.
 
-Check structure:
-- correct object shape (`Unit` or `ReviewPack`)
-- correct step order and expected step types
-- proper registration in the relevant `index.ts`
-- `UNITS.md` updated for units
+## Step 2 - Review checklist
 
-Check content integrity:
-- all user-facing fields are bilingual (`en` and `ru`)
+Check editorial accuracy:
+- grammar meaning matches the source unit
+- wording stays original and not too close to the book
+- the content follows the catalog-to-EPUB source path rather than old generated markdown notes
+
+Check structure and data integrity:
+- `TARGET_FILE` is a valid `Unit`
+- user-facing fields are bilingual
 - `highlight` is a literal substring of `english`
 - ids are unique
 - `correctIndex` is 0-based
-- `altAnswers` exist where multiple valid forms are expected
-- `explanation` / `points` use only `<b>` and `<em>`
+- `altAnswers` exist when multiple bounded answers should be accepted
+- `explanation` and `points` use only `<b>` and `<em>`
+- source exercise boundaries are preserved instead of flattened away
+- `src/data/units/index.ts` registration and `UNITS.md` status are still correct
 
-Check editorial fit:
-- grammar meaning matches the relevant reference material
-- difficulty and scope match the unit or pack coverage
-- wording is original and not too close to the book
+## Step 3 - Fix in place
 
----
+In fix mode:
+- edit `TARGET_FILE` directly
+- prefer targeted corrections over a full rewrite
+- keep the existing `Unit` and `Step[]` architecture unless the source task reveals a real representation gap
+- if the unit needs a shared validation or renderer fix to represent the task honestly, make that shared change instead of leaving a content workaround
 
-## Step 3 — Verify
+In review-only mode:
+- do not edit files
+- report findings first, ordered by severity
 
-Run `bun run build` unless the user explicitly says not to.
+## Step 4 - Verify
 
----
+Run `bun run build` unless the user explicitly says not to. Run any targeted `bun test ...` commands needed for files changed as part of the QA pass.
 
-## Step 4 — Report
+## Step 5 - Report
 
-Report in review format:
+In fix mode, report briefly:
+- the resolved unit number or file
+- what was corrected in `src/data/units/unitN.ts`
+- the catalog entry and EPUB HTML files checked
+- whether `src/data/units/index.ts` or `UNITS.md` also changed
+- any remaining ambiguities or risks
+
+In review-only mode:
 - findings first, ordered by severity
-- file and line references where possible
-- open questions or assumptions after findings
-- short summary last
+- file references where possible
+- assumptions or open questions after the findings
+- a short summary last
 
-If there are no findings, say so explicitly and mention any residual risks or testing gaps.
-
-Do not fix the content unless the user explicitly asks for changes.
+Do not commit unless the user explicitly asks.
